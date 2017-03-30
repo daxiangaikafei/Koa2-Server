@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    //"module": "amd",
+    "sourceMap": true,
+    "allowJs":true,
+    "watch":true,
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "sysHelp": [
+        "help/*"
+      ]
+       //"sysHelp": ["help/index"]
+    },
+    "lib":["es2015.promise", "es5"]
+  },
+  "exclude": [
+    "node_modules",
+    "typings"
+  ]
+}

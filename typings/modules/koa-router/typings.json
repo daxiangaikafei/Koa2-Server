@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/c9ce056c1acba4510fedc58d3c9f3f03b3aff17a/koa-router/index.d.ts",
+    "raw": "registry:dt/koa-router#7.0.0+20170316163447",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/c9ce056c1acba4510fedc58d3c9f3f03b3aff17a/koa-router/index.d.ts"
+  }
+}
