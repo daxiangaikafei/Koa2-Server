@@ -7,7 +7,7 @@ const config = routes.qbii;
 let router = new Router();
 router.prefix(config.prefix);
 
-let result = new Result();
+let result:Result = new Result();
 
 router.get("/user/userId",function(ctx,next){
 	//console.log(result);
