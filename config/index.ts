@@ -1,8 +1,9 @@
 
-import aname from "help/index";
+import {envChange} from "./../help/index";
 
-console.log(aname)
+//let {envChange} = require("./../help/index")
+//console.log("aaaa",envChange)
 
-export default{
-
+module.exports = {
+    envChange
 }

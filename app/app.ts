@@ -9,16 +9,20 @@ import * as onError    from 'koa-onerror'
 import Result from "./library/help/Result";
 import routers from "./routes/index";
 
-let result = new Result();
+import * as a  from "./../config/index";
+console.log(a);
+let result:Result = new Result();
 
 //console.log(process);
-var app = new koa();
+let app:koa = new koa();
 app.use(logger());//日志
 app.use(convert(body({
   querystring: require('qs')
 })));//表单什么数据转换 
 //异常处理
 onError(app);
+
+
 
 // app.keys = ['im a newer secret', 'i like turtle'];
 // app.use(convert(session(config.serverSessionConfig,app)));

@@ -1,7 +1,7 @@
 const Router = require('koa-router');
 
 
-const router = new Router()
+const router:Router = new Router()
 router.prefix('/api')
 
 
@@ -19,6 +19,7 @@ router.get("/user/userId",function(ctx,next){
 	
 	ctx.body=_result
 })
+
 
 
 
