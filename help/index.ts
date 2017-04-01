@@ -1,10 +1,16 @@
-// interface Help  {
-//     "envChange":any
+import * as Util from "./util";
+
+export let envChange = Util.envChange;
+
+// interface A {
+//     envChange:any;
 // }
 
 
-import {envChange} from "./util";
+// module.exports={
+//     envChange:Util.envChange
+// }
 
-let help = {"envChange":envChange};
-
-module.exports =  help;
+// export let a:any={
+//     envChange:Util.envChange
+// }

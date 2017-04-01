@@ -1,11 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("./../help/index");
+import { envChange } from "./../help/index";
 // import development from "./env/development";
 // import production from "./env/production";
 // import release from "./env/release";
 //console.log(envChange);
-var config = index_1.envChange({
+let config = envChange({
     "development": function () {
         return require("./env/development");
     },

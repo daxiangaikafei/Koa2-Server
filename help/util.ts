@@ -5,7 +5,7 @@ interface EnvValue {
 }
 
 
-export const envChange = function(envObj:EnvValue){
+export let envChange = function(envObj:EnvValue){
     switch (process.env.NODE_ENV){
         case "development":
            return envObj.development&&envObj.development();
