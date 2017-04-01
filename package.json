@@ -26,6 +26,7 @@
     "koa-views": "^5.2.0"
   },
   "dependencies": {
+    "@types/node": "^7.0.12",
     "koa-artTemplate": "^2.0.7",
     "koa-better-body": "^3.0.2",
     "koa-convert": "^1.2.0",

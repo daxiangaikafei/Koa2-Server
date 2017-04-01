@@ -1,13 +1,9 @@
 
-import {envChange} from "./../help/index";
+import * as help from "./../../help/index";
 
-// import development from "./env/development";
-// import production from "./env/production";
-// import release from "./env/release";
 
-//console.log(envChange);
 
-let config = envChange({
+let config = help.envChange({
     "development":function(){
         return require("./env/development");
     },

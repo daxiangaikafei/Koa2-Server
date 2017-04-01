@@ -1,4 +1,10 @@
+// interface Help  {
+//     "envChange":any
+// }
+
+
 import {envChange} from "./util";
 
+let help = {"envChange":envChange};
 
-export default {envChange};
+module.exports =  help;

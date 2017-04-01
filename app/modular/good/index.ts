@@ -1,4 +1,4 @@
-import Router from "koa-router";
+import * as Router from "koa-router";
 
 const router = new Router()
 router.prefix('/api')
@@ -21,5 +21,5 @@ router.get("/user/userId",function(ctx,next){
 
 
 
-//module.exports = router
-export default router;
+module.exports = router
+//export default router;

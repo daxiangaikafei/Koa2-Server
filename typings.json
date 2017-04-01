@@ -9,6 +9,6 @@
     "koa-send": "registry:dt/koa-send#3.3.0+20170110040341"
   },
   "globalDependencies": {
-    "node": "registry:env/node#0.10.0+20170213133316"
+    "node": "registry:env/node#6.0.0+20170213133316"
   }
 }
