@@ -46,6 +46,8 @@ var config = require("./../config/index");
 var lodash_1 = require("lodash");
 var result_1 = require("./library/help/result");
 var index_1 = require("./routes/index");
+var a = require("./../config/index");
+console.log(a);
 var result = new result_1.default();
 //console.log(process);
 var app = new koa();

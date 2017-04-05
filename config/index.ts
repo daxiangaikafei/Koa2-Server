@@ -22,4 +22,3 @@ let config = envChange({
 //console.log("系统配置信息为:",config);
 
 module.exports = config;
->>>>>>> e40b0daaddb345412f908a3f39abcc0c69b364b9
