@@ -2,12 +2,9 @@ import * as Router from "koa-router";
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 
-// import {routes} from "./../../config/index";
- import * as json from "./../../config/index";
-
-// const config = routes.qbii;
+import * as json from "./../../config/index";
 const routes:any=json
-const config = routes.qbii;
+const config = routes.routes.qbii;
 let router = new Router();
 router.prefix(config.prefix);
 
@@ -16,8 +13,6 @@ fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
 
 let result:Result = new Result();
-
-console.log(config.prefix);
 
 router.get("/user/userId",function(ctx,next){
 	return fetch.getData("/api/news/getNewsList.html",{},"GET").then((data)=>{

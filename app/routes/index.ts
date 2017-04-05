@@ -3,7 +3,7 @@ import * as routers_good from "./../modular/good/index";
 
 import * as router from "koa-router";
 
-
+console.log(router,'22222')
 let routes:router[]= [
 	routers_qbii,
 	routers_good

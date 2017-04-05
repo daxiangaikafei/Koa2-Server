@@ -12,6 +12,5 @@ var config = help.envChange({
         return require("./env/release");
     }
 });
-//console.log("系统配置信息为:",config);
 module.exports = config;
 //# sourceMappingURL=index.js.map

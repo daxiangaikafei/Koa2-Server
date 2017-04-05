@@ -70,6 +70,6 @@ each(routers,function(router,index){
 // app.listen(config.localServer.port);
 
 
-let value:any=config
-app.listen(value.localServer);
+let value:any=config;
+app.listen(value.localServer.port);
 

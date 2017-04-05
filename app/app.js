@@ -92,6 +92,8 @@ lodash_1.each(index_1.default, function (router, index) {
     app.use(router.routes());
     app.use(router.allowedMethods());
 });
-console.log(config.localServer.port);
-app.listen(config.localServer.port);
+// console.log(config.localServer.port);
+// app.listen(config.localServer.port);
+var value = config;
+app.listen(value.localServer.port);
 //# sourceMappingURL=app.js.map
