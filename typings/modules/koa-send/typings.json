@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/1fe97bbf37387bb737d1581bc18d5bdc90022a6f/koa-send/index.d.ts",
-    "raw": "registry:dt/koa-send#3.3.0+20170110040341",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/1fe97bbf37387bb737d1581bc18d5bdc90022a6f/koa-send/index.d.ts"
-  }
-}
