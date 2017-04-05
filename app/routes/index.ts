@@ -1,7 +1,7 @@
 import * as routers_qbii from "./../modular/qbii/index";
 import * as routers_good from "./../modular/good/index";
 
-import router from "koa-router";
+import * as router from "koa-router";
 
 
 let routes:router[]= [

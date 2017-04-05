@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "生产编译",
-            "program": "${workspaceRoot}/app/app.js",
+            "program": "${workspaceRoot}/app/app.ts",
             "env": {
                 "NODE_ENV": "production"
             }

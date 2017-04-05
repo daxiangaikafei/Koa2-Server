@@ -10,3 +10,6 @@
 .DS_Store
 *.js
 *.js.map
+*.map
+node_modules/
+

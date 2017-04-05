@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-
-import { envChange } from "./../help/index";
-=======
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("./../help/index");
->>>>>>> tp
-// import development from "./env/development";
-// import production from "./env/production";
-// import release from "./env/release";
-//console.log(envChange);
-var config = index_1.envChange({
+var help = require("./../../help/index");
+var config = help.envChange({
     "development": function () {
         return require("./env/development");
     },
@@ -23,3 +14,4 @@ var config = index_1.envChange({
 });
 //console.log("系统配置信息为:",config);
 module.exports = config;
+//# sourceMappingURL=index.js.map

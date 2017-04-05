@@ -26,9 +26,16 @@
     "koa-views": "^5.2.0"
   },
   "dependencies": {
+    "@types/isomorphic-fetch": "0.0.33",
+    "@types/koa": "^2.0.39",
+    "@types/koa-bodyparser": "^3.0.23",
+    "@types/koa-logger": "^2.0.2",
+    "@types/koa-router": "^7.0.22",
+    "@types/lodash": "^4.14.61",
     "@types/node": "^7.0.12",
     "koa-artTemplate": "^2.0.7",
     "koa-better-body": "^3.0.2",
+    "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
     "koa-onerror": "^3.0.1",
     "koa-send": "^3.2.0",

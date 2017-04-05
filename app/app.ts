@@ -1,9 +1,11 @@
 import * as path       from 'path'
 import * as koa        from 'koa'
-import * as convert    from 'koa-convert'
+// import * as convert    from 'koa-convert'
 import * as logger     from 'koa-logger'
-import * as body       from 'koa-better-body'
-import * as onError    from 'koa-onerror'
+// import * as body       from 'koa-better-body'
+// import * as onError    from 'koa-onerror'
+
+import * as body from "koa-bodyparser";
 
 import * as config from "./../config/index";
 
@@ -20,11 +22,11 @@ let result:Result = new Result();
 //console.log(process);
 let app:koa = new koa();
 app.use(logger());//日志
-app.use(convert(body({
-  querystring: require('qs')
-})));//表单什么数据转换 
+app.use(body({
+  // querystring: require('qs')
+}));//表单什么数据转换 
 //异常处理
-onError(app);
+// onError(app);
 
 
 
