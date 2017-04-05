@@ -1,4 +1,4 @@
-import {error} from "./../../config/index.json";
+import {error} from "./../../config/index";
 
 class Result {
     constructor() {

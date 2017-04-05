@@ -1,9 +1,25 @@
 
 import {envChange} from "./../help/index";
 
-//let {envChange} = require("./../help/index")
-//console.log("aaaa",envChange)
+// import development from "./env/development";
+// import production from "./env/production";
+// import release from "./env/release";
 
-module.exports = {
-    envChange
-}
+//console.log(envChange);
+
+let config = envChange({
+    "development":function(){
+        return require("./env/development");
+    },
+    "production":function(){
+        return require("./env/production");
+    },
+    "release":function(){
+        return require("./env/release");
+    }
+})
+
+//console.log("系统配置信息为:",config);
+
+module.exports = config;
+>>>>>>> e40b0daaddb345412f908a3f39abcc0c69b364b9

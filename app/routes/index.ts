@@ -1,27 +1,12 @@
-const Router = require('koa-router');
+import * as routers_qbii from "./../modular/qbii/index";
+import * as routers_good from "./../modular/good/index";
+
+import router from "koa-router";
 
 
-const router:Router = new Router()
-router.prefix('/api')
-
-
-// var Result = require("./../api/result");
-// var result = new Result();
-
-
-
-router.get("/user/userId",function(ctx,next){
-	//console.log(result);
-	var _result = 
-		{
-		aa:1
-		}
-	
-	ctx.body=_result
-})
-
-
-
-
+let routes:router[]= [
+	routers_qbii,
+	routers_good
+];
 //module.exports = router
-export default router;
+export default routes;

@@ -1,9 +1,19 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("./../help/index");
-//let {envChange} = require("./../help/index")
-//console.log("aaaa",envChange)
-module.exports = {
-    envChange: index_1.envChange
-};
-//# sourceMappingURL=index.js.map
+
+import { envChange } from "./../help/index";
+// import development from "./env/development";
+// import production from "./env/production";
+// import release from "./env/release";
+//console.log(envChange);
+let config = envChange({
+    "development": function () {
+        return require("./env/development");
+    },
+    "production": function () {
+        return require("./env/production");
+    },
+    "release": function () {
+        return require("./env/release");
+    }
+});
+//console.log("系统配置信息为:",config);
+module.exports = config;

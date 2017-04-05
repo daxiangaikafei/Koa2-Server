@@ -1,0 +1,12 @@
+*node_modules
+*dist
+*build
+*.tmp
+*.sass-cache
+*bower_components
+*idea
+*idel
+*.DS_Store
+.DS_Store
+*.js
+*.js.map

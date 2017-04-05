@@ -1,5 +1,5 @@
-import {envChange} from "./util";
-// let {envChange} = require("./util");
-// console.log("mlgb"+envChange)
 
-module.exports =  {envChange}
+import * as Util from "./util";
+
+export let envChange = Util.envChange;
+

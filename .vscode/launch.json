@@ -7,6 +7,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "生产编译",
+            "program": "${workspaceRoot}/app/app.js",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "启动程序",
             "program": "${workspaceRoot}/app/app.ts",
             "env": {

@@ -3,15 +3,19 @@ import * as koa        from 'koa'
 import * as convert    from 'koa-convert'
 import * as logger     from 'koa-logger'
 import * as body       from 'koa-better-body'
-import * as json       from 'koa-json'
 import * as onError    from 'koa-onerror'
 
-import Result from "./library/help/Result";
+import * as config from "./../config/index";
+
+import {each} from "lodash";
+
+import Result from "./library/help/result";
 import routers from "./routes/index";
 
 import * as a  from "./../config/index";
 console.log(a);
 let result:Result = new Result();
+
 
 //console.log(process);
 let app:koa = new koa();
@@ -47,15 +51,21 @@ app.use(async(ctx,next) => {
    result.error(ctx.status,"");
    ctx.body=result.getValue();
 });
+
 // app.use((ctx,next)=>{
 //     return next().then((a,b)=>{
 //         console.log("a",a)
 //     })
 // })
+each(routers,function(router,index){
+  app.use(router.routes())
+  app.use(router.allowedMethods());
+})
 
-app.use(routers.routes())
-   .use(routers.allowedMethods());
 
-app.listen(3000);
+console.log(config.localServer.port);
+
+app.listen(config.localServer.port);
+
 
 
