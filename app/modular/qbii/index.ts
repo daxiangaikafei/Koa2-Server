@@ -2,14 +2,16 @@ import * as Router from "koa-router";
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 
-import {routes} from "./../../config/index";
+// import {routes} from "./../../config/index";
+ import * as json from "./../../config/index";
 
-
+// const config = routes.qbii;
+const routes:any=json
 const config = routes.qbii;
 let router = new Router();
 router.prefix(config.prefix);
 
-let fetch:Fetch = new Fetch();
+let fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
 

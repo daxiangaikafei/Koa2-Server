@@ -65,9 +65,11 @@ each(routers,function(router,index){
 })
 
 
-console.log(config.localServer.port);
+// console.log(config.localServer.port);
 
-app.listen(config.localServer.port);
+// app.listen(config.localServer.port);
 
 
+let value:any=config
+app.listen(value.localServer);
 

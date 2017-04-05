@@ -1,5 +1,4 @@
-import {error} from "./../../config/index";
-
+import * as json from "./../../config/index";
 class Result {
     constructor() {
         this.resultCode = 0;
@@ -18,12 +17,13 @@ class Result {
     error(code : number, errorMsg : string) {
         this.resultCode = code;
         this.resultMessage = errorMsg;
-        console.log(error);
+        console.log(code,'ddddd');
     }
     getValue() {
         let resultCode = this.resultCode;
         let resultMessage = this.resultMessage;
         let result = this.result;
+        console.log( resultCode, resultMessage, result)
         return {resultCode, resultMessage, result}
     }
 }
