@@ -17,7 +17,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}/app/app.ts",
+            "program": "${workspaceRoot}/app/app.js",
             "env": {
                 "NODE_ENV": "development"
             }
