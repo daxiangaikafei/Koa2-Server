@@ -18,6 +18,4 @@ let config:Config = help.envChange({
     }
 })
 
-//console.log("系统配置信息为:",config);
-
 module.exports = config;

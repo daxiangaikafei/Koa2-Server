@@ -68,12 +68,6 @@ each(routers,function(router,index){
   app.use(router.allowedMethods());
 })
 
+app.listen(config.localServer.port);
 
-// console.log(config.localServer.port);
-
-// app.listen(config.localServer.port);
-
-
-//let value:any=config
-app.listen(config.localServer);
 

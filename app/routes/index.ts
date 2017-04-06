@@ -1,10 +1,8 @@
-import * as routers_qbii from "./../modular/qbii/index";
-import * as routers_good from "./../modular/good/index";
-
 import * as Router from "koa-router";
+let routers_qbii:Router = require("./../modular/qbii/index");
+let routers_good:Router = require("./../modular/qgoodbii/index");
 
-
-let routes= [
+let routes:Router[]= [
 	routers_qbii,
 	routers_good
 ];

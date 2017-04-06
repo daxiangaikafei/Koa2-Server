@@ -1,22 +1,29 @@
 import * as Router from "koa-router";
-
-const router = new Router()
-router.prefix('/api')
-
-
-// var Result = require("./../api/result");
-// var result = new Result();
+import Result from "./../../library/help/result";
+import Fetch from "./../../library/help/fetch";
 
 
+let LocalConfig:Config = require("./../../config/index");
+ //import * as json from "./../../config/index";
+
+// const config = routes.qbii;
+//const routes:any=json
+const config = LocalConfig.routes.good;
+let router:Router = new Router();
+
+router.prefix(config.prefix);
+
+let fetch:Fetch = new Fetch(config.domain,config.timeout);
+fetch.setDomain(config.domain);
+fetch.setTimeout(config.timeout);
+
+let result:Result = new Result();
 
 router.get("/user/userId",function(ctx,next){
-	//console.log(result);
-	var _result = 
-		{
-		aa:1
-		}
-	
-	ctx.body=_result
+	return fetch.getData("/api/news/getNewsList.html",{},"GET").then((data)=>{
+		result.success(data);
+		ctx.body=result.getValue();
+	})
 })
 
 
