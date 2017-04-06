@@ -4,16 +4,20 @@ var index_1 = require("./../help/index");
 // import development from "./env/development";
 // import production from "./env/production";
 // import release from "./env/release";
-//console.log(envChange);
+var sysConfig;
+//a.localServer = 100;
 var config = index_1.envChange({
     "development": function () {
-        return require("./env/development");
+        sysConfig = require("./env/development");
+        return sysConfig;
     },
     "production": function () {
-        return require("./env/production");
+        sysConfig = require("./env/development");
+        return sysConfig;
     },
     "release": function () {
-        return require("./env/release");
+        sysConfig = require("./env/development");
+        return sysConfig;
     }
 });
 //console.log("系统配置信息为:",config);

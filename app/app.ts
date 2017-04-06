@@ -7,12 +7,16 @@ import * as logger     from 'koa-logger'
 
 import * as body from "koa-bodyparser";
 
-import * as config from "./../config/index";
+let config:Sysconfig = require("./../config/index");
+
+//import * as config from "./../config/index";
 
 import {each} from "lodash";
 
 import Result from "./library/help/result";
-import routers from "./routes/index";
+//import routers from "./routes/index";
+import * as Router from "koa-router";
+let routers:Router[] = require("./routes/index");
 
 import * as a  from "./../config/index";
 console.log(a);
@@ -70,6 +74,6 @@ each(routers,function(router,index){
 // app.listen(config.localServer.port);
 
 
-let value:any=config
-app.listen(value.localServer);
+//let value:any=config
+app.listen(config.localServer);
 

@@ -1,4 +1,9 @@
-module.exports = {
+interface Config  {
+    error:any;
+    routes:any;
+}
+
+let developments:Config={
     "error":{
         "404":404,
         "500":500
@@ -15,4 +20,6 @@ module.exports = {
             "timeout":5000
         }
     }
-};
+}
+
+module.exports = developments;

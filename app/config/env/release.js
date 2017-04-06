@@ -1,4 +1,4 @@
-module.exports = {
+var releaseConfig = {
     "error": {
         "404": 404,
         "500": 500
@@ -16,4 +16,5 @@ module.exports = {
         }
     }
 };
+module.exports = releaseConfig;
 //# sourceMappingURL=release.js.map

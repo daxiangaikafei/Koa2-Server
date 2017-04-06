@@ -14,7 +14,7 @@ class Fetch {
     }
     private domain:string;
     private timeout:number;
-    getData(url:string,param={},type="GET",headers,repType="json",timeout){
+    getData(url:string,param={},type="GET",headers?:any,repType="json",timeout?:any){
         if(type.toLocaleUpperCase()==="GET"&&size(param)>0){
            url +="?"+toExcString(param)
         }

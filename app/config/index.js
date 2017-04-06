@@ -1,15 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var help = require("./../../help/index");
+var result;
 var config = help.envChange({
     "development": function () {
-        return require("./env/development");
+        result = require("./env/development");
+        return result;
     },
     "production": function () {
-        return require("./env/production");
+        result = require("./env/development");
+        return result;
     },
     "release": function () {
-        return require("./env/release");
+        result = require("./env/development");
+        return result;
     }
 });
 //console.log("系统配置信息为:",config);

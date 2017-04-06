@@ -3,11 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Router = require("koa-router");
 var result_1 = require("./../../library/help/result");
 var fetch_1 = require("./../../library/help/fetch");
-var index_1 = require("./../../config/index");
-var config = index_1.routes.qbii;
+var LocalConfig = require("./../../config/index");
+//import * as json from "./../../config/index";
+// const config = routes.qbii;
+//const routes:any=json
+var config = LocalConfig.routes.qbii;
 var router = new Router();
 router.prefix(config.prefix);
-var fetch = new fetch_1.default();
+var fetch = new fetch_1.default(config.domain, config.timeout);
 fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
 var result = new result_1.default();

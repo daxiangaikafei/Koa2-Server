@@ -43,9 +43,10 @@ var logger = require("koa-logger");
 // import * as onError    from 'koa-onerror'
 var body = require("koa-bodyparser");
 var config = require("./../config/index");
+//import * as config from "./../config/index";
 var lodash_1 = require("lodash");
 var result_1 = require("./library/help/result");
-var index_1 = require("./routes/index");
+var routers = require("./routes/index");
 var a = require("./../config/index");
 console.log(a);
 var result = new result_1.default();
@@ -88,10 +89,12 @@ app.use(function (ctx, next) { return __awaiter(_this, void 0, void 0, function 
 //         console.log("a",a)
 //     })
 // })
-lodash_1.each(index_1.default, function (router, index) {
+lodash_1.each(routers, function (router, index) {
     app.use(router.routes());
     app.use(router.allowedMethods());
 });
-console.log(config.localServer.port);
-app.listen(config.localServer.port);
+// console.log(config.localServer.port);
+// app.listen(config.localServer.port);
+//let value:any=config
+app.listen(config.localServer);
 //# sourceMappingURL=app.js.map

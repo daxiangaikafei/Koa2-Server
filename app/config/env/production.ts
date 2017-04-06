@@ -1,4 +1,4 @@
-module.exports = {
+let productionConfig:Config={
     "error":{
         "404":404,
         "500":500
@@ -15,4 +15,6 @@ module.exports = {
             "timeout":5000
         }
     }
-};
+}
+
+module.exports = productionConfig;

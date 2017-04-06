@@ -1,4 +1,4 @@
-module.exports = {
+let release:Sysconfig = {
     "server":{
         "url":"",
         "prot":"",
@@ -27,3 +27,5 @@ module.exports = {
         "Bucket_Name": ""
     }
 }
+
+module.exports = release;

@@ -1,4 +1,4 @@
-module.exports = {
+var release = {
     "server": {
         "url": "",
         "prot": "",
@@ -27,4 +27,5 @@ module.exports = {
         "Bucket_Name": ""
     }
 };
+module.exports = release;
 //# sourceMappingURL=release.js.map

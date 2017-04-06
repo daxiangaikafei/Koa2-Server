@@ -5,17 +5,21 @@ import {envChange} from "./../help/index";
 // import production from "./env/production";
 // import release from "./env/release";
 
-//console.log(envChange);
+let sysConfig:Sysconfig;
+//a.localServer = 100;
 
-let config = envChange({
+let config:Sysconfig = envChange({
     "development":function(){
-        return require("./env/development");
+        sysConfig = require("./env/development");
+        return sysConfig;
     },
     "production":function(){
-        return require("./env/production");
+        sysConfig = require("./env/development");
+        return sysConfig;
     },
     "release":function(){
-        return require("./env/release");
+        sysConfig = require("./env/development");
+        return sysConfig;
     }
 })
 

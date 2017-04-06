@@ -1,4 +1,13 @@
-module.exports = {
+interface Sysconfig {
+    server:any;
+    localServer:any;
+    redis:any;
+    serverSessionConfig:any;
+    ignoreUrls:any;
+    qiniu:any;
+}
+
+let config:Sysconfig = {
     "server":{
         "url":"",
         "prot":"",
@@ -27,3 +36,5 @@ module.exports = {
         "Bucket_Name": ""
     }
 }
+
+module.exports = config

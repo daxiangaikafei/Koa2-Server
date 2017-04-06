@@ -1,4 +1,4 @@
-module.exports = {
+var developments = {
     "error": {
         "404": 404,
         "500": 500
@@ -16,4 +16,5 @@ module.exports = {
         }
     }
 };
+module.exports = developments;
 //# sourceMappingURL=development.js.map

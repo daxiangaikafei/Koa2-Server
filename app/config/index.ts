@@ -1,17 +1,20 @@
 
 import * as help from "./../../help/index";
 
+let result:Config;
 
-
-let config = help.envChange({
+let config:Config = help.envChange({
     "development":function(){
-        return require("./env/development");
+        result = require("./env/development");
+        return result;
     },
     "production":function(){
-        return require("./env/production");
+        result = require("./env/development");
+        return result;
     },
     "release":function(){
-        return require("./env/release");
+         result = require("./env/development");
+        return result;
     }
 })
 

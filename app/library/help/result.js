@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("./../../config/index");
 var Result = (function () {
     function Result() {
         this.resultCode = 0;
@@ -16,12 +15,13 @@ var Result = (function () {
     Result.prototype.error = function (code, errorMsg) {
         this.resultCode = code;
         this.resultMessage = errorMsg;
-        console.log(index_1.error);
+        console.log(code, 'ddddd');
     };
     Result.prototype.getValue = function () {
         var resultCode = this.resultCode;
         var resultMessage = this.resultMessage;
         var result = this.result;
+        console.log(resultCode, resultMessage, result);
         return { resultCode: resultCode, resultMessage: resultMessage, result: result };
     };
     return Result;

@@ -1,4 +1,4 @@
-module.exports = {
+var production = {
     "server": {
         "url": "",
         "prot": "",
@@ -27,4 +27,5 @@ module.exports = {
         "Bucket_Name": ""
     }
 };
+module.exports = production;
 //# sourceMappingURL=production.js.map
