@@ -4,9 +4,9 @@
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
-        "**/.DS_Store": true,
         "node_modules/": true,
         "**/**/*.js.map": true,
-       "**/**/*.js": true
+       "**/**/*.js": true,
+        "**/.DS_Store": true
     }
 }

@@ -1,72 +1,117 @@
 import {size} from "lodash";
-import * as fetch from "isomorphic-fetch";
+//import {FormData} from 'whatwg-fetch'
+import "isomorphic-fetch";
+
+var FormData = require('isomorphic-form-data');
 
 class Fetch {
-    constructor(domain:string,timeout:number = 5000){
+    constructor(domain : string, timeout : number = 5000) {
         this.domain = domain;
         this.timeout = timeout;
     }
-    setDomain(domain:string){
+    setDomain(domain : string) {
         this.domain = domain;
     }
-    setTimeout(timeout){
+    setTimeout(timeout) {
         this.timeout = timeout;
     }
-    private domain:string;
-    private timeout:number;
-    getData(url:string,param={},type="GET",headers?:any,repType="json",timeout?:any){
-        if(type.toLocaleUpperCase()==="GET"&&size(param)>0){
-           url +="?"+toExcString(param)
+    //设置头部信息
+    setHeaders(headers = {
+        'client_version': "1.0",
+        'channel': 'node'
+    }) {
+        this.headers = Object.assign({
+            'charset': 'utf-8',
+            'client_version': "1.0",
+            'channel': 'node'
+        }, headers)
+    }
+    //设置版本号
+    setVersion(version : string) {
+        this.headers['client_version'] = version;
+    }
+    private headers : any = {
+        'charset': 'utf-8',
+        'client_version': "1.0",
+        'channel': 'node'
+    };
+    private domain : string;
+    private timeout : number;
+    getData(url : string, param = {}, type = "GET", headers?: any, repType = "json", timeout?: any) {
+        type = type.toLocaleUpperCase();
+        if (type === "GET" && size(param) > 0) {
+            url += "?" + toExcString(param)
         }
-        headers = headers?headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'charset': 'utf-8'
-        };
-
-        
-        //console.log("服务器请求 url",url);
-        return timeoutPromise(timeout||this.timeout,fetch(this.domain+url, {
-            method: type ? type : "GET",
+        headers = getHeadersByRepType(repType, Object.assign({},this.headers,headers));
+        console.log(headers);
+        let body = getDataByRepType(repType, param);
+        return timeoutPromise(timeout || this.timeout, fetch(this.domain + url, {
+            method: type,
             headers: headers,
             //credentials: 'same-origin',
-            body: type.toLocaleUpperCase()==="GET"?undefined:(repType=="json"?JSON.stringify(param):param)
-        })
-        .then((res) => {
+            body: (type === "GET"
+                ? undefined
+                : body)
+        }).then((res) => {
             return res.json()
-        }).catch((e)=>{
+        }).catch((e) => {
             console.log(e);
         }));
     }
 }
 
+const Headers = require("./headers");
 
-const timeoutPromise = function(ms, promise) {
-  return new Promise((resolve, reject) => {
-    const timeoutId = setTimeout(() => {
-      reject(new Error("promise timeout"))
-    }, ms);
-    promise.then(
-      (res) => {
-        clearTimeout(timeoutId);
-        resolve(res);
-      },
-      (err) => {
-        clearTimeout(timeoutId);
-        reject(err);
-      }
-    );
-  })
+const getHeadersByRepType = function (repType, headers) {
+    return Object.assign({},headers, Headers[repType]);
 }
 
-
-const toExcString = function(array,type={":":"=",",":"&"}){
-
-    let result ="";
-    for(var temp in array){
-        result+= temp+'='+ encodeURI(array[temp])+"&"
+//根据请求类型，获取请求数据
+const getDataByRepType = function (repType, param) {
+    let body;
+    switch (repType) {
+        case "json":
+            body = JSON.stringify(param);
+            break;
+        case "form-data":
+            body = new FormData();
+            for (let key in param) {
+                body.append(key, param[key]);
+            }
+            break;
+        default:
+            body = param;
+            break;
     }
-    return result.substring(-1,result.length-1);
+
+    return body;
+}
+
+const timeoutPromise = function (ms, promise) {
+    return new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(() => {
+            reject(new Error("promise timeout"))
+        }, ms);
+        promise.then((res) => {
+            clearTimeout(timeoutId);
+            resolve(res);
+        }, (err) => {
+            clearTimeout(timeoutId);
+            reject(err);
+        });
+    })
+}
+
+const toExcString = function (array, type = {
+    ":": "=",
+    ",": "&"
+}) {
+
+    let result = "";
+    for (var temp in array) {
+        result += temp + '=' + encodeURI(array[temp]) + "&"
+    }
+    return result.substring(-1, result.length - 1);
 }
 
 export default Fetch;

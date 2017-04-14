@@ -7,19 +7,11 @@ let release:Sysconfig = {
         "port":3000
     },
     "redis":{
-        "url":"",
-        "port":3000
-    },
-     "serverSessionConfig": {
-        "key": "koa:sess",
-        "maxAge": 86400000,
-        "overwrite": true,
-        "httpOnly": true,
-        "signed": true
-    },
-    "ignoreUrls": {
-        "spdapi/login": true,
-        "spdapi/loginOff": true
+        "port": 6379,         
+        "host": '192.168.132.40',   
+        "family": 4,           // 4 (IPv4) or 6 (IPv6)
+        //"password": 'auth',
+        //"db": 0
     },
     "qiniu": {
         "ACCESS_KEY": "",

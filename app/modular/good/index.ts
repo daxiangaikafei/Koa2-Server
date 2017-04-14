@@ -4,10 +4,6 @@ import Fetch from "./../../library/help/fetch";
 
 
 let LocalConfig:Config = require("./../../config/index");
- //import * as json from "./../../config/index";
-
-// const config = routes.qbii;
-//const routes:any=json
 const config = LocalConfig.routes.good;
 let router:Router = new Router();
 

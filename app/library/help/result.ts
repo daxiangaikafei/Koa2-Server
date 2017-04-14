@@ -17,13 +17,13 @@ class Result {
     error(code : number, errorMsg : string) {
         this.resultCode = code;
         this.resultMessage = errorMsg;
-        console.log(code,'ddddd');
+        //console.log(code,'ddddd');
     }
     getValue() {
         let resultCode = this.resultCode;
         let resultMessage = this.resultMessage;
         let result = this.result;
-        console.log( resultCode, resultMessage, result)
+        //console.log( resultCode, resultMessage, result)
         return {resultCode, resultMessage, result}
     }
 }

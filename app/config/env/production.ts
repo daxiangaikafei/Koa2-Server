@@ -13,8 +13,25 @@ let productionConfig:Config={
             "domain":"http://mqbii.qbao.com/",
             "prefix":"/api/good",
             "timeout":5000
-        }
-    }
+        },
+        "sys":{
+            "domain":"http://localhost:3001",
+            "prefix":"/api",
+            "timeout":5000
+        },
+
+    },
+    "ignoreUrls": {
+        "/api/account4Client/login": true
+    },
+    "redis":{
+        "tokenKey":"nodeServer-token"
+    },
+    "cookie": {
+        "maxAge": 30 * 24 * 60 * 60 * 1000, // cookie有效时长
+        "httpOnly": false,  // 是否只用于http请求中获取
+        "overwrite": false  // 是否允许重写
+    },
 }
 
 module.exports = productionConfig;

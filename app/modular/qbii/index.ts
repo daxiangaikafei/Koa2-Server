@@ -4,10 +4,6 @@ import Fetch from "./../../library/help/fetch";
 
 
 let LocalConfig:Config = require("./../../config/index");
- //import * as json from "./../../config/index";
-
-// const config = routes.qbii;
-//const routes:any=json
 const config = LocalConfig.routes.qbii;
 let router:Router = new Router();
 
@@ -19,7 +15,8 @@ fetch.setTimeout(config.timeout);
 
 let result:Result = new Result();
 
-router.get("/user/userId",function(ctx,next){
+router.get("/user/userId",function(ctx:any,next){
+	console.log("userId:",ctx.userId);
 	return fetch.getData("/api/news/getNewsList.html",{},"GET").then((data)=>{
 		result.success(data);
 		ctx.body=result.getValue();
@@ -29,4 +26,3 @@ router.get("/user/userId",function(ctx,next){
 
 
 module.exports = router
-//export default router;
