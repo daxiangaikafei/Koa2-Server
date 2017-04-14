@@ -4,6 +4,7 @@ interface Config  {
     ignoreUrls:any;
     redis:any;
     cookie:any;
+    SSO:boolean;
 }
 
 let developments:Config={
@@ -23,7 +24,7 @@ let developments:Config={
             "timeout":5000
         },
         "sys":{
-            "domain":"http://mqbii.qbao.com",
+            "domain":"http://127.0.0.1:3001",//http://mqbii.qbao.com  http://127.0.0.1:3001
             "prefix":"/api",
             "timeout":5000
         },
@@ -33,14 +34,17 @@ let developments:Config={
         "/api/account4Client/login": true
     },
     "redis":{
-        "tokenKey":"nodeServer-token"
+        "tokenKey":"nodeServer-token",
+        "expiration":60*60*24*15//60*60*24*30
     },
     "cookie": {
         "signed":true,
-        "maxAge": 30 * 24 * 60 * 60 * 1000, // cookie有效时长
-        "httpOnly": false,  // 是否只用于http请求中获取
-        "overwrite": false  // 是否允许重写
+        "maxAge": 60*60*24*30, // cookie有效时长
+        "secure":false,   //cookie是否只有https请求下才发送。
+        "httpOnly":true,//是否只有服务器可以取到cookie，默认为true。
+        //"overwrite": false  // 是否允许重写
     },
+    "SSO":false// 是否只允许一台机器登录
 }
 
 module.exports = developments;

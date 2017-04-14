@@ -21,6 +21,7 @@ let redis = new Redis(redisConfig.redis);
 
 
 // redis.set('foo', 'bar');
+// redis.expire('foo',10);
 // redis.get('foo', function (err, result) {
 //   console.log(result);
 // });

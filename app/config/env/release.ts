@@ -34,6 +34,7 @@ let releaseConfig:Config={
         "overwrite": false,  // 是否允许重写
         "signed":true
     },
+    SSO:false// 是否只允许一台机器登录
 }
 
 module.exports = releaseConfig;

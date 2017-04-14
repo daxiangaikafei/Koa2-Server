@@ -32,6 +32,7 @@ let productionConfig:Config={
         "httpOnly": false,  // 是否只用于http请求中获取
         "overwrite": false  // 是否允许重写
     },
+    SSO:false// 是否只允许一台机器登录
 }
 
 module.exports = productionConfig;

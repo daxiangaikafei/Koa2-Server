@@ -9,7 +9,7 @@ router.prefix(config.prefix);
 
 import {login} from "./login";
 
-router.get("/account4Client/login",login)
+router.all("/account4Client/login",login)
 
 
 

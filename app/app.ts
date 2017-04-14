@@ -29,14 +29,14 @@ app.use(body({
    //querystring: require('qs')
 }));//表单什么数据转换 
 
-app.use(new CSRF({
-  invalidSessionSecretMessage: 'Invalid session secret',
-  invalidSessionSecretStatusCode: 403,
-  invalidTokenMessage: 'Invalid CSRF token',
-  invalidTokenStatusCode: 403,
-  excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
-  disableQuery: false
-})); //csrf公鸡
+// app.use(new CSRF({
+//   invalidSessionSecretMessage: 'Invalid session secret',
+//   invalidSessionSecretStatusCode: 403,
+//   invalidTokenMessage: 'Invalid CSRF token',
+//   invalidTokenStatusCode: 403,
+//   excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
+//   disableQuery: false
+// })); //csrf公鸡
 
 
 //异常处理
@@ -54,6 +54,7 @@ app.context.onerror = function(err) {
 app.use(verifyUser.verify);
 /*处理  404   500  页面 */
 app.use((ctx,next)=>{
+    
     return next().then(()=>{
         if (404 != ctx.status&& 500 != ctx.status) return; 
         result.error(ctx.status,"");
