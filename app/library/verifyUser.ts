@@ -101,7 +101,7 @@ class VerifyUser {
             //console.log("token",token);
             
             return this.verifyToken(token).then((info:any)=>{
-                console.log("info"+":"+info);
+                //console.log("info"+":"+info);
                 ctx.userId  = info.userId;
                 return next();
             }).catch(()=>{

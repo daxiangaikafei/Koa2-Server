@@ -43,7 +43,7 @@ class Fetch {
             url += "?" + toExcString(param)
         }
         headers = getHeadersByRepType(repType, Object.assign({},this.headers,headers));
-        console.log(headers);
+       // console.log(headers);
         let body = getDataByRepType(repType, param);
         return timeoutPromise(timeout || this.timeout, fetch(this.domain + url, {
             method: type,

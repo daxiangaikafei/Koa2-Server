@@ -20,9 +20,8 @@ const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
 
-const result:Result = new Result();
-
 export const login = function(ctx,next){
+	let result:Result = new Result();
 	console.log("userId:",ctx.userId);
 	return fetch.getData("/api/news/getNewsList.html",{},"GET").then((data)=>{
 		result.success(data);

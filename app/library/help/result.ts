@@ -18,9 +18,10 @@ class Result {
         this.resultMessage = "success";
         this.result = result;
     }
-    error(code : number, errorMsg : string) {
+    error(code : number, errorMsg ?: string) {
         this.resultCode = code;
         this.resultMessage = Error[code]||errorMsg;
+        //this.result = {};
         //console.log(code,'ddddd');
     }
     getValue() {

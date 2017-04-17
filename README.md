@@ -36,3 +36,12 @@
 
 #2  路由配置文件
 app/config/env/developments.ts
+
+#2路由命名规则 遵循Restful规范  请求突破传统的get ,post,pul,delete
+/模块名/xxxx/操作
+操作{info:"详情","list":"列表"...}
+
+比如  
+/user/xxxxxx/info   查用户详情
+/user  查用户列表
+
