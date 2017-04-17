@@ -3,14 +3,14 @@ import      {each}     from "lodash";
 import      *          as   koa        from 'koa';
 import      *          as   logger     from 'koa-logger';
 import      *          as   Router     from "koa-router";
-import      *          as   body       from "koa-bodyparser";
+//import      *          as   body       from "koa-bodyparser";
 
 import      CSRF       from "koa-csrf";
 
 import      Result     from "./library/help/result";
 import      VerifyUser from "./library/verifyUser";
 
-//import * as body from 'koa-better-body'
+import * as body from 'koa-better-body'
 //import * as onError    from 'koa-onerror'
 
 const env     = process.env.NODE_ENV || 'development';
@@ -26,7 +26,7 @@ app.keys      = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
 
 app.use(logger());//日志
 app.use(body({
-   //querystring: require('qs')
+   querystring: require('qs')
 }));//表单什么数据转换 
 
 // app.use(new CSRF({
@@ -56,9 +56,16 @@ app.use(verifyUser.verify);
 app.use((ctx,next)=>{
     
     return next().then(()=>{
-        if (404 != ctx.status&& 500 != ctx.status) return; 
-        result.error(ctx.status,"");
-        ctx.body=result.getValue();
+        if(ctx.status!==200){
+            result.error(ctx.status,"");
+            ctx.body=result.getValue();
+        }else{
+             return;
+        }
+       
+        //if (404 != ctx.status&& 500 != ctx.status) return; 
+        // result.error(ctx.status,"");
+        // ctx.body=result.getValue();
     }).catch(error=>{
         console.error(error)
         result.error(1000,"超时");

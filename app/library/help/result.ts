@@ -1,4 +1,8 @@
-import * as json from "./../../config/index";
+
+
+const config:Config = require("./../../config/index");
+
+const Error = config.error;
 class Result {
     constructor() {
         this.resultCode = 0;
@@ -16,7 +20,7 @@ class Result {
     }
     error(code : number, errorMsg : string) {
         this.resultCode = code;
-        this.resultMessage = errorMsg;
+        this.resultMessage = Error[code]||errorMsg;
         //console.log(code,'ddddd');
     }
     getValue() {
@@ -24,7 +28,7 @@ class Result {
         let resultMessage = this.resultMessage;
         let result = this.result;
         //console.log( resultCode, resultMessage, result)
-        return {resultCode, resultMessage, result}
+        return {code:resultCode, message:resultMessage, result}
     }
 }
 

@@ -11,6 +11,8 @@ const IgnoreUrls = config.ignoreUrls;
 const format = "YYYY-MM-DD hh:mm:ss:SSS";
 const tokenHelp:Token = new Token();
 
+const env     = process.env.NODE_ENV || 'development';
+
 const SSO = config.SSO;
 class VerifyUser {
     constructor(){
@@ -89,13 +91,15 @@ class VerifyUser {
         let token  = this.getToken(ctx);
         let {url} = ctx;
 
-        console.log("url:"+ctx.request);
-
+        //console.log("url:"+ctx.request);
+        url = url.split("?")[0]
         if(IgnoreUrls[url]){
             return next();
         }
+
         if(token){
             //console.log("token",token);
+            
             return this.verifyToken(token).then((info:any)=>{
                 console.log("info"+":"+info);
                 ctx.userId  = info.userId;

@@ -9,8 +9,11 @@ interface Config  {
 
 let developments:Config={
     "error":{
-        "404":404,
-        "500":500
+        "200":"未登录",
+        "404":"未发现",
+        "500":"内部错误",
+        "1000":"超时",
+        "405":"不允许使用该方法"
     },
     "routes":{
         "qbii":{
@@ -24,7 +27,7 @@ let developments:Config={
             "timeout":5000
         },
         "sys":{
-            "domain":"http://127.0.0.1:3001",//http://mqbii.qbao.com  http://127.0.0.1:3001
+            "domain":"http://mqbii.qbao.com",//http://mqbii.qbao.com  http://127.0.0.1:3001
             "prefix":"/api",
             "timeout":5000
         },
