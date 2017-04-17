@@ -27,19 +27,17 @@ export const all  = function(ctx,next){
     urlFetch = compiled(Object.assign({},{userId},param,params));
 	console.log("urlFetch:"+urlFetch)
 	if(urlFetch){
-		// return fetch.getData(urlFetch,param,method).then((data:any)=>{
-		// 	console.log("url:"+url)
-		// 	if(data&&data.returnCode===0){
-		// 		result.success(data.data);
-		// 		ctx.body=result.getValue();
-		// 	}else{
-		// 		result.error(500);
-		// 		ctx.body=result.getValue();
-		// 	}
-			
-		// })
-		result.error(500);
+		return fetch.getData(urlFetch,param,method).then((data:any)=>{
+			console.log("url:"+url)
+			if(data&&data.returnCode===0){
+				result.success(data.data);
 				ctx.body=result.getValue();
+			}else{
+				result.error(500);
+				ctx.body=result.getValue();
+			}
+			
+		})
 	}else{
 		result.error(404);
 		ctx.body=result.getValue();
