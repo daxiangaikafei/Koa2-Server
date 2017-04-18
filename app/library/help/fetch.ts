@@ -16,10 +16,7 @@ class Fetch {
         this.timeout = timeout;
     }
     //设置头部信息
-    setHeaders(headers = {
-        'client_version': "1.0",
-        'channel': 'node'
-    }) {
+    setHeaders(headers = {'client_version': "1.0", 'channel': 'node'}) {
         this.headers = Object.assign({
             'charset': 'utf-8',
             'client_version': "1.0",
