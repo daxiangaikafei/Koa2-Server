@@ -1,16 +1,18 @@
-import      *          as   path       from 'path';
-import      {each}     from "lodash";
-import      *          as   koa        from 'koa';
-import      *          as   logger     from 'koa-logger';
-import      *          as   Router     from "koa-router";
+import        *          as   path       from 'path';
+import        *          as   winston    from "winston";
+import        {each}     from "lodash";
+import        *          as   koa        from 'koa';
+import        *          as   logger     from 'koa-logger';
+import        *          as   Router     from "koa-router";
+import        *          as   body       from 'koa-better-body'
 //import      *          as   body       from "koa-bodyparser";
 
-import      CSRF       from "koa-csrf";
+import        CSRF       from "koa-csrf";
 
-import      Result     from "./library/help/result";
-import      VerifyUser from "./library/verifyUser";
+import        Result     from "./library/help/result";
+import        VerifyUser from "./library/verifyUser";
 
-import * as body from 'koa-better-body'
+
 //import * as onError    from 'koa-onerror'
 
 const env     = process.env.NODE_ENV || 'development';
@@ -37,6 +39,18 @@ app.use(body({
 //   excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
 //   disableQuery: false
 // })); //csrf公鸡
+
+// winston.configure({
+//     transports: [
+//          new (winston.transports.Console)(),
+//       new (winston.transports.File)({ filename: 'somefile.log' })
+//     ]
+//   });
+ // winston.add(winston.transports.File, { filename: 'somefile.log' });
+ //winston.remove(winston.transports.Console);
+
+// winston.log('info', 'Hello distributed log files!');
+//  winston.log('info', 'Test Log Message', { anything: 'This is metadata' });
 
 
 //异常处理

@@ -34,6 +34,7 @@
     "@types/koa-router": "^7.0.22",
     "@types/lodash": "^4.14.61",
     "@types/node": "^7.0.12",
+    "@types/winston": "^2.3.0",
     "ioredis": "^2.5.0",
     "isomorphic-form-data": "^1.0.0",
     "koa-artTemplate": "^2.0.7",
@@ -47,6 +48,7 @@
     "module-alias": "^2.0.0",
     "moment": "^2.18.1",
     "redis": "^2.7.1",
-    "typescript": "^2.2.2"
+    "typescript": "^2.2.2",
+    "winston": "^2.3.1"
   }
 }

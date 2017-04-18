@@ -1,0 +1,2 @@
+{"level":"info","message":"Hello distributed log files!","timestamp":"2017-04-18T03:29:04.725Z"}
+{"anything":"This is metadata","level":"info","message":"Test Log Message","timestamp":"2017-04-18T03:29:04.726Z"}
