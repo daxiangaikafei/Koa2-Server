@@ -24,9 +24,11 @@ let developments:Config={
                     "/user/userId":{"url":"/api/user/${userId}/userId",version:"v1",versions:["v1","v2","v3"]},
                     "/user/level":{"url":"/api/user/${userId}/level",version:"v1",versions:["v1","v2","v3"]},
                     "/user/userInfo":{"url":"/api/user/${userId}/userInfo",version:"v1",versions:["v1","v2","v3"]},
-                    "/news/getNewsList.html":{"url":"/api/news/getNewsList.html",version:"v1",versions:["v1","v2","v3"]},
-                    "/project/list":{"url":"/api/project/list",version:"v1",versions:["v1","v2","v3"]},
-                    //"/project/:projectId":{"url":"/api/project/${projectId}",version:"v1",versions:["v1","v2","v3"]}
+                    "/news/getNewsList":{"url":"/api/news/getNewsList.html",version:"v1",versions:["v1","v2","v3"]},
+                    "/user/userOrderList":{"url":"/api/user/${userId}/userOrderList.html",version:"v1",versions:["v1","v2","v3"]},
+                    "/user/userProfitList":{"url":"/api/user/${userId}/userProfitList.html",version:"v1",versions:["v1","v2","v3"]},
+                    "/project/list":{"url":"/api/project/${userId}/list",version:"v1",versions:["v1","v2","v3"]}
+                    // "/project/:projectId":{"url":"/api/project/${projectId}",version:"v1",versions:["v1","v2","v3"]}
             }
         },
         "good":{
