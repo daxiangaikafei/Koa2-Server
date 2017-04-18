@@ -18,7 +18,7 @@ export const all  = function(ctx,next){
 	let {method,header} =  ctx.request;
 	let url = ctx._matchedRoute;
 	let {userId} = ctx;
-    let param= (method==="GET"?(ctx.request.query):(ctx.request.body))||{};
+    let param= (method==="GET"?(ctx.request.query):(ctx.request.body || ctx.request.fields))||{};
 	let params = ctx.params||{};
     url = url.replace(config.prefix,"");
    
@@ -28,7 +28,8 @@ export const all  = function(ctx,next){
 	console.log("urlFetch:"+urlFetch)
 	if(urlFetch){
 		return fetch.getData(urlFetch,param,method).then((data:any)=>{
-			console.log("url:"+url)
+			console.log("url:"+urlFetch)
+			console.log("param:"+param)
 			if(data&&data.returnCode===0){
 				result.success(data.data);
 				ctx.body=result.getValue();
