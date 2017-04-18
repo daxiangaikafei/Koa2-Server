@@ -29,7 +29,7 @@ export const all  = function(ctx,next){
 	if(urlFetch){
 		return fetch.getData(urlFetch,param,method).then((data:any)=>{
 			console.log("url:"+urlFetch)
-			console.log("param:"+param)
+			// console.log("param:"+param)
 			if(data&&data.returnCode===0){
 				result.success(data.data);
 				ctx.body=result.getValue();
