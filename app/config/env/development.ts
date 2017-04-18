@@ -27,7 +27,8 @@ let developments:Config={
                     "/news/getNewsList":{"url":"/api/news/getNewsList.html",version:"v1",versions:["v1","v2","v3"]},
                     "/user/userOrderList":{"url":"/api/user/${userId}/userOrderList.html",version:"v1",versions:["v1","v2","v3"]},
                     "/user/userProfitList":{"url":"/api/user/${userId}/userProfitList.html",version:"v1",versions:["v1","v2","v3"]},
-                    "/project/list":{"url":"/api/project/${userId}/list",version:"v1",versions:["v1","v2","v3"]}
+                    "/project/list":{"url":"/api/project/${userId}/list",version:"v1",versions:["v1","v2","v3"]},
+                    "/page/:projectId":{"url":"/api/page/${userId}/${projectId}",version:"v1",versions:["v1","v2","v3"]}
                     // "/project/:projectId":{"url":"/api/project/${projectId}",version:"v1",versions:["v1","v2","v3"]}
             }
         },

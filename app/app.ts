@@ -27,9 +27,11 @@ let app       : koa        = new koa();
 app.keys      = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
 
 app.use(logger());//日志
-app.use(body({
+
+const convert = require('koa-convert');
+app.use(convert(body({
    querystring: require('qs')
-}));//表单什么数据转换 
+})));//表单什么数据转换 
 
 // app.use(new CSRF({
 //   invalidSessionSecretMessage: 'Invalid session secret',

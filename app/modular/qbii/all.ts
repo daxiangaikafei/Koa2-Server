@@ -25,16 +25,20 @@ export const all  = function(ctx,next){
 	let urlFetch = config.routes[url]["url"];
     var compiled = template(urlFetch);
     urlFetch = compiled(Object.assign({},{userId},param,params));
-	console.log("urlFetch:"+urlFetch)
+	// console.log("urlFetch:"+urlFetch)
+	console.log("url:"+urlFetch)
+	console.dir(param)
 	if(urlFetch){
 		return fetch.getData(urlFetch,param,method).then((data:any)=>{
-			console.log("url:"+urlFetch)
-			console.log("param:"+param)
+		
 			if(data&&data.returnCode===0){
 				result.success(data.data);
 				ctx.body=result.getValue();
-			}else{
+			}else if(!data){
 				result.error(500);
+				ctx.body=result.getValue();
+			}else{
+				result.error(data.returnCode,data.message);
 				ctx.body=result.getValue();
 			}
 			
