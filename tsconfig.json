@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
     "target": "es5",
-    //"module": "amd",
-    "sourceMap": true,
     "allowJs":true,
-    "watch":true,
+    "sourceMap": false,
     "noEmitOnError":false,
    // "baseUrl": ".", // This must be specified if "paths" is.
-    //"outDir":"build",
-    "watch":true,            //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
+    "outDir":"./build",
+    //"watch":true,            //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
     // "paths": {
     //   "sysHelp": [
     //     "help/*"
@@ -19,7 +17,7 @@
   },
   "exclude": [
     "node_modules",
-    "typings"
+    "build"
   ]
 }
  // "outDir":"build",

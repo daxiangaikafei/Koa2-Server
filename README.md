@@ -1,3 +1,6 @@
+#1 全局npm 配置
+npm i typescript gulp -g
+
 #1
 /api/qbii/v1/xxx
 

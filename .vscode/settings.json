@@ -5,8 +5,8 @@
         "**/.svn": true,
         "**/.hg": true,
         "node_modules/": true,
-        "**/**/*.js.map": true,
-       "**/**/*.js": true,
+    //     "**/**/*.js.map": true,
+    //    "**/**/*.js": true,
         "**/.DS_Store": true
     }
 }
