@@ -1,21 +1,19 @@
+interface Config  {
+    error:any;
+    routes:any;
+    ignoreUrls:any;
+    redis:any;
+    cookie:any;
+    SSO:boolean;
+}
 
-import * as help from "./../../help/index";
 
-let result:Config;
+import * as path from "path";
+const fs = require('fs');
+const env     = process.env.NODE_ENV || 'development';
 
-let config:Config = help.envChange({
-    "development":function(){
-        result = require("./env/development");
-        return result;
-    },
-    "production":function(){
-        result = require("./env/development");
-        return result;
-    },
-    "release":function(){
-         result = require("./env/development");
-        return result;
-    }
-})
+
+
+let config:Config =JSON.parse(fs.readFileSync(path.resolve(__dirname,'./localConfig.'+env+'.json')).toString());
 
 module.exports = config;

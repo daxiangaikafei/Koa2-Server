@@ -41,6 +41,8 @@ export const all  = function(ctx,next){
 				ctx.body=result.getValue();
 			}
 			
+		}).catch((error)=>{
+			console.log(error)
 		})
 	}else{
 		result.error(404);

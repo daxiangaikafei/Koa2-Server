@@ -1,5 +1,5 @@
 #1 全局npm 配置
-npm i typescript gulp -g
+npm i typescript gulp pm2 webpack -g
 
 #1
 /api/qbii/v1/xxx
