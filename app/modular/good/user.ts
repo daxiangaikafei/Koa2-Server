@@ -1,3 +1,11 @@
+interface Config  {
+    error:any;
+    routes:any;
+    ignoreUrls:any;
+    redis:any;
+    cookie:any;
+    SSO:boolean;
+}
 
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";

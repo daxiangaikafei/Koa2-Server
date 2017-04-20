@@ -12,6 +12,12 @@ import        CSRF          from       "koa-csrf";
 import        Result        from       "./library/help/result";
 import        VerifyUser    from       "./library/verifyUser";
 
+interface Sysconfig {
+    server:any,
+    localServer:any;
+    redis:any;
+    qiniu:any;
+}
 
 //import * as onError    from 'koa-onerror'npm
 

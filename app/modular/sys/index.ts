@@ -1,3 +1,12 @@
+interface Config  {
+    error:any;
+    routes:any;
+    ignoreUrls:any;
+    redis:any;
+    cookie:any;
+    SSO:boolean;
+}
+
 import * as Router from "koa-router";
 import Fetch from "./../../library/help/fetch";
 

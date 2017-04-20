@@ -2,16 +2,16 @@
   "compilerOptions": {
     "target": "ES6",
     "allowJs":true,
-    "sourceMap": true,
-    "noEmitOnError":false,
-    "alwaysStrict":false,
+    // "sourceMap": true,
+    // "noEmitOnError":false,
+    // "alwaysStrict":false,
     "charset":"utf-8",
    // "declaration":true,
    // "noImplicitAny": false,
   //  "moduleResolution":"node",
     "module": "commonjs",
     // "outDir":"./build",
-    // "watch":true,            //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
+    "watch":true,            //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
     // "baseUrl":"./",
     // "paths": {
     //   //  "koa": ["node_modules/koa/lib/application.js"]

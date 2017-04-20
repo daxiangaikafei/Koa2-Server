@@ -57,7 +57,6 @@
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 }
-                // "/project/:projectId":{"url":"/api/project/${projectId}",version:"v1",versions:["v1","v2","v3"]}
             }
         },
         "good": {
@@ -66,7 +65,7 @@
             "timeout": 5000
         },
         "sys": {
-            "domain": "http://192.168.131.145:10550", //http://mqbii.qbao.com  http://127.0.0.1:3001
+            "domain": "http://192.168.131.145:10550", 
             "prefix": "/api",
             "timeout": 5000
         }
@@ -76,14 +75,13 @@
     },
     "redis": {
         "tokenKey": "nodeServer-token",
-        "expiration": 2592000 //redis token保存时间
+        "expiration": 2592000 
     },
     "cookie": {
         "signed": true,
-        "maxAge": 2592000, // cookie有效时长
-        "secure": false, //cookie是否只有https请求下才发送。
-        "httpOnly": true //是否只有服务器可以取到cookie，默认为true。
-        //"overwrite": false  // 是否允许重写
+        "maxAge": 2592000, 
+        "secure": false, 
+        "httpOnly": true
     },
-    "SSO": false // 是否只允许一台机器登录
+    "SSO": false 
 }

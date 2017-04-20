@@ -1,3 +1,10 @@
+
+interface Sysconfig {
+    server:any,
+    localServer:any;
+    redis:any;
+    qiniu:any;
+}
 import * as Redis from "ioredis";
 
 let redisConfig:Sysconfig = require("./../../../config/index");
