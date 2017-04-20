@@ -1,5 +1,5 @@
 
 import * as Util from "./util";
 
-export let envChange:any = Util.envChange;
+export const envChange:any = Util.envChange;
 

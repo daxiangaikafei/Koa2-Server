@@ -1,28 +1,23 @@
+interface Sysconfig {
+    server:any,
+    localServer:any;
+    redis:any;
+    qiniu:any;
+}
 
-import {envChange} from "./../help/index";
+import * as path from "path";
+const fs = require('fs');
+const env     = process.env.NODE_ENV || 'development';
+// console.log(__dirname);
+// console.log(path.resolve(__dirname));
+// console.log(__filename);
+// console.log(process.cwd());
+// console.log(path.resolve('./'));
+// console.log(path.resolve(__dirname, './config.json'));
+// console.log(path.dirname(__filename) + '/config.json')
 
-// import development from "./env/development";
-// import production from "./env/production";
-// import release from "./env/release";
+const  sysConfig:Sysconfig = JSON.parse(fs.readFileSync(path.resolve(__dirname,'./sysConfig.'+env+'.json')).toString());
 
-let sysConfig:Sysconfig;
-//a.localServer = 100;
+module.exports = sysConfig;
 
-let config:Sysconfig = envChange({
-    "development":function(){
-        sysConfig = require("./env/development");
-        return sysConfig;
-    },
-    "production":function(){
-        sysConfig = require("./env/development");
-        return sysConfig;
-    },
-    "release":function(){
-        sysConfig = require("./env/development");
-        return sysConfig;
-    }
-})
-
-//console.log("系统配置信息为:",config);
-
-module.exports = config;
+// export default sysConfig;

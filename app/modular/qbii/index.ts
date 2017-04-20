@@ -10,7 +10,7 @@ router.prefix(config.prefix);
 import {login} from "./user";
 import {all} from "./all";
 
-router.get("/user/userId",login);
+//router.get("/user/userId",login);
 
 const routes = config.routes;
 for(var key in routes){

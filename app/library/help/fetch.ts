@@ -50,6 +50,7 @@ class Fetch {
                 ? undefined
                 : body)
         }).then((res) => {
+            console.log("fetxhUrl:"+url)
             return res.json()
         }).catch((e) => {
             console.log(e);

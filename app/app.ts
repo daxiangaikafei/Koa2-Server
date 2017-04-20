@@ -4,8 +4,8 @@ import        {each}     from "lodash";
 import        *          as   koa        from 'koa';
 import        *          as   logger     from 'koa-logger';
 import        *          as   Router     from "koa-router";
-import        *          as   body       from 'koa-better-body'
-//import      *          as   body       from "koa-bodyparser";
+// import        *          as   body       from 'koa-better-body'
+import      *          as   body       from "koa-bodyparser";
 
 import        CSRF       from "koa-csrf";
 
@@ -13,11 +13,14 @@ import        Result     from "./library/help/result";
 import        VerifyUser from "./library/verifyUser";
 
 
-//import * as onError    from 'koa-onerror'
+//import * as onError    from 'koa-onerror'npm
 
 const env     = process.env.NODE_ENV || 'development';
 
-let config    : Sysconfig  = require("./../config/index");
+let config:Sysconfig  = require("./../config/index");
+
+// let config:Sysconfig = SysConfig.default;
+
 let routers   : Router[]   = require("./routes/index");
 let result    : Result     = new Result();
 
@@ -30,7 +33,7 @@ app.use(logger());//日志
 
 const convert = require('koa-convert');
 app.use(convert(body({
-   querystring: require('qs')
+  // querystring: require('qs')
 })));//表单什么数据转换 
 
 // app.use(new CSRF({
