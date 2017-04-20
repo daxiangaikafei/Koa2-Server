@@ -8,21 +8,10 @@ interface Config  {
 }
 
 
-<<<<<<< HEAD
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-}
-let result:Config;
-=======
 import * as path from "path";
 const fs = require('fs');
 const env     = process.env.NODE_ENV || 'development';
->>>>>>> fabu
+
 
 
 
