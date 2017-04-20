@@ -24,12 +24,12 @@
     "build",
     "dist",
     "*.js"
-  ],
-  "include": [
-    "app",
-    "config",
-    "help"
   ]
+  // "include": [
+  //   "app",
+  //   "config",
+  //   "help"
+  // ]
   // "files": [
   //   "./config/index.t.ts"
   // ]

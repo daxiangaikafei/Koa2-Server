@@ -16,7 +16,7 @@ const env     = process.env.NODE_ENV || 'development';
 // console.log(path.resolve(__dirname, './config.json'));
 // console.log(path.dirname(__filename) + '/config.json')
 
-const  sysConfig:Sysconfig = JSON.parse(fs.readFileSync(path.resolve(__dirname,'./sysConfig.'+env+'.json')).toString());
+const sysConfig:Sysconfig = JSON.parse(fs.readFileSync(path.resolve(__dirname,'./sysConfig.'+env+'.json')).toString());
 
 module.exports = sysConfig;
 
