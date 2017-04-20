@@ -1,9 +1,4 @@
-interface Sysconfig {
-    server:any,
-    localServer:any;
-    redis:any;
-    qiniu:any;
-}
+
 
 import * as path from "path";
 const fs = require('fs');

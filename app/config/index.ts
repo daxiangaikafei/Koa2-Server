@@ -1,3 +1,7 @@
+import * as path from "path";
+const fs = require('fs');
+const env     = process.env.NODE_ENV || 'development';
+
 interface Config  {
     error:any;
     routes:any;
@@ -6,12 +10,6 @@ interface Config  {
     cookie:any;
     SSO:boolean;
 }
-
-
-import * as path from "path";
-const fs = require('fs');
-const env     = process.env.NODE_ENV || 'development';
-
 
 
 

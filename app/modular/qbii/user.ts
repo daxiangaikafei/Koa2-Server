@@ -3,6 +3,7 @@ import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import {template} from "lodash";
 
+
 const LocalConfig:Config = require("./../../config/index");
 const config = LocalConfig.routes.qbii;
 
