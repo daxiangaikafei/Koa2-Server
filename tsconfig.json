@@ -9,10 +9,10 @@
    // "declaration":true,
    // "noImplicitAny": false,
   //  "moduleResolution":"node",
-    // "module": "commonjs",
+    "module": "commonjs",
     // "outDir":"./build",
-    "watch":true,            //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
-    "baseUrl":"./",
+    // "watch":true,            //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
+    // "baseUrl":"./",
     // "paths": {
     //   //  "koa": ["node_modules/koa/lib/application.js"]
     //    "SysConfig/*":["app/config/*"]

@@ -1,9 +1,3 @@
-// interface Sysconfig {
-//     server:any;
-//     localServer:any;
-//     redis:any;
-//     qiniu:any;
-// }
 interface Sysconfig {
     server:any,
     localServer:any;
