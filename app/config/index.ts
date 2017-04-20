@@ -1,6 +1,14 @@
 
 import * as help from "./../../help/index";
 
+interface Config  {
+    error:any;
+    routes:any;
+    ignoreUrls:any;
+    redis:any;
+    cookie:any;
+    SSO:boolean;
+}
 let result:Config;
 
 let config:Config = help.envChange({
