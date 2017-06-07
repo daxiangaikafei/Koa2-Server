@@ -5,7 +5,7 @@ const   gulp = require('gulp'),
 
 gulp.task("webpack", function(callback) {
 
-  var webpackConfig = require("./webpack.server.js");
+  var webpackConfig = require("./webpack.config.js");
 
     // modify some webpack config options
     webpack(Object.create(webpackConfig), function(err, stats) {
@@ -23,12 +23,13 @@ gulp.task("config",function(){
     gulp.src([
         "./app/config/localConfig.production.json",
         "./config/sysConfig.production.json",
+        "./process.json"
     ]).pipe(gulp.dest("./dist"));
 })
 
 gulp.task("mv",function(){
-    gulp.src("./dist")
-    .pipe(gulp.dest("./../relase/Koa2-server/"));
+    gulp.src("./dist/*")
+    .pipe(gulp.dest("./../release/KoaServer/"));
 })
 
 gulp.task("build",function(){

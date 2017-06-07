@@ -26,10 +26,12 @@ class Result {
         this.resultCode = 0;
         this.resultMessage = "success";
         this.result = result;
+        return this.getValue();
     }
     error(code : number, errorMsg ?: string) {
         this.resultCode = code;
         this.resultMessage = Error[code]||errorMsg;
+        return this.getValue();
         //this.result = {};
         //console.log(code,'ddddd');
     }

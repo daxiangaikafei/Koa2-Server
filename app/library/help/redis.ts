@@ -10,8 +10,14 @@ import * as Redis from "ioredis";
 let redisConfig:Sysconfig = require("./../../../config/index");
 let redis = new Redis(redisConfig.redis);
 
+//let redis = new Redis.Cluster(redisConfig.redis.sentinels,redisConfig.redis.options);
 
 
+// class Redis {
+//     constructor(){
+
+//     }
+// }
 
 // redis.mset({ k1: 'v1', k2: 'v2' });
 // redis.get('k1', function (err, result) {
@@ -19,11 +25,11 @@ let redis = new Redis(redisConfig.redis);
 //   console.log("1:"+result);
 // });
 
-// redis.mset(new Map([['k3', 'v3'], ['k4', 'v4']]));
-// redis.get('k3', function (err, result) {
-//   // result === 'v3';
-//   console.log("2:"+result);
-// });
+// // redis.mset(new Map([['k3', 'v3'], ['k4', 'v4']]));
+// // redis.get('k3', function (err, result) {
+// //   // result === 'v3';
+// //   console.log("2:"+result);
+// // });
 
 
 // redis.set('foo', 'bar');

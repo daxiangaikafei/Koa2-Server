@@ -17,7 +17,12 @@ router.prefix(config.prefix);
 
 import {login} from "./login";
 
-router.all("/account4Client/login",login)
+router.all("/account4Client/login",login);
+
+
+import {isFinishNews} from "./qbiiExc";
+//特意为qbii客户端修改的
+router.post("/news/isFinishNews.html",isFinishNews)
 
 
 

@@ -28,10 +28,10 @@ const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
 
-const result:Result = new Result();
+
 
 export const login = function(ctx,next){
-
+	let result:Result = new Result();
 	let token = verifyUser.getToken(ctx);
 	return verifyUser.verifyToken(token).then((info)=>{
 		if(SSO===true){
@@ -52,7 +52,19 @@ export const login = function(ctx,next){
 
 const smallLogin = function(ctx,next){
 	 let searchParam  = ctx.request.body;
-	 console.log("?",searchParam)
+	 console.log("?",searchParam);
+	 let result:Result = new Result();
+	 if(!searchParam.st){
+		 result.error(404);
+		 ctx.body=result.getValue();
+		 /**
+		  *   "data": null,
+  "errorCode": 0,
+  "errorMsg": "网络错误",
+  "responseCode": 1005
+		  */
+		 return;
+	 }
 	 
 
 	return fetch.getData("/api/account4Client/login",searchParam,"POST",{},"form-data").then((data:any)=>{
