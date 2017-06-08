@@ -11,6 +11,9 @@
             "domain": "http://192.168.131.145:10550",
             "prefix": "/api/qbii",
             "timeout": 5000,
+            "tokenKey": "nodeServer-token",
+            "expiration": 2592000,
+            "SSO": false,  
             "routes": {
                 "/user/userId": {
                     "url": "/api/user/${userId}/userId",
@@ -67,12 +70,31 @@
         "good": {
             "domain": "http://192.168.7.104",
             "prefix": "/api/good",
-            "timeout": 5000
+            "timeout": 5000,
+            "tokenKey": "nodeServer-token",
+            "expiration": 2592000,
+            "SSO": false
         },
         "sys": {
             "domain": "http://192.168.131.145:10550", 
             "prefix": "/api",
-            "timeout": 5000
+            "timeout": 5000,
+            "tokenKey": "nodeServer-token",
+            "expiration": 2592000,
+            "SSO": false 
+        },
+        "weixin": {
+            "domain": " https://api.weixin.qq.com/",
+            "prefix": "/api/weixin",
+            "timeout": 5000, 
+            "routes": {
+                "/user/token": {
+                    "url": "/sns/oauth2/access_token",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                }
+            }
         }
     },
     "ignoreUrls": {
@@ -84,6 +106,12 @@
     "redis": {
         "tokenKey": "nodeServer-token",
         "expiration": 2592000 
+    },
+    "weixins":{
+        "item":{
+            "appid":"wxf83b631bccb522df",
+            "secret":"93b1205187c6a1b7d9f7df07d8a32e30"
+        }
     },
     "cookie": {
         "signed": true,
