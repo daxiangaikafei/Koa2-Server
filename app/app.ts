@@ -51,7 +51,7 @@ app.use(convert(body({
 })));//表单什么数据转换 
 
 //request日志处理
-app.use(RequestLogger());
+//app.use(RequestLogger());
 
 // app.use(new CSRF({
 //   invalidSessionSecretMessage: 'Invalid session secret',
