@@ -83,15 +83,47 @@
                     "url": "/config/wqTokenConfig",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
+                },
+                "/goodsCoupon/couponList": {
+                    "url": "/goodsCoupon/${userId}/couponList",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goodsCoupon/couponDetail/:goodsId": {
+                    "url": "/goodsCoupon/${userId}/${goodsId}/couponDetail",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goodsCoupon/catogry/all": {
+                    "url": "/goodsCoupon/catogry/all",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/getUserPoints": {
+                    "url": "/user/getUserPoints/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/order/list": {
+                    "url": "/user/order/list/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/order/submitOrderNo": {
+                    "url": "/user/order/submitOrderNo/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
                 }
             }
         }
     },
     "ignoreUrls": {
         "/api/account4Client/login": true,
+
         "/api/qbii/news/getNewsList":true,
         "/api/qbii/news/getNewsDetail":true,
         "/api/qbii/v1/user/getUserLevel":true,
+
         "/api/item/config/wqTokenConfig": true
     },
     "redis": {
