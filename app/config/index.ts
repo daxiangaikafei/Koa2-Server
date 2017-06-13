@@ -16,3 +16,4 @@ interface Config  {
 let config:Config =JSON.parse(fs.readFileSync(path.resolve(__dirname,'./localConfig.'+env+'.json')).toString());
 
 module.exports = config;
+// export default config;

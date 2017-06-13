@@ -22,7 +22,7 @@ class Result {
     private resultCode : number;
     private resultMessage : string;
     private result : any;
-    success(result : any) {
+    success(result ?: any) {
         this.resultCode = 0;
         this.resultMessage = "success";
         this.result = result;

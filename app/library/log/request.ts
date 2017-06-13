@@ -35,6 +35,7 @@ const logger = function () {
         }
       })
       ctx.throw(error.Message, 500);
+      console.error(error);
 
     } finally {
       log[getLogLevel(ctx.status)]("request", "....", {
@@ -64,7 +65,7 @@ const logger = function () {
 }
 
 const getLogLevel = (statusCode = 200, defaultLevel = 'info') => {
-  switch (parseInt(statusCode / 100, 10)) {
+  switch (parseInt((statusCode / 100).toString(), 10)) {
     case 5:
       return 'error';
     case 4:

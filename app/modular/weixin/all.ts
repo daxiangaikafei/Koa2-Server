@@ -28,9 +28,9 @@ fetch.setTimeout(config.timeout);
 
 export  const all  = async function(url,param){
 	// let result:Result = new Result();
-    
-    let urlConfig  = config.routes[url];
     url = url.replace(config.prefix,"");
+    let urlConfig  = config.routes[url];
+    
 	let urlFetch = urlConfig["url"];
 
     let result  = await fetch.getData(urlFetch,param,urlConfig.method).catch((err)=>{

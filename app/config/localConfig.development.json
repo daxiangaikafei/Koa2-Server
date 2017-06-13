@@ -84,13 +84,53 @@
             "SSO": false 
         },
         "weixin": {
-            "domain": " https://api.weixin.qq.com/",
+            "domain": " https://api.weixin.qq.com",
             "prefix": "/api/weixin",
             "timeout": 5000, 
             "routes": {
                 "/user/token": {
                     "url": "/sns/oauth2/access_token",
                     "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                 "/user/tokenRefresh": {
+                    "url": "/sns/oauth2/refresh_token",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/info": {
+                    "url": "/sns/userinfo",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                 "/config/token": {
+                    "url": "/cgi-bin/token",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/config/jsTicket":{
+                    "url":"/cgi-bin/ticket/getticket",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                }
+            },
+            "ips":[
+                "172.0.0.1",
+                "192.168.1.1"
+            ]
+        },
+        "item": {
+            "domain": "http://192.168.132.44:8081/goods",
+            "prefix": "/api/item",
+            "timeout": 5000,
+            "routes": {
+                "/config/wqTokenConfig": {
+                    "url": "/config/wqTokenConfig",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 }
@@ -101,7 +141,10 @@
         "/api/account4Client/login": true,
         "/api/qbii/news/getNewsList":true,
         "/api/qbii/news/getNewsDetail":true,
-        "/api/qbii/v1/user/getUserLevel":true
+        "/api/qbii/v1/user/getUserLevel":true,
+        "/api/item/config/wqTokenConfig": true,
+        "/api/item/user/login":true,
+        "/api/weixin/setinfo/item":true
     },
     "redis": {
         "tokenKey": "nodeServer-token",
@@ -110,7 +153,26 @@
     "weixins":{
         "item":{
             "appid":"wxf83b631bccb522df",
-            "secret":"93b1205187c6a1b7d9f7df07d8a32e30"
+            "secret":"93b1205187c6a1b7d9f7df07d8a32e30",
+             "timing":{
+                "getConfig":{
+                    "time":"*/20 * * * * *",
+                    "warnTime":"*/5 * * * * *"
+                }
+            }
+        
+        }
+    },
+    "auxiliary":{
+        "timing":{
+            "weixin":{
+                "getToken":{
+                    "time":"*/5 * * * * *"
+                },
+                "tickerJsGet":{
+                    "time":"*/5 * * * * *"
+                }
+            }
         }
     },
     "cookie": {
