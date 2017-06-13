@@ -6,3 +6,4 @@ const env     = process.env.NODE_ENV || 'development';
 let config:Config =JSON.parse(fs.readFileSync(path.resolve(__dirname,'./localConfig.'+env+'.json')).toString());
 
 module.exports = config;
+// export default config;

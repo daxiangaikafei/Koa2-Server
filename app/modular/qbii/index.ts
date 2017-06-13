@@ -7,14 +7,15 @@ const config = LocalConfig.routes.qbii;
 const router:Router = new Router();
 router.prefix(config.prefix);
 
-import {login,isFinishNews,getUserLevel} from "./user";
+import {login,isFinishNews} from "./user";
 import {all} from "./all";
 
 //router.get("/user/userId",login);
 router.post("/news/isFinishNews",isFinishNews);
 
+
 // console.log("xxxx",getUserLevel);
-router.post("/v1/user/getUserLevel",getUserLevel);
+// router.post("/v1/user/getUserLevel",getUserLevel);
 
 const routes = config.routes;
 for(var key in routes){
