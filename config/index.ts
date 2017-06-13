@@ -1,11 +1,4 @@
-
-interface Sysconfig {
-    server:any,
-    localServer:any;
-    redis:any;
-    qiniu:any;
-}
-
+import Sysconfig from '../app/interface/sysConfig'
 import * as path from "path";
 const fs = require('fs');
 const env     = process.env.NODE_ENV || 'development';

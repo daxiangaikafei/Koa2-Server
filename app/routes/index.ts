@@ -10,5 +10,5 @@ let routes:Router[]= [
 	routers_sys,
 	routers_item
 ];
-//module.exports = router
-module.exports = routes;
+
+module.exports = routes

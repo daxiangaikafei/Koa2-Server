@@ -16,14 +16,9 @@ import       RequestLogger     from        "./library/log/request";
 // import  errorLogger from  "./library/log/error";
 import logger from "./library/log/logger"
 
-
+import Sysconfig from './interface/sysConfig'
 //import aa from "./library/help/mysql";
-interface Sysconfig {
-    server:any,
-    localServer:any;
-    redis:any;
-    qiniu:any;
-}
+
 //aa;
 //import * as onError    from 'koa-onerror'npm
 console.log(RequestLogger)
@@ -106,5 +101,7 @@ each(routers,function(router,index){
 
 app.listen(config.localServer.port);
 
+import RedisRouterConfig from './config/redisRouterConfig'
+RedisRouterConfig.initConfig()
 
 
