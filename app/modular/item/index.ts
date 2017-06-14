@@ -7,16 +7,17 @@ const config = LocalConfig.routes.item;
 const router:Router = new Router();
 router.prefix(config.prefix);
 
-import {login, checkLogin} from "./user";
+import * as User from "./user";
 import {all} from "./all";
 
-router.get("/user/checkLogin", checkLogin);
-router.get("/user/login", login);
+router.get("/user/checkLogin", User.checkLogin);
+// router.get("/user/login", login);
 
 const routes = config.routes;
 for(var key in routes){
     router.all(key, all);
 }
 
-router.post("/user/login",login);
+router.post("/user/login",User.login);
+router.post("/user/info",User.getUserInfo);
 module.exports = router;

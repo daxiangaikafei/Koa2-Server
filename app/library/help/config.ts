@@ -16,14 +16,6 @@ let redis = new RedisData("configInfo");
     // private redis;
     async getData(){
         let data:Configt = await redis.getDataAsync();
-        console.log("aha ningzi")
-        console.dir(data)
-        if(!data){
-            // let result = {"weixins":{[key]:{}}};
-            let result = {"weixins":{}};
-            return result;
-        }
-        // return {"weixins":{}};
         return data;
     }
     //Promise<weixinInfot>
@@ -31,19 +23,13 @@ let redis = new RedisData("configInfo");
         let data= await this.getData();
         return data.weixins["key"]||{};
     }
-    // private initWeixinInfo(result){
-    //     if(result){
-    //         return result;
-    //     }
-        
-    // }
-    // {"a.b":"xxx"}  {a:{b:"xx"}}
     async saveWeiXinInfo(key,info){
-        let result = await this.getData();
-        let temp = result.weixins||{[key]:{}};
+        let result = (await this.getData())||{weixins:{}};
+        let temp = (result.weixins&&result.weixins[key]&&result.weixins)||{[key]:{}};
         for(let keys in info){
             temp[key][keys] = info[keys];
         }
+        
         let weixins = Object.assign({},result.weixins,temp);
         result.weixins = weixins;
         return redis.saveData(result);

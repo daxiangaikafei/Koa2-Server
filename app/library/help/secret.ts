@@ -9,8 +9,8 @@ export default class Secret {
     encrypt(password :String,hasTime=false){
         let content =  password+(hasTime===true?moment().format("YYYY-MM-DD hh:mm:ss:SSS"):"");
         let hash = crypto
-            .createHmac('md5',content)
-            .update(key)
+            .createHmac('md5',key)
+            .update(content)
             .digest('hex');
         return hash;
     }
@@ -18,9 +18,10 @@ export default class Secret {
         console.log("加密内容:"+content);
         console.log("加密key:"+key);
         let hash = crypto
-            .createHmac('md5',content)
-            .update(key)
+            .createHmac('md5',key)
+            .update(content,"utf8")
             .digest('hex');
+            // console.dir(hash)
         console.log("加密成啥样:"+hash)
         return hash;
     }

@@ -1,4 +1,4 @@
-import  weixin from "./weixin";
+// import  weixin from "./weixin";
 
 
 export default class Timing{
@@ -6,7 +6,7 @@ export default class Timing{
 
     }
     weixinStart(){
-        weixin("item");
+        // weixin("item");
     }
 }
 
