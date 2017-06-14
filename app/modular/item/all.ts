@@ -27,7 +27,6 @@ export const all  = function(ctx,next){
     urlFetch = compiled(Object.assign({},{userId},param,params));
 	// console.log("urlFetch:"+urlFetch)
 	console.log("url:"+urlFetch)
-	console.dir(param)
 	if(urlFetch){
 		return fetch.getData(urlFetch,param,method).then((data:any)=>{
 			if(data&&data.responseCode===1000){

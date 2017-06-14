@@ -131,12 +131,12 @@
             ]
         },
         "item": {
-            "domain": "http://192.168.132.44:8081/goods",
+            "domain": "http://10.172.20.49:8080",
             "prefix": "/api/item",
             "timeout": 5000,
             "routes": {
-                "/config/wqTokenConfig": {
-                    "url": "/config/wqTokenConfig",
+                "/config/wxConfig": {
+                    "url": "/config/wxConfig",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },

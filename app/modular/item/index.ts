@@ -11,7 +11,6 @@ import {login, checkLogin} from "./user";
 import {all} from "./all";
 
 router.get("/user/checkLogin", checkLogin);
-router.get("/user/login", login);
 
 const routes = config.routes;
 for(var key in routes){
