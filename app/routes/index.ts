@@ -12,5 +12,5 @@ let routes:Router[]= [
 	routers_item,
 	routers_weixin
 ];
-//module.exports = router
-module.exports = routes;
+
+module.exports = routes

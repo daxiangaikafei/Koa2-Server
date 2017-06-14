@@ -1,15 +1,6 @@
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-}
-
 import * as Router from "koa-router";
 import Fetch from "./../../library/help/fetch";
-
+import Config from '../../interface/LocalConfig'
 
 const LocalConfig:Config = require("./../../config/index");
 const config = LocalConfig.routes.qbii;
@@ -32,6 +23,4 @@ for(var key in routes){
 }
 
 //router.all(new RegExp('^'+config.prefix.replace(/\//g,"\\/")+'(?:\/|$)'),all); 
-
-
 module.exports = router;

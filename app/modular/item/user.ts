@@ -1,21 +1,15 @@
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-}
-
-
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
+import Config from '../../interface/LocalConfig'
 import Weixin from "./../weixin/interface";
 import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
+<<<<<<< HEAD
 import ConfigHelp from "./../../library/help/config";
 
 
+=======
+>>>>>>> 8ebe17a8f935d1c895bd626e3e86d65dff2901a0
 
 const LocalConfig:Config = require("./../../config/index");
 const config = LocalConfig.routes.item;
@@ -25,9 +19,6 @@ fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
 const tokenHelp:Token = new Token();
 const verifyUser:VerifyUser = new VerifyUser();
-
-
-
 
 let weixin = new Weixin("item");
 export const login = async function(ctx,next){
@@ -47,6 +38,14 @@ export const login = async function(ctx,next){
         console.log("resultRefresh",resultRefresh)
         console.log("userInfo",userInfo)
     }
+
+   
+  
+    // let userId = data.data.userId;
+    // let token = tokenHelp.build(data.data.userId);
+    // // verifyUser.saveData(token,userId);
+    // verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx),token,{userId},userId)
+    // verifyUser.setCookie(ctx,"token",token,userId);
 };
 const sendUserInfo = async (openid)=>{
     // let result:Result = new Result();
@@ -75,5 +74,10 @@ export const getWeiXinInfo = async ()=>{
     }
     return false;
     
+}
+
+export const checkLogin = function(ctx, next){
+	let result:Result = new Result();
+	ctx.body=result.success({});
 }
 

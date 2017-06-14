@@ -1,15 +1,7 @@
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-}
-
-import Result from "./../../library/help/result";
-import Fetch from "./../../library/help/fetch";
-import {template} from "lodash";
+import Result from "./../../library/help/result"
+import Fetch from "./../../library/help/fetch"
+import {template} from "lodash"
+import Config from '../../interface/LocalConfig'
 
 const LocalConfig:Config = require("./../../config/index");
 const config = LocalConfig.routes.qbii;

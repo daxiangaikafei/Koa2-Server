@@ -11,14 +11,13 @@ import RequestLogger from "./library/log/request";
 import logger from "./library/log/logger"
 
 import auxiliary from "./auxiliary";
+import Sysconfig from './interface/sysConfig'
+//import aa from "./library/help/mysql";
 
 
-interface Sysconfig {
-    server : any,
-    localServer : any;
-    redis : any;
-    qiniu : any;
-}
+//aa;
+//import * as onError    from 'koa-onerror'npm
+console.log(RequestLogger)
 
 const env = process.env.NODE_ENV || 'development';
 const config : Sysconfig = require("./../config/index");
@@ -77,4 +76,3 @@ each(routers, function (router, index) {
 app.listen(config.localServer.port);
 
 auxiliary();
-

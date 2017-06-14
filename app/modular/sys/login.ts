@@ -1,17 +1,9 @@
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-}
-
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 
 import Token from "./../../library/help/token";
 import VerifyUser from "./../../library/verifyUser";
+import Config from '../../interface/LocalConfig'
 
 const moment = require("moment");
 

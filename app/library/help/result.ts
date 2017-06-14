@@ -1,13 +1,4 @@
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-}
-
-
+import Config from '../../interface/localConfig'
 
 const config:Config = require("./../../config/index");
 
