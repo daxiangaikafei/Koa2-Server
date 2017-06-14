@@ -4,12 +4,9 @@ import Config from '../../interface/LocalConfig'
 import Weixin from "./../weixin/interface";
 import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
-<<<<<<< HEAD
 import ConfigHelp from "./../../library/help/config";
 
 
-=======
->>>>>>> 8ebe17a8f935d1c895bd626e3e86d65dff2901a0
 
 const LocalConfig:Config = require("./../../config/index");
 const config = LocalConfig.routes.item;
