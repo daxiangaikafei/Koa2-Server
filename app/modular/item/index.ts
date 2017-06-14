@@ -18,6 +18,6 @@ for(var key in routes){
     router.all(key, all);
 }
 
-router.post("/user/login",User.login);
-router.post("/user/info",User.getUserInfo);
+router.get("/user/login",User.login);
+router.get("/user/info",User.getUserInfo);
 module.exports = router;

@@ -36,9 +36,10 @@ export const login = async function(ctx,next){
        let sbUserInfo = await sendUserInfo(resultRefresh.openid,resultRefresh.access_token);
       
 
-       if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
+    //    if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
+        if(userInfo.openid&&resultRefresh.openid){
         //    verifyUser.
-            let {userId} = sbUserInfo;
+            let {userId} = {userId:"111111111111"};
             let token = tokenHelp.build(userId);
 			// verifyUser.saveData(token,userId);
 			verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx),token,Object.assign(userInfo,{userId}),userId)
@@ -62,7 +63,7 @@ export const login = async function(ctx,next){
 const sendUserInfo = async (openid,access_token)=>{
     // let result:Result = new Result();
     ///user/getUserId?openid=ofrn10wNPOGlmHgv3G0ivs9i_KVM
-	let result:any = fetch.getData("/user/getUserId",{openid,access_token},"GET");
+	let result:any = await fetch.getData("/user/getUserId",{openid,access_token},"GET");
     if(result&&result.responseCode===1000){
         return result.data;
     }else{

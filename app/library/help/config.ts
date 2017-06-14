@@ -21,7 +21,7 @@ let redis = new RedisData("configInfo");
     //Promise<weixinInfot>
     async getWeiXinInfo(key){
         let data= await this.getData();
-        return data.weixins["key"]||{};
+        return data.weixins[key]||{};
     }
     async saveWeiXinInfo(key,info){
         let result = (await this.getData())||{weixins:{}};

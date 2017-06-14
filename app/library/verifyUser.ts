@@ -88,7 +88,6 @@ class VerifyUser {
         }
         
         if(token){
-            
             return this.verifyToken(token).then((info:any)=>{
                 ctx.state.userInfo = info
                 return next();
