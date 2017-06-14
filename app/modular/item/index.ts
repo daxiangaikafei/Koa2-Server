@@ -25,7 +25,7 @@ for(var key in routes){
 }
 
 
-router.get("/user/login",login);
+router.post("/user/login",login);
 
 
 module.exports = router;

@@ -117,6 +117,12 @@
                     "method":"GET",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
+                },
+                "/menu/get":{
+                    "url":"/cgi-bin/get_current_selfmenu_info",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
                 }
             },
             "ips":[

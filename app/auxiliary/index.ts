@@ -1,7 +1,10 @@
 import Timing from "./../modular/timing";
 
-let timing = new Timing();
+
+
+
+// let timing = new Timing();
 
 export default function(){
-    timing.weixinStart();
+   
 }

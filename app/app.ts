@@ -10,7 +10,7 @@ import VerifyUser from "./library/verifyUser";
 import RequestLogger from "./library/log/request";
 import logger from "./library/log/logger"
 
-// import auxiliary from "./auxiliary";
+import auxiliary from "./auxiliary";
 
 
 interface Sysconfig {
@@ -76,5 +76,5 @@ each(routers, function (router, index) {
 
 app.listen(config.localServer.port);
 
-// auxiliary();
+auxiliary();
 

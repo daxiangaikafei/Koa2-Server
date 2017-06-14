@@ -10,23 +10,24 @@ interface Config  {
 
 const LocalConfig:Config = require("./../../config/index");
 const WeixinConfigs = LocalConfig.weixins;
-
-
+import ConfigHelp from "./../../library/help/config";
 import {all} from "./all";
 
-
+let configHelp = new ConfigHelp();
 class Weixin {
     constructor(key){
-        this.config = WeixinConfigs[key]; 
-        console.log("llllll",WeixinConfigs,key)
+        // this.config = WeixinConfigs[key]; 
+        // console.log("llllll",WeixinConfigs,key)
+        this.key = key;
     }
     private config;
-    
-    private getParams(params,others){
+    private key;
+    private async getParams(params,others){
         let result ={};
-        let {config} = this;
+        let {key} = this;
+        let weixinInfo = await configHelp.getWeiXinInfo(key);
         params.map((value)=>{
-            result[value] = config[value]
+            result[value] = weixinInfo[value]
         })
         return Object.assign({},result,others);
     }
@@ -42,8 +43,15 @@ class Weixin {
     async configTokenGet(){
          return  all("/api/weixin/config/token",this.getParams(["appid","secret"],{grant_type:"client_credential"}));
     }
-     async ticketJsGet(access_token){
-         return  all("/api/weixin/config/jsTicket",this.getParams([""],{access_token,type:"jsapi"}));
+    async ticketJsGet(){
+         return  all("/api/weixin/config/jsTicket",this.getParams(["access_token"],{type:"jsapi"}));
+    }
+    async menuGet(access_token){
+         return  all("/api/weixin/config/jsTicket",this.getParams([""],{access_token}));
+    }
+    async verify(access_token){
+         let result:any = await this.menuGet(access_token);
+         return result.errcode==undefined?true:false;
     }
 }
 

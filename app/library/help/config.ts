@@ -40,8 +40,6 @@ let redis = new RedisData("configInfo");
     // {"a.b":"xxx"}  {a:{b:"xx"}}
     async saveWeiXinInfo(key,info){
         let result = await this.getData();
-        // result = result||{weixins:{}};
-        // console.error(result)
         let temp = result.weixins||{[key]:{}};
         for(let keys in info){
             temp[key][keys] = info[keys];
