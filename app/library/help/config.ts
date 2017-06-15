@@ -15,7 +15,7 @@ let redis = new RedisData("configInfo");
     }
     // private redis;
     async getData(){
-        let data:Configt = await redis.getDataAsync();
+        let data = await redis.getDataAsync();
         return data;
     }
     //Promise<weixinInfot>
@@ -39,26 +39,26 @@ let redis = new RedisData("configInfo");
 export default Config
 
 
-type Configt = {
-    "weixins":weixinst
-}
-type weixinst = {
-    "item":weixinInfot,
-}
-type weixinInfot = {
-    "appid":string,
-    "secret":string,
-    "token":string,
-    "tickteJs":string,
-    "timing":{
-        "getToken":{
-            "time":string
-        },
-        "tickerJsGet":{
-            "time":string
-        }
-    }
-}
+// type Configt = {
+//     "weixins":weixinst
+// }
+// type weixinst = {
+//     "item":weixinInfot,
+// }
+// type weixinInfot = {
+//     "appid":string,
+//     "secret":string,
+//     "token":string,
+//     "tickteJs":string,
+//     "timing":{
+//         "getToken":{
+//             "time":string
+//         },
+//         "tickerJsGet":{
+//             "time":string
+//         }
+//     }
+// }
 
 
 // module.exports = 

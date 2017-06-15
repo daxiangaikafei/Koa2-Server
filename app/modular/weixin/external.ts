@@ -20,8 +20,9 @@ const buildConfig = (key,info={appid:"",secre:"",access_token:"",jsTicket:""})=>
 /**
  * jsticker加密
  */
-export const buildJsTicket = async (ctx,next)=>{
+export const buildJsTicket = async (key,url)=>{
     // return 
+
 }
 
 const key = "天下第一!!!!";
@@ -33,30 +34,12 @@ const encrypt = function(param:any){
     let encryptcontent = secret.encryptMd5Normal(content,key);
     return encryptcontent===param.secret_node?true:false;
 }
-// encrypt(
-//         {"access_token":"1234","appid":"1234","jsapi_ticket":"1234","secret":"1234","time":"2017-07-09 12:19:20"}
-//     )
-
-
 
 export const setConfig = async(ctx,next)=>{
     // 
     let result:Result = new Result();
     let param = ctx.request.body;
     let params = ctx.params;
-    // encrypt({
-    //     appid:"1234",
-    //     secret:"1234",
-    //     access_token:"1234",
-    //     jsapi_ticket:"1234",
-    //     time:"2017-07-09 12:19:20",
-    //     secret_node:"ssssss"
-    // });
-    
-    
-    // let verify = verifyEntity(param,{
-    //     appid:"",secret:"",access_token:"",jsapi_ticket:"",time:"",secret_node:""
-    // });
     let verify = verifyEntity(param,{
         access_token:"",appid:"",jsapi_ticket:"",secret:"",time:"",secret_node:""
     });
@@ -85,5 +68,17 @@ export const setConfig = async(ctx,next)=>{
     }else{
         ctx.body = result.error(1,verify.toString());
     }
-    // if(params.channel&&param.)
+}
+
+export const getJsInfo = async(ctx,next)=>{
+    let result:Result = new Result();
+    let param = ctx.query;
+    let params = ctx.params;
+    // let weixin = new Winxin(params.channel);
+    let weixinInfo:any  = await configHelp.getWeiXinInfo(params.key);
+    let temp = Sign(weixinInfo.jsapi_ticket,param.url);
+
+    ctx.body = result.success(temp)
+    //jsapi_ticket, url
+    
 }
