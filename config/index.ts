@@ -1,4 +1,3 @@
-import Sysconfig from '../app/interface/sysConfig'
 import * as path from "path";
 const fs = require('fs');
 const env     = process.env.NODE_ENV || 'development';

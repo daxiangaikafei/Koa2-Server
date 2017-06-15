@@ -1,14 +1,4 @@
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-    weixins:any;
-}
-
-const LocalConfig:Config = require("./../../config/index");
+const LocalConfig:LocalConfig = require("./../../config/index");
 const WeixinConfigs = LocalConfig.weixins;
 import ConfigHelp from "./../../library/help/config";
 import {all} from "./all";

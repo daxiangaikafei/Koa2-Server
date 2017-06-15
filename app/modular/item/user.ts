@@ -1,15 +1,13 @@
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
-import Config from '../../interface/LocalConfig'
 import Weixin from "./../weixin/interface";
 import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
 import ConfigHelp from "./../../library/help/config";
 
 
-
-const LocalConfig:Config = require("./../../config/index");
-const config = LocalConfig.routes.item;
+const localConfig:LocalConfig = require("./../../config/index");
+const config = localConfig.routes.item;
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);
@@ -36,7 +34,7 @@ export const login = async function(ctx,next){
        let userInfo:any  = await  weixin.userInfoGet(resultRefresh.openid,resultRefresh.access_token);
     //    let sbUserInfo = await sendUserInfo(resultRefresh.openid,resultRefresh.access_token);
       
-
+       console.log(sbUserInfo, "00000000000")
     //    if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
         if(userInfo.openid&&resultRefresh.openid){
         //    verifyUser.

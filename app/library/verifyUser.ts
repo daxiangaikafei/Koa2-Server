@@ -2,10 +2,9 @@ import redis from "./help/redis";
 import Token from "./help/token";
 import Result from "./help/result"; 
 import * as moment from "moment";
-import Config from '../interface/localConfig'
 
 const result:Result = new Result();
-const config:Config = require("./../config/index");
+const config:LocalConfig = require("./../config/index");
 
 const IgnoreUrls = config.ignoreUrls;
 const format = "YYYY-MM-DD hh:mm:ss:SSS";
