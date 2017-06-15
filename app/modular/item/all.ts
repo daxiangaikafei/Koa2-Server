@@ -1,10 +1,9 @@
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import {template} from "lodash";
-import Config from '../../interface/LocalConfig'
 
-const LocalConfig:Config = require("./../../config/index");
-const config = LocalConfig.routes.item;
+const localConfig:LocalConfig = require("./../../config/index");
+const config = localConfig.routes.item;
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);
@@ -17,7 +16,7 @@ export const all  = function(ctx,next){
 	let result:Result = new Result();
 	let {method,header} =  ctx.request;
 	let url = ctx._matchedRoute;
-	let {userId} = ctx;
+	let { userId } = ctx.state.userInfo;;
     let param= (method==="GET"?(ctx.request.query):(ctx.request.body || ctx.request.fields))||{};
 	let params = ctx.params||{};
     url = url.replace(config.prefix,"");

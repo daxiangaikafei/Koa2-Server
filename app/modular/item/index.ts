@@ -1,21 +1,21 @@
 import * as Router from "koa-router";
 import Fetch from "./../../library/help/fetch";
-import Config from '../../interface/LocalConfig'
 
-const LocalConfig:Config = require("./../../config/index");
-const config = LocalConfig.routes.item;
+const localConfig:LocalConfig = require("./../../config/index");
+const config = localConfig.routes.item;
 const router:Router = new Router();
 router.prefix(config.prefix);
 
-import {login, checkLogin} from "./user";
+import * as User from "./user";
 import {all} from "./all";
 
-router.get("/user/checkLogin", checkLogin);
+router.get("/user/checkLogin", User.checkLogin);
 
 const routes = config.routes;
 for(var key in routes){
     router.all(key, all);
 }
 
-router.post("/user/login",login);
+router.get("/user/login",User.login);
+router.get("/user/info",User.getUserInfo);
 module.exports = router;

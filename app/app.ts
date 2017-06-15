@@ -11,7 +11,6 @@ import RequestLogger from "./library/log/request";
 import logger from "./library/log/logger"
 
 import auxiliary from "./auxiliary";
-import Sysconfig from './interface/sysConfig'
 //import aa from "./library/help/mysql";
 
 

@@ -1,10 +1,9 @@
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import {template} from "lodash";
-import Config from '../../interface/LocalConfig'
 
-const LocalConfig:Config = require("./../../config/index");
-const config = LocalConfig.routes.qbii;
+const localConfig:LocalConfig = require("./../../config/index");
+const config = localConfig.routes.qbii;
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);

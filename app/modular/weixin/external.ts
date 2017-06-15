@@ -25,6 +25,7 @@ export const buildJsTicket = async (ctx,next)=>{
 }
 
 const key = "天下第一!!!!";
+
 const encrypt = function(param:any){
     let newParams = Object.assign({},param);
     delete newParams.secret_node;
@@ -32,6 +33,9 @@ const encrypt = function(param:any){
     let encryptcontent = secret.encryptMd5Normal(content,key);
     return encryptcontent===param.secret_node?true:false;
 }
+// encrypt(
+//         {"access_token":"1234","appid":"1234","jsapi_ticket":"1234","secret":"1234","time":"2017-07-09 12:19:20"}
+//     )
 
 
 
@@ -49,9 +53,17 @@ export const setConfig = async(ctx,next)=>{
     //     secret_node:"ssssss"
     // });
     
+    
+    // let verify = verifyEntity(param,{
+    //     appid:"",secret:"",access_token:"",jsapi_ticket:"",time:"",secret_node:""
+    // });
     let verify = verifyEntity(param,{
-        appid:"",secret:"",access_token:"",jsapi_ticket:"",time:"",secret_node:""
+        access_token:"",appid:"",jsapi_ticket:"",secret:"",time:"",secret_node:""
     });
+    let weixin = new Winxin(params.channel);
+    let userInfo = await weixin.ticketJsGet();
+        console.log(userInfo)
+    
     if(_.isObject(verify)&&params.channel){
         //加密计算
         let enReuslt = encrypt(verify);
@@ -60,6 +72,7 @@ export const setConfig = async(ctx,next)=>{
             return false;
         }
         let weixin = new Winxin(params.channel);
+        
         let isRight = await weixin.verify(verify["access_token"]);
         if(isRight){
             let weixinInfo = await configHelp.getWeiXinInfo(params.channel)||{};

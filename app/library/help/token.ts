@@ -22,8 +22,8 @@ class Token {
     //+moment().format("YYYY-MM-DD hh:mm:ss:SSS")
     build(userId : string) {
         let hash = crypto
-            .createHmac('md5', userId + moment().format("YYYY-MM-DD hh:mm:ss:SSS"))
-            .update(message)
+            .createHmac('md5', message)
+            .update(userId + moment().format("YYYY-MM-DD hh:mm:ss:SSS"))
             .digest('hex');
         //都这样加密了， 你还能破解 我也是啥办法没有了
         //console.log("加密userId" + userId + ",加密后:" + hash + "长度为:" + hash.toString().length);

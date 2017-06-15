@@ -1,6 +1,4 @@
-import Config from '../../interface/localConfig'
-
-const config:Config = require("./../../config/index");
+const config:LocalConfig = require("./../../config/index");
 
 const Error = config.error;
 class Result {

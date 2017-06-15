@@ -1,18 +1,8 @@
-interface Config  {
-    error:any;
-    routes:any;
-    ignoreUrls:any;
-    redis:any;
-    cookie:any;
-    SSO:boolean;
-    weixins:any;
-}
-
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import {template} from "lodash";
 
-const LocalConfig:Config = require("./../../config/index");
+const LocalConfig:LocalConfig = require("./../../config/index");
 const config = LocalConfig.routes.weixin;
 
 const WeixinConfig  = LocalConfig.weixins;
