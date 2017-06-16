@@ -157,7 +157,7 @@
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/getUserPoints": {
-                    "url": "/user/getUserPoints/${userId}",
+                    "url": "/user/userPoints/${userId}",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
@@ -166,13 +166,13 @@
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
-                "/user/order/submitOrderNo/:orderNo": {
-                    "url": "/user/order/submitOrderNo/${userId}/${orderNo}",
+                "/user/order/submitOrderNo": {
+                    "url": "/user/order/${userId}/submitOrderNo",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/getUserInfo": {
-                    "url": "/user/getUserInfo/${userId}",
+                    "url": "/user/userinfo/${userId}",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 }
@@ -192,19 +192,6 @@
     "redis": {
         "tokenKey": "nodeServer-token",
         "expiration": 2592000 
-    },
-    "weixins":{
-        "item":{
-            "appid":"wxf83b631bccb522df",
-            "secret":"93b1205187c6a1b7d9f7df07d8a32e30",
-             "timing":{
-                "getConfig":{
-                    "time":"*/20 * * * * *",
-                    "warnTime":"*/5 * * * * *"
-                }
-            }
-        
-        }
     },
     "auxiliary":{
         "timing":{

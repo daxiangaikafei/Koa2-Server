@@ -1,5 +1,5 @@
-import RouterConfig from '../interface/localConfig'
-import Config from '../interface/localConfig'
+// import RouterConfig from '../interface/localConfig'
+// import Config from '../interface/localConfig'
 
 
 class RedisRouterConfig {
