@@ -1,6 +1,3 @@
-import RouterConfig from '../interface/localConfig'
-import Config from '../interface/localConfig'
-
 
 class RedisRouterConfig {
 
@@ -17,7 +14,7 @@ class RedisRouterConfig {
     initConfig(){
         this.redis.get(this.configName).then(result=>{
             if(!result){
-                const config:Config = require("./index");
+                const config:LocalConfig = require("./index");
                 this.redis.set(this.configName, JSON.stringify(config))
             }
         })
@@ -28,7 +25,7 @@ class RedisRouterConfig {
      */
     public async getData(){
         let str = await this.redis.get(this.configName)
-        let result:Config = JSON.parse(str)
+        let result:LocalConfig = JSON.parse(str)
         return result
     }
 
@@ -38,7 +35,7 @@ class RedisRouterConfig {
      */
     public async getRouterByName(routerName){
         let str = await this.redis.get(this.configName)
-        let result:Config = JSON.parse(str)
+        let result:LocalConfig = JSON.parse(str)
         let res:RouterConfig = result.routes[routerName]
         return res
     }
@@ -50,7 +47,7 @@ class RedisRouterConfig {
      */
     public async setRouterData(routerName, routerData:RouterConfig){
         let str = await this.redis.get(this.configName)
-        let result:Config = JSON.parse(str)
+        let result:LocalConfig = JSON.parse(str)
         result.routes[routerName] = routerData
         this.redis.set(this.configName, JSON.stringify(result))
     }
