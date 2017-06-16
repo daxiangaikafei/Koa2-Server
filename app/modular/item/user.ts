@@ -25,13 +25,14 @@ export const login = async function(ctx,next){
 	
 	let result:Result = new Result();
 	let {code} = ctx.query;
+    // console.info()
 	let re:any  = await weixin.userTokenGet(code);
-    ctx.body = re;
+    // ctx.body = re;
     if(re&&re.errcode==undefined){
         //access_token  refresh_token  openid
        let resultRefresh:any = await weixin.userTokenRefresh(re.refresh_token);
        let userInfo:any  = await  weixin.userInfoGet(resultRefresh.openid,resultRefresh.access_token);
-       let sbUserInfo = await sendUserInfo(resultRefresh.openid,resultRefresh.access_token);
+    //    let sbUserInfo = await sendUserInfo(resultRefresh.openid,resultRefresh.access_token);
       
        console.log(sbUserInfo, "00000000000")
     //    if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
@@ -40,9 +41,9 @@ export const login = async function(ctx,next){
             let {userId} = {userId:"24"};
             let token = tokenHelp.build(userId);
 			// verifyUser.saveData(token,userId);
-			verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx),token,Object.assign(userInfo,{userId}),userId)
+			verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx),token,Object.assign({openid:userInfo.openid,access_token:resultRefresh.access_token},{userId}),userId)
 			verifyUser.setCookie(ctx,"token",token,userId);
-            ctx.body = result.success();
+            ctx.body = result.success(userInfo);
        }else{
            ctx.body = result.error(1,"获取用户信息失败");
 
