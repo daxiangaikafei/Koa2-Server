@@ -1,3 +1,4 @@
+import * as crypto from "crypto";
 var createNonceStr = function () {
   return Math.random().toString(36).substr(2, 15);
 };
@@ -31,24 +32,23 @@ var raw = function (args) {
 * @returns
 */
 var sign = function (jsapi_ticket, url) {
-  var ret = {
+  var ret:any = {
     jsapi_ticket: jsapi_ticket,
     nonceStr: createNonceStr(),
     timestamp: createTimestamp(),
-    url: url,
-    signature:""
+    url: url
   };
-  let string = raw(ret),
-      jsSHA = require('jssha'),
-      shaObj = new jsSHA(string, 'TEXT');
-  ret.signature = shaObj.getHash('SHA-1', 'HEX');
+  var string = raw(ret);
+ var sha1 = crypto.createHash('sha1');
+ sha1.update(string);
+//  sha1.digest('hex');
+ ret.signature =  sha1.digest('hex');
+
+  //   var  jsSHA = require('jssha');
+  //  var   shaObj = new jsSHA(string, 'TEXT');
+  // ret.signature = shaObj.getHash('SHA-1', 'HEX');
 
   return ret;
 };
 
 export default sign;
-// module.exports = sign;
-
-
-// config().route.qbii.sss={}
-// aa.setRouter("qbii",{})

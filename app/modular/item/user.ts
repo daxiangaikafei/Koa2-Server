@@ -32,9 +32,9 @@ export const login = async function(ctx,next){
         //access_token  refresh_token  openid
        let resultRefresh:any = await weixin.userTokenRefresh(re.refresh_token);
        let userInfo:any  = await  weixin.userInfoGet(resultRefresh.openid,resultRefresh.access_token);
-    //    let sbUserInfo = await sendUserInfo(resultRefresh.openid,resultRefresh.access_token);
+       let sbUserInfo = await sendUserInfo(resultRefresh.openid,resultRefresh.access_token);
       
-       console.log(sbUserInfo, "00000000000")
+    //    console.log(sbUserInfo, "00000000000")
     //    if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
         if(userInfo.openid&&resultRefresh.openid){
         //    verifyUser.

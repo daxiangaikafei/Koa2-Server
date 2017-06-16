@@ -185,7 +185,9 @@
         "/api/qbii/news/getNewsDetail":true,
         "/api/qbii/v1/user/getUserLevel":true,
         "/api/item/user/login":true,
-        "/api/weixin/setinfo/item":true
+        "/api/weixin/setinfo/item":true,
+        "/api/weixin/js/info/item":true
+        
     },
     "redis": {
         "tokenKey": "nodeServer-token",
