@@ -37,7 +37,7 @@ export const login = async function(ctx,next){
     //    if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
         if(userInfo.openid&&resultRefresh.openid){
         //    verifyUser.
-            let {userId} = {userId:"111111111111"};
+            let {userId} = {userId:"24"};
             let token = tokenHelp.build(userId);
 			// verifyUser.saveData(token,userId);
 			verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx),token,Object.assign(userInfo,{userId}),userId)
