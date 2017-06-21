@@ -16,7 +16,8 @@ export const all  = function(ctx,next){
 	let result:Result = new Result();
 	let {method,header} =  ctx.request;
 	let url = ctx._matchedRoute;
-	let { userId } = ctx.state.userInfo;;
+	let { userId } = ctx.state.userInfo;
+	
     let param= (method==="GET"?(ctx.request.query):(ctx.request.body || ctx.request.fields))||{};
 	let params = ctx.params||{};
     url = url.replace(config.prefix,"");
@@ -38,7 +39,6 @@ export const all  = function(ctx,next){
 				result.error(data.responseCode, data.message);
 				ctx.body=result.getValue();
 			}
-			
 		}).catch((error)=>{
 			console.log(error)
 		})
@@ -46,7 +46,5 @@ export const all  = function(ctx,next){
 		result.error(404);
 		ctx.body=result.getValue();
 	}
-    
-	
 }
 

@@ -29,6 +29,8 @@ let app : koa = new koa();
 
 app.keys = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
 
+app.use(RequestLogger)
+
 app.use(convert(body({
     onerror: function (err, ctx) {
         ctx.throw('body parse error', 422);

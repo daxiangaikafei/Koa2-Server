@@ -1,4 +1,5 @@
 import * as winston from "winston";
+require('winston-daily-rotate-file')
 
 // winston.configure({     transports: [
 // new(winston.transports.Console)(),
@@ -6,7 +7,9 @@ import * as winston from "winston";
 
 var log = new(winston.Logger)({
   transports: [//   new (winston.transports.Console)(),
-    new(winston.transports.File)({filename: 'request.log'})]
+    new winston.transports.DailyRotateFile({filename: 'request', datePattern: '_yyyy-MM-ddTHH.log'})
+    // new(winston.transports.File)({filename: 'request.log'})
+    ]
 });
 
 // winston.add(winston.transports.File, {filename: 'app.log'});
@@ -20,6 +23,7 @@ const logger = function () {
     // //console.log(ctx.request);
     let {request} = ctx;
     let userId = "";
+    let _startTime = Date.now()
     // return next();
     try {
       await next();
@@ -32,7 +36,8 @@ const logger = function () {
         userId,
         error: {
           ...error
-        }
+        },
+        time: Date.now() - _startTime + "ms"
       })
       ctx.throw(error.Message, 500);
       console.error(error);
@@ -48,7 +53,8 @@ const logger = function () {
           "body": request.body,
           "originalUrl": request.originalUrl,
           "method":request.method
-        }
+        },
+        time: Date.now() - _startTime + "ms"
         // "res":{...ctx.res},
 
       });
