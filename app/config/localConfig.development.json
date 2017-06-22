@@ -18,26 +18,31 @@
                 "/user/userId": {
                     "url": "/api/user/${userId}/userId",
                     "version": "v1",
+                    "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/level": { 
                     "url": "/api/user/${userId}/level",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/userInfo": {
                     "url": "/api/user/${userId}/userInfo",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/news/getNewsList": {
                     "url": "/api/news/getNewsList.html",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/news/getNewsDetail/": {
                     "url": "/api/news/getNewsDetail",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/userOrderList": {
@@ -137,7 +142,7 @@
             ]
         },
         "item": {
-            "domain": "http://10.172.20.49:8080",
+            "domain": "http://nodewyhw.banyan-data.com",
             "prefix": "/api/item",
             "timeout": 5000,
             "routes": {
@@ -185,24 +190,13 @@
         "/api/qbii/news/getNewsDetail":true,
         "/api/qbii/v1/user/getUserLevel":true,
         "/api/item/user/login":true,
-        "/api/weixin/setinfo/item":true
+        "/api/weixin/setinfo/item":true,
+        "/api/weixin/js/info/item":true
+        
     },
     "redis": {
         "tokenKey": "nodeServer-token",
         "expiration": 2592000 
-    },
-    "weixins":{
-        "item":{
-            "appid":"wxf83b631bccb522df",
-            "secret":"93b1205187c6a1b7d9f7df07d8a32e30",
-             "timing":{
-                "getConfig":{
-                    "time":"*/20 * * * * *",
-                    "warnTime":"*/5 * * * * *"
-                }
-            }
-        
-        }
     },
     "auxiliary":{
         "timing":{

@@ -89,6 +89,7 @@ class VerifyUser {
         if(token){
             return this.verifyToken(token).then((info:any)=>{
                 ctx.state.userInfo = info
+                //  ctx.state.config = 
                 return next();
             }).catch(()=>{
                 result.error(200,"登录过期");

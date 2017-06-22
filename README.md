@@ -142,3 +142,14 @@ app/config/env/developments.ts
     },
     "SSO": false // 是否只允许一台机器登录
 }
+
+    // "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
+
+//npm i --save-dev @types/ioredis @types/isomorphic-fetch @types/koa @types/koa-bodyparser  @types/koa-router @types/lodash @types/node @types/node-schedule @types/webpack @types/winston 
+gulp-rename run-sequence gulp gulp-util ts-loader typescript uglify-es webpack
+
+//
+
+koa koa-better-body koa-bodyparser koa-convert koa-csrf koa-onerror koa-router
+lodash moment node-schedule ioredis isomorphic-fetch isomorphic-form-data redis winston
+ 

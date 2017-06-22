@@ -81,7 +81,8 @@ const initApp = ()=>{
     auxiliary();
 }
 
-RedisData.init().then(()=>{
-    console.log("初始化app")
-    initApp()
-})
+initApp()
+// RedisData.init().then(()=>{
+//     console.log("初始化app")
+//     initApp()
+// })

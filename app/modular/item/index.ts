@@ -1,8 +1,7 @@
 import * as Router from "koa-router";
 import Fetch from "./../../library/help/fetch";
-import RedisData from  "./../../library/plugin/RedisData"
 
-const localConfig:LocalConfig = RedisData.RedisLocalData
+const localConfig:LocalConfig = require("./../../config/index");
 const config = localConfig.routes.item;
 const router:Router = new Router();
 router.prefix(config.prefix);

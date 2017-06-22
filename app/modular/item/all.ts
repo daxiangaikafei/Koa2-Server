@@ -1,10 +1,10 @@
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import logger from "./../../library/log/logger"
-import RedisData from  "./../../library/plugin/RedisData"
+
 import {template} from "lodash";
 
-const localConfig:LocalConfig = RedisData.RedisLocalData
+const localConfig:LocalConfig = require("./../../config/index");
 const config = localConfig.routes.item;
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);

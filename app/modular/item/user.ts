@@ -4,10 +4,8 @@ import Weixin from "./../weixin/interface";
 import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
 import ConfigHelp from "./../../library/help/config";
-import RedisData from  "./../../library/plugin/RedisData"
 
-
-const localConfig: LocalConfig = RedisData.RedisLocalData
+const localConfig:LocalConfig = require("./../../config/index");
 const config = localConfig.routes.item;
 const fetch: Fetch = new Fetch(config.domain, config.timeout);
 fetch.setDomain(config.domain);
@@ -32,8 +30,7 @@ export const login = async function (ctx, next) {
         let resultRefresh: any = await weixin.userTokenRefresh(re.refresh_token);
         let userInfo: any = await weixin.userInfoGet(resultRefresh.openid, resultRefresh.access_token);
         let sbUserInfo = await sendUserInfo(resultRefresh.openid, resultRefresh.access_token);
-
-        console.log(sbUserInfo, "00000000000")
+        // console.log(sbUserInfo, "00000000000")
         if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
         // if (userInfo.openid && resultRefresh.openid) {
             //    verifyUser.
@@ -42,7 +39,7 @@ export const login = async function (ctx, next) {
             // verifyUser.saveData(token,userId);
             verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx), token, Object.assign({ openid: userInfo.openid, access_token: resultRefresh.access_token }, { userId }), userId)
             verifyUser.setCookie(ctx, "token", token, userId);
-            ctx.body = result.success(userInfo);
+            ctx.body = result.success({});
         } else {
             ctx.body = result.error(1, "获取用户信息失败");
 

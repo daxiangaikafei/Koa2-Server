@@ -12,6 +12,7 @@ declare interface LocalConfig  {
         good: RouterConfig;
         sys: RouterConfig;
         item: RouterConfig;
+        weixin: RouterConfig;
     };
     ignoreUrls:any;
     redis:any;
