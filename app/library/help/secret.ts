@@ -2,6 +2,7 @@ import * as crypto from "crypto";
 import * as moment from "moment";
 const key = "密码加密啦，呵呵哒，ll|~";
 
+
 export default class Secret {
     constructor(){
 

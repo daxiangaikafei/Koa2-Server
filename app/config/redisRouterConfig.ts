@@ -5,6 +5,7 @@
 
 class RedisRouterConfig {
 
+
     private redis : any;x
     private configName = "localConfig"
 
@@ -15,21 +16,16 @@ class RedisRouterConfig {
     /**
      * 初始化redis config
      */
-    initConfig(){
-        this.redis.get(this.configName).then(result=>{
-            if(!result){
-                const config:LocalConfig = require("./index");
-                this.redis.set(this.configName, JSON.stringify(config))
-            }
-        })
+    initConfig = async () =>{
+        
     }
 
     /**
      * 获取localConfig数据
      */
-    public async getData(){
-        let str = await this.redis.get(this.configName)
-        let result:LocalConfig = JSON.parse(str)
+    public getData = async () => {
+        let data = await this.redis.get(this.configName)
+        let result:LocalConfig = JSON.parse(data)
         return result
     }
 
@@ -59,4 +55,5 @@ class RedisRouterConfig {
 
 import redis from '../library/help/redis'
 let config = new RedisRouterConfig(redis)
+config.initConfig()
 export default config
