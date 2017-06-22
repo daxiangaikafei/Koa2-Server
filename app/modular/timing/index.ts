@@ -5,8 +5,5 @@ export default class Timing{
     constructor(){
 
     }
-    weixinStart(){
-        // weixin("item");
-    }
 }
 

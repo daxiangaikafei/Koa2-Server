@@ -7,7 +7,7 @@ class Timming{
     creatJob(callBack, time, warnTime) {
         let _this = this;
         schedule.scheduleJob(time, function () {
-            console.log("不要这样子啦", time);
+            console.log("。。。。", time);
             _this.xunhuan(callBack, warnTime);
         });
     }

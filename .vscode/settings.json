@@ -6,7 +6,7 @@
         "**/.hg": true,
         "build":true,
         // "dist":true,
-        "node_modules/": true,
+        "node_modules/": false,
         "app/**/*.js.map": true,
         "app/**/*.js": true,
         "config/**/*.js.map": true,

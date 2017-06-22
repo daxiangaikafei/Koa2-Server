@@ -1,9 +1,13 @@
 {
   "apps" : [{
+    "name":"node-server",
     "script"    : "app.js",
-    "instances" : 4,
+    "instances" : 6,
     "exec_mode" : "cluster",
     "watch"       : true,
+    "ignore_watch":"*.log",
+    "err_file"    : "node-server.log",
+    "out_file"    : "node-server.log",
     "env": {
       "NODE_ENV": "production"
     }
