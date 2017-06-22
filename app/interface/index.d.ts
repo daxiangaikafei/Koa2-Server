@@ -11,8 +11,8 @@ declare interface LocalConfig  {
         qbii: RouterConfig;
         good: RouterConfig;
         sys: RouterConfig;
-        item: RouterConfig;
         weixin: RouterConfig;
+        item: RouterConfig;
     };
     ignoreUrls:any;
     redis:any;

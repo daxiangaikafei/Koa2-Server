@@ -4,7 +4,7 @@
 //     }
 // }
 
-import config:LocalConfig from "./../config";
+// import config:LocalConfig from "./../config";
 
 const GateWay = async function (ctx,next) {
 
