@@ -14,9 +14,7 @@ class RedisData {
     }
 
     public init = async () => {
-        console.log("initConfig start")
         let data:LocalConfig = await this.getData()
-        console.log("get data ok")
         if(!data){
             let config:LocalConfig = require("./index");
             this.redis.set(this.configName, JSON.stringify(config))
@@ -59,9 +57,11 @@ class RedisData {
     public async IntervalUpdate(times){
         setInterval(async ()=>{
             this._redisLocalConfig = await this.update()
+            console.log("redis 配置文件已更新")
         }, times)
     }
 }
 
 const r = new RedisData(redis)
+r.IntervalUpdate(1000 * 60);
 export default r
