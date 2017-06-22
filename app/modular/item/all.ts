@@ -1,11 +1,11 @@
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import logger from "./../../library/log/logger"
+import localConfig from "./../../config"
 
 import {template} from "lodash";
 
-const localConfig:LocalConfig = require("./../../config/index");
-const config = localConfig.routes.item;
+const config = localConfig.config.routes.item;
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);

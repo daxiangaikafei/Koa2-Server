@@ -1,3 +1,4 @@
+import LocalConfig from './../../config'
 const config:LocalConfig = require("./../../config/index");
 
 const Error = config.error;

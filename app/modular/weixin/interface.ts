@@ -1,8 +1,8 @@
-const LocalConfig:LocalConfig = require("./../../config/index");
-const WeixinConfigs = LocalConfig.weixins;
+import localConfig from './../../config'
 import ConfigHelp from "./../../library/help/config";
 import {all} from "./all";
 
+const WeixinConfigs = localConfig.config.weixins;
 let configHelp = new ConfigHelp();
 class Weixin {
     constructor(key){
