@@ -3,6 +3,9 @@ import * as LocalConfig from "./../config";
 import Result from "./../library/help/result";
 
 
+// import config:LocalConfig from "./../config";
+
+
 const GateWay = async function (ctx, next) {
     
     // tianxia  diyi

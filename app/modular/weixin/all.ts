@@ -1,11 +1,10 @@
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import {template} from "lodash";
+import localConfig from "./../../config"
 
-const LocalConfig:LocalConfig = require("./../../config/index");
-const config = LocalConfig.routes.weixin;
-
-const WeixinConfig  = LocalConfig.weixins;
+const config = localConfig.config.routes.weixin;
+const WeixinConfig  = localConfig.config.weixins;
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);

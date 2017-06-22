@@ -1,8 +1,8 @@
 import * as Router from "koa-router"
 import Fetch from "./../../library/help/fetch"
+import localConfig from "./../../config"
 
-const localConfig:LocalConfig = require("./../../config/index");
-const config = localConfig.routes.sys;
+const config = localConfig.config.routes.sys;
 const router:Router = new Router();
 router.prefix(config.prefix);
 
