@@ -74,7 +74,7 @@ module.exports = {
                 NODE_ENV: JSON.stringify("production")
             }
         }),
-        // newx UglifyEsPlugin()
+        new UglifyEsPlugin()
         // new webpack
         //     .optimize
         //     .UglifyJsPlugin({

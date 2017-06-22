@@ -1,12 +1,12 @@
 const gulp = require('gulp'),
     gutil = require("gulp-util"),
     webpack = require("webpack"),
-    runSequence = require('run-sequence'),
-    reName = require("gulp-rename");
+    runSequence = require('run-sequence').use(gulp),
+    rename = require("gulp-rename");
 
 var replaceName = function (names, hasContent, replaceContent) {
 
-    names
+   return names
         .map(function (value, index) {
             gulp
                 .src(value)
@@ -49,9 +49,9 @@ gulp.task("config", function () {
 })
 
 gulp.task("dev-config", function () {
-    replaceName([
-        "./app/config/localConfig.dev.json", "./config/sysConfig.dev.json", "./process.json"
-    ], "dev", env)
+    return replaceName([
+        "./app/config/localConfig.development.json", "./config/sysConfig.development.json", "./process.json"
+    ], "development", env)
 })
 
 gulp.task("mv", function () {
@@ -70,7 +70,7 @@ gulp.task("build", function () {
 })
 
 gulp.task("dev-build", function () {
-    env = "development";
-    runSequence("webpack", "config", "mv")
+    env = "production";
+    runSequence("webpack", "dev-config", "mv");
 
 })

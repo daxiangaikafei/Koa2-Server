@@ -17,6 +17,7 @@ import auxiliary from "./auxiliary";
 //aa;
 //import * as onError    from 'koa-onerror'npm
 console.log(RequestLogger)
+// app.use(RequestLogger());
 
 const env = process.env.NODE_ENV || 'development';
 const config : Sysconfig = require("./../config/index");
@@ -28,6 +29,8 @@ let verifyUser : VerifyUser = new VerifyUser();
 let app : koa = new koa();
 
 app.keys = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
+
+// app.use(RequestLogger());
 
 app.use(convert(body({
     onerror: function (err, ctx) {
@@ -47,6 +50,7 @@ app.context.onerror = function (err) {
 
 /*处理  404   500  页面 */
 app.use((ctx, next) => {
+    
     return next().then(() => {
         if (ctx.status !== 200) {
             result.error(ctx.status, "");

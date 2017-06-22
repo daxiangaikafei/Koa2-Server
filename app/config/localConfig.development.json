@@ -18,26 +18,31 @@
                 "/user/userId": {
                     "url": "/api/user/${userId}/userId",
                     "version": "v1",
+                    "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/level": { 
                     "url": "/api/user/${userId}/level",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/userInfo": {
                     "url": "/api/user/${userId}/userInfo",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/news/getNewsList": {
                     "url": "/api/news/getNewsList.html",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/news/getNewsDetail/": {
                     "url": "/api/news/getNewsDetail",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/userOrderList": {
