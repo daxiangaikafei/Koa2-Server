@@ -4,11 +4,11 @@ import Weixin from "./../weixin/interface";
 import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
 import ConfigHelp from "./../../library/help/config";
+import RedisData from  "./../../library/plugin/RedisData"
 
 
-const localConfig: LocalConfig = require("./../../config/index");
+const localConfig: LocalConfig = RedisData.RedisLocalData
 const config = localConfig.routes.item;
-
 const fetch: Fetch = new Fetch(config.domain, config.timeout);
 fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
@@ -22,7 +22,6 @@ let weixin = new Weixin("item");
  * @param next 
  */
 export const login = async function (ctx, next) {
-
     let result: Result = new Result();
     let { code } = ctx.query;
     // console.info()
@@ -88,7 +87,6 @@ export const getUserInfo = async (ctx, next) => {
 }
 
 export const getWeiXinInfo = async () => {
-
     let data: any = await fetch.getData("/config/wxConfig", {}, "GET");
     if (data && data.responseCode === 1000) {
         let configHelp = new ConfigHelp();

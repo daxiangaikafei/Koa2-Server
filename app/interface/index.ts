@@ -7,7 +7,12 @@ declare interface Sysconfig {
 
 declare interface LocalConfig  {
     error:any;
-    routes:any;
+    routes:{
+        qbii: RouterConfig;
+        good: RouterConfig;
+        sys: RouterConfig;
+        item: RouterConfig;
+    };
     ignoreUrls:any;
     redis:any;
     cookie:any;
