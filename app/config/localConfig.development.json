@@ -137,7 +137,7 @@
             ]
         },
         "item": {
-            "domain": "http://10.172.20.49:8080",
+            "domain": "http://nodewyhw.banyan-data.com",
             "prefix": "/api/item",
             "timeout": 5000,
             "routes": {
