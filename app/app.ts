@@ -13,6 +13,8 @@ import RedisData from './library/plugin/RedisData'
 //import aa from "./library/help/mysql";
 import auxiliary from "./auxiliary";
 
+
+
 //aa;
 //import * as onError    from 'koa-onerror'npm
 console.log(RequestLogger)
