@@ -94,6 +94,8 @@ export const getWeiXinInfo = async () => {
             jsapi_ticket: data.data.jsapiTicket,
         })
         return true;
+    }else{
+        console.log("获取 有好物的微信配置异常...",data)
     }
     return false;
 

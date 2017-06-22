@@ -6,20 +6,20 @@ import Result from "./../library/help/result";
 // import config:LocalConfig from "./../config";
 
 
-const GateWay = async function (ctx, next) {
+// const GateWay = async function (ctx, next) {
     
-    // tianxia  diyi
-    let {url} = ctx;
-    url = url.split("?")[0];
-    let info  = LocalConfig.gateway.routers[url];
+//     // tianxia  diyi
+//     let {url} = ctx;
+//     url = url.split("?")[0];
+//     let info  = LocalConfig.gateway.routers[url];
 
-    if(!info){
+//     if(!info){
 
-    }else{
-        ctx.body
-    }
-    await next();
+//     }else{
+//         ctx.body
+//     }
+//     await next();
 
-}
+// }
 
-export default GateWay;
+// export default GateWay;
