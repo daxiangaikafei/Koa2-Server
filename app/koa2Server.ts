@@ -14,7 +14,7 @@ import auxiliary from "./auxiliary";
 
 //aa;
 //import * as onError    from 'koa-onerror'npm
-console.log(RequestLogger)
+// console.log(RequestLogger)
 
 let koa2Server = ()=>{
     const env = process.env.NODE_ENV || 'development';
@@ -29,7 +29,7 @@ let koa2Server = ()=>{
     app.keys = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
 
 
-    app.use(RequestLogger)
+    app.use(RequestLogger())
 
     app.use(convert(body({
         onerror: function (err, ctx) {
