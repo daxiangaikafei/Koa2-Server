@@ -10,7 +10,7 @@ if (!process.getuid) {
 var log = new (winston.Logger)({
     transports: [
       new (winston.transports.Console)(),
-      new winston.transports.DailyRotateFile({filename: 'request', datePattern: '_yyyy-MM-ddTHH.log'})
+      new winston.transports.DailyRotateFile({filename: 'log/request', datePattern: '_yyyy-MM-ddTHH.log'})
     //   new (winston.transports.File)({ filename: 'normal.log', maxsize: 1024 * 10})
     ]
   });
