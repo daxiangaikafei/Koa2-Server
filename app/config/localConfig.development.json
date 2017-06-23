@@ -144,6 +144,7 @@
             "domain": "http://nodewyhw.banyan-data.com",
             "prefix": "/api/item",
             "timeout": 5000,
+            "SSO":true,
             "routes": {
                 "/goodsCoupon/couponList": {
                     "url": "/goodsCoupon/${userId}/couponList",

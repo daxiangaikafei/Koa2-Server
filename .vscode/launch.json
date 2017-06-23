@@ -32,6 +32,15 @@
                 "NODE_ENV": "development"
             }
         },
+         {
+            "type": "node",
+            "request": "launch",
+            "name": "测试",
+            "program": "${workspaceRoot}/app/index.js",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
         {
             "type": "node",
             "request": "attach",

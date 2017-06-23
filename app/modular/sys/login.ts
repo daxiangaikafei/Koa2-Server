@@ -4,16 +4,17 @@ import Fetch from "./../../library/help/fetch";
 import Token from "./../../library/help/token";
 import VerifyUser from "./../../library/verifyUser";
 
-import localConfig from './../../config'
+// import localConfig from './../../config'
+const localConfig:LocalConfig = require("./../../config/index");
 
 const moment = require("moment");
 
 const tokenHelp:Token = new Token();
 const verifyUser:VerifyUser = new VerifyUser();
 
-const config = localConfig.config.routes.sys;
+const config = localConfig.routes.sys;
 
-const SSO = localConfig.config.SSO;
+const SSO = localConfig.SSO;
 
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);

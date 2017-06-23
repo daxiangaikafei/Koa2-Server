@@ -4,9 +4,14 @@ import Weixin from "./../weixin/interface";
 import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
 import ConfigHelp from "./../../library/help/config";
-import localConfig from "./../../config"
+// import localConfig from "./../../config"
 
-const config = localConfig.config.routes.item;
+// const config = localConfig.config.routes.item;
+
+const localConfig:LocalConfig = require("./../../config/index");
+const config = localConfig.routes.item;
+
+
 const fetch: Fetch = new Fetch(config.domain, config.timeout);
 fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
@@ -28,19 +33,30 @@ export const login = async function (ctx, next) {
     if (re && re.errcode == undefined) {
         //access_token  refresh_token  openid
         let resultRefresh: any = await weixin.userTokenRefresh(re.refresh_token);
+        let guanzhuUserInfo: any = await weixin.userInfoGetByGuanZhu(resultRefresh.openid);
         let userInfo: any = await weixin.userInfoGet(resultRefresh.openid, resultRefresh.access_token);
-        let sbUserInfo = await sendUserInfo(resultRefresh.openid, resultRefresh.access_token);
-        // console.log(sbUserInfo, "00000000000")
-        if(sbUserInfo&&userInfo.openid&&resultRefresh.openid){
+        if(guanzhuUserInfo.errcode==undefined&&guanzhuUserInfo.subscribe===0){
+            //没有关注
+            if(userInfo.errcode&&userInfo.errcode===48001){
+                //没有授权
+                ctx.body = result.error(201,"此用户未关注,也没有授权，需要跳转到授权界面");
+                return;
+            }
+        };
+        let jgUserInfo = await sendUserInfo(resultRefresh.openid, resultRefresh.access_token);
+        // console.log(jgUserInfo, "\n",guanzhuUserInfo);userInfo.openid
+        
+        if(jgUserInfo&&resultRefresh.openid){
         // if (userInfo.openid && resultRefresh.openid) {
             //    verifyUser.
-            let { userId } = { userId: sbUserInfo };
+            let { userId } = { userId: jgUserInfo };
             let token = tokenHelp.build(userId);
             // verifyUser.saveData(token,userId);
-            verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx), token, Object.assign({ openid: userInfo.openid, access_token: resultRefresh.access_token }, { userId }), userId)
+            verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx), token, Object.assign({ openid: resultRefresh.openid, access_token: resultRefresh.access_token }, { userId }), userId)
             verifyUser.setCookie(ctx, "token", token, userId);
             ctx.body = result.success({});
         } else {
+            result.success(userInfo);
             ctx.body = result.error(1, "获取用户信息失败");
 
         }
@@ -58,8 +74,8 @@ export const login = async function (ctx, next) {
 const sendUserInfo = async (openid, access_token) => {
     // let result:Result = new Result();
     ///user/getUserId?openid=ofrn10wNPOGlmHgv3G0ivs9i_KVM
-    // let result: any = await fetch.getData("/user/getUserId", { openid, access_token }, "GET");
-    let result: any = await fetch.getData("/user/getUserId", { openid }, "GET");
+    let result: any = await fetch.getData("/user/getUserId", { openid, access_token }, "GET");
+    // let result: any = await fetch.getData("/user/getUserId", { openid }, "GET");
     if (result && result.responseCode === 1000) {
         return result.data;
     } else {
