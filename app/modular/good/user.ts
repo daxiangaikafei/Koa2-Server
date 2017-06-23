@@ -3,7 +3,7 @@ import Fetch from "./../../library/help/fetch";
 
 import Token from "./../../library/help/token";
 import VerifyUser from "./../../library/verifyUser";
-// import localConfig from "./../../config"
+import localConfig from "./../../config"
 
 const moment = require("moment");
 
@@ -11,11 +11,7 @@ const tokenHelp:Token = new Token();
 const verifyUser:VerifyUser =
   new VerifyUser();
 
-  const localConfig:LocalConfig = require("./../../config/index");
-// const config = LocalConfig.routes.good;
-
 const config = localConfig.routes.good;
-
 const SSO = localConfig.SSO;
 
 

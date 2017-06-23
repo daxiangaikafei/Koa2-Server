@@ -4,13 +4,9 @@ import Weixin from "./../weixin/interface";
 import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
 import ConfigHelp from "./../../library/help/config";
-// import localConfig from "./../../config"
+import localConfig from "./../../config";
 
-// const config = localConfig.config.routes.item;
-
-const localConfig:LocalConfig = require("./../../config/index");
 const config = localConfig.routes.item;
-
 
 const fetch: Fetch = new Fetch(config.domain, config.timeout);
 fetch.setDomain(config.domain);

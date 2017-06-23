@@ -1,5 +1,4 @@
 import * as Redis from "ioredis";
-import RedisRouterConfig from '../../config/redisRouterConfig'
 
 let redisConfig:Sysconfig = require("./../../../config/index");
 let redis = new Redis(redisConfig.redis);

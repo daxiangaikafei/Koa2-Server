@@ -1,7 +1,10 @@
-// import LocalConfig from './../../config'
-const config:LocalConfig = require("./../../config/index");
 
-const Error = config.error;
+// import LocalConfig from './../../config'
+// const config:LocalConfig = require("./../../config/index");
+
+import localConfig from './../../config'
+
+const Error = localConfig.error;
 class Result {
     constructor() {
         this.resultCode = 0;

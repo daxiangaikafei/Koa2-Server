@@ -1,5 +1,5 @@
 import Weixin from "./../weixin/interface";
-const Config:any = require("./../../config");
+import Config from '../../config'
 import Timming from "./../../library/help/timming";
 import ConfigHelp from "./../../library/help/config";
 // import * as later from "later";

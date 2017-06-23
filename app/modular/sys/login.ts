@@ -3,9 +3,7 @@ import Fetch from "./../../library/help/fetch";
 
 import Token from "./../../library/help/token";
 import VerifyUser from "./../../library/verifyUser";
-
-// import localConfig from './../../config'
-const localConfig:LocalConfig = require("./../../config/index");
+import localConfig from './../../config'
 
 const moment = require("moment");
 

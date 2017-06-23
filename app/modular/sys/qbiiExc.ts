@@ -1,8 +1,7 @@
 import Result from "./../../library/help/result";
 import Fetch from "./../../library/help/fetch";
 import {template} from "lodash";
-// import localConfig from './../../config'
-const localConfig:LocalConfig = require("./../../config");
+import localConfig from './../../config'
 
 const config = localConfig.routes.qbii;
 

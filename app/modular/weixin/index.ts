@@ -1,9 +1,6 @@
 import * as Router from "koa-router";
 import Fetch from "./../../library/help/fetch";
-
-// import localConfig from './../../config'
-
-const localConfig:LocalConfig = require("./../../config/index");
+import localConfig from './../../config'
 
 const config = localConfig.routes.weixin;
 const router:Router = new Router();

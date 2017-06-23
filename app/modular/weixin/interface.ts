@@ -1,8 +1,8 @@
-// import localConfig from './../../config'
+import localConfig from './../../config'
 import ConfigHelp from "./../../library/help/config";
 import {all} from "./all";
 
-const localConfig:LocalConfig = require("./../../config/index");
+
 
 
 
