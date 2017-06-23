@@ -11,9 +11,9 @@ const moment = require("moment");
 const tokenHelp:Token = new Token();
 const verifyUser:VerifyUser = new VerifyUser();
 
-const config = localConfig.config.routes.sys;
+const config = localConfig.routes.sys;
 
-const SSO = localConfig.config.SSO;
+const SSO = localConfig.SSO;
 
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);

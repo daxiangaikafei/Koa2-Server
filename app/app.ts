@@ -1,5 +1,6 @@
 
-import * as Config from './config'
+import Config from './config'
+
 
 Config.init().then(()=>{
     let koa2Server = require('./koa2Server')

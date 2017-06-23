@@ -2,7 +2,7 @@ import localConfig from './../../config'
 import ConfigHelp from "./../../library/help/config";
 import {all} from "./all";
 
-const WeixinConfigs = localConfig.config.weixins;
+const WeixinConfigs = localConfig.weixins;
 let configHelp = new ConfigHelp();
 class Weixin {
     constructor(key){

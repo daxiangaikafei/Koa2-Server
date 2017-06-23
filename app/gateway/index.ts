@@ -1,18 +1,25 @@
-// class GateWay {
-//     constructor(){
+import * as LocalConfig from "./../config";
 
-//     }
-// }
+import Result from "./../library/help/result";
+
 
 // import config:LocalConfig from "./../config";
 
-const GateWay = async function (ctx,next) {
 
-    // tianxia  diyi 
-    await next();
-
-
+// const GateWay = async function (ctx, next) {
     
-}
+//     // tianxia  diyi
+//     let {url} = ctx;
+//     url = url.split("?")[0];
+//     let info  = LocalConfig.gateway.routers[url];
 
-export default GateWay;
+//     if(!info){
+
+//     }else{
+//         ctx.body
+//     }
+//     await next();
+
+// }
+
+// export default GateWay;

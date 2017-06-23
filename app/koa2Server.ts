@@ -28,7 +28,6 @@ let koa2Server = ()=>{
 
     app.keys = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
 
-
     app.use(RequestLogger())
 
     app.use(convert(body({
@@ -73,6 +72,8 @@ let koa2Server = ()=>{
         app.use(router.routes())
         app.use(router.allowedMethods());
     })
+
+    console.log(config.localServer.port)
 
     app.listen(config.localServer.port);
 

@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp start",
-    "build-dev":"gulp dev-build",
-    "build":"gulp build"
+    "build-dev": "gulp dev-build",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -31,11 +31,11 @@
     "moment": "^2.18.1",
     "node-schedule": "^1.2.3",
     "redis": "^2.7.1",
-    "winston": "^2.3.1",
     "ts-loader": "^2.0.3",
     "typescript": "^2.4.0-dev.20170608",
     "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
     "webpack": "^2.4.1",
+    "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.4.6"
   },
   "devDependencies": {
@@ -46,7 +46,6 @@
     "@types/koa-router": "^7.0.22",
     "@types/lodash": "^4.14.66",
     "@types/node": "^8.0.0",
-    "@types/node-fetch": "^1.6.7",
     "@types/node-schedule": "^1.2.0",
     "@types/webpack": "^2.2.16",
     "@types/winston": "^2.3.3",

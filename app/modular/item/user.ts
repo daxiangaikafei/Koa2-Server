@@ -6,7 +6,7 @@ import Token from "./../../library/help/token";
 import ConfigHelp from "./../../library/help/config";
 import localConfig from "./../../config"
 
-const config = localConfig.config.routes.item;
+const config = localConfig.routes.item;
 const fetch: Fetch = new Fetch(config.domain, config.timeout);
 fetch.setDomain(config.domain);
 fetch.setTimeout(config.timeout);
@@ -94,6 +94,8 @@ export const getWeiXinInfo = async () => {
             jsapi_ticket: data.data.jsapiTicket,
         })
         return true;
+    }else{
+        console.log("获取 有好物的微信配置异常...",data)
     }
     return false;
 

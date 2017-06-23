@@ -1,63 +1,91 @@
 import * as path from "path";
 import redis from '../library/help/redis'
 
-const fs = require('fs');
-const env = process.env.NODE_ENV || 'development';
+class Config{
+    constructor(){
 
-let config:LocalConfig
-const configName = "localConfig"
-
-const init = async () =>{
-    let data:LocalConfig = await getRedisData()
-    if(!data){
-        config = JSON.parse(fs.readFileSync(path.resolve(__dirname,'./localConfig.'+env+'.json')).toString())
-        redis.set(configName, JSON.stringify(config))
-    }else{
-        config = data
     }
-    console.log("config 数据初始化成功")
-    IntervalUpdate(1000*60)
-}
 
-const getRedisData = async ()=>{
-    let data = await redis.get(configName)
-    let result:LocalConfig
-    if(data){
-        result = JSON.parse(data);
+    error:any;
+    routes:{
+        qbii: RouterConfig;
+        good: RouterConfig;
+        sys: RouterConfig;
+        weixin: RouterConfig;
+        item: RouterConfig;
+    };
+    ignoreUrls:any;
+    redis:any;
+    cookie:any;
+    SSO:boolean;
+    weixins:any;
+    
+    private fs = require('fs');
+    private env = process.env.NODE_ENV || 'development';
+    private configName = "localConfig"
+    private config:LocalConfig;
+
+    public init = async () =>{
+        let data:LocalConfig = await this.getRedisData()
+        if(!data){
+            data = JSON.parse(this.fs.readFileSync(path.resolve(__dirname,'./localConfig.'+this.env+'.json')).toString())
+            redis.set(this.configName, JSON.stringify(data))
+        }
+
+        this.initConfig(data)
+        console.log("config 数据初始化成功")
+        this.IntervalUpdate(1000*60)
     }
-    return result
-}
 
-const update = async () =>{
-    let result:LocalConfig = await getRedisData()
-    return result
-}
+    private initConfig = (redisConfig:LocalConfig)=>{
+        this.config = redisConfig;
+        this.error = redisConfig.error;
+        this.routes = redisConfig.routes;
+        this.ignoreUrls = redisConfig.ignoreUrls;
+        this.redis = redisConfig.redis;
+        this.cookie = redisConfig.cookie;
+        this.SSO = redisConfig.SSO;
+        this.weixins = redisConfig.weixins;
+    }
 
-const IntervalUpdate = (times) => {
-    setInterval(async ()=>{
-        config = await update()
-        console.log("redis 配置文件已更新")
-    }, times)
-}
+    getRedisData = async ()=>{
+        let data = await redis.get(this.configName)
+        let result:LocalConfig
+        if(data){
+            result = JSON.parse(data);
+        }
+        return result
+    }
+
+    private update = async () =>{
+        let result:LocalConfig = await this.getRedisData()
+        return result
+    }
+
+    private IntervalUpdate = (times) => {
+        setInterval(async ()=>{
+            let data:LocalConfig = await this.update()
+            this.initConfig(data)
+            console.log("redis 配置文件已更新")
+        }, times)
+    }
 
 
-/**
- * 添加修改数据
- * @param routerName 
- * @param routerData 
- */
-const setRouterData = async (routerName, routerData:RouterConfig) => {
-    let result:LocalConfig = await getRedisData()
-    if(result){
-        result.routes[routerName] = routerData
-        config = result
-        redis.set(configName, config)
+    /**
+     * 添加修改数据
+     * @param routerName 
+     * @param routerData 
+     */
+    setRouterData = async (routerName, routerData:RouterConfig) => {
+        let result:LocalConfig = await this.getRedisData()
+        if(result){
+            result.routes[routerName] = routerData
+            redis.set(this.configName, result)
+            this.initConfig(result)
+        }
     }
 }
 
-export default {
-    get config(){
-        return config
-    }
-}
-export { init, setRouterData }
+let c  = new Config()
+
+export default c

@@ -5,7 +5,7 @@ import localConfig from "./../../config"
 
 import {template} from "lodash";
 
-const config = localConfig.config.routes.item;
+const config = localConfig.routes.item;
 
 const fetch:Fetch = new Fetch(config.domain,config.timeout);
 fetch.setDomain(config.domain);

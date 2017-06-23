@@ -1,6 +1,6 @@
 import localConfig from './../../config'
 
-const Error = localConfig.config.error;
+const Error = localConfig.error;
 class Result {
     constructor() {
         this.resultCode = 0;
