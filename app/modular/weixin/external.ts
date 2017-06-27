@@ -91,3 +91,25 @@ export const getJsInfo = async(ctx,next)=>{
     //jsapi_ticket, url
     
 }
+
+// export const getInfo = async(ctx,next)=>{
+//     let result:Result = new Result();
+//     let param = ctx.query;
+//     let params = ctx.params;
+//     let verify:any = verifyEntity(param,{
+//         url:""
+//     });
+//     if(_.isObject(verify)&&params.channel){
+//         let url = verify.url.substr(0,verify.url.indexOf("#"))
+//         let weixinInfo:any  = await configHelp.getWeiXinInfo(params.channel);
+//         let temp = Sign(weixinInfo.jsapi_ticket,param.url);
+//         console.info(temp)
+//         ctx.body = result.success(Object.assign(temp,{
+//             appid:weixinInfo.appid
+//         }))
+//     }else{
+//         ctx.body = result.error(1,verify.toString());
+//     }
+//     //jsapi_ticket, url
+    
+// }

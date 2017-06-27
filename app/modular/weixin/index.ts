@@ -10,6 +10,7 @@ router.prefix(config.prefix);
 import * as external from "./external";
 router.post("/info/:channel",external.setConfig);
 router.get("/js/info/:channel",external.getJsInfo);
+// router.get("/info/appid",)
 
 // import {login} from "./user";
 // import {all} from "./all";

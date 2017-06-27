@@ -12,6 +12,8 @@ import logger from "./library/log/logger"
 //import aa from "./library/help/mysql";
 import auxiliary from "./auxiliary";
 
+
+import GateWay from "./gateway";
 //aa;
 //import * as onError    from 'koa-onerror'npm
 // console.log(RequestLogger)
@@ -28,7 +30,8 @@ let koa2Server = ()=>{
 
     app.keys = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
 
-    app.use(RequestLogger())
+    app.use(RequestLogger()) //日志
+    app.use(GateWay());//api网管拦截
 
     app.use(convert(body({
         onerror: function (err, ctx) {
