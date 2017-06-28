@@ -55,19 +55,21 @@ class VerifyUser {
         // return redis.get(config.redis.tokenKey+":"+key);
         return redis.get(key);
     }
-    verifyToken(token:string){
-        return new Promise((rev,reb)=>{
-                if(!token){
-                    reb();
-                }
-                this.getTokenInfo(token).then(result=>{
-                        if(result){
-                            rev(JSON.parse(result))
-                        }else{
-                            reb()
-                        }
-                })
-        })
+    async _verifyToken(token:string){
+        // return new Promise((rev,reb)=>{
+        //         if(!token){
+        //             reb();
+        //         }
+        //         this.getTokenInfo(token).then(result=>{
+        //                 if(result){
+        //                     rev(JSON.parse(result))
+        //                 }else{
+        //                     reb()
+        //                 }
+        //         })
+        // })
+        let result = await this.getTokenInfo(token);
+        return (result&&JSON.parse(result))||result
     }
     //根据key  获取用户信息
    async getTokenInfoByKey(key,ctx){
@@ -77,7 +79,7 @@ class VerifyUser {
     }
     getTokenKey(ctx){
         let key = ctx.originalUrl.split("/")[2]
-        let tokenKey = config.routes[key]["tokenKey"]||config.routes["qbii"]["tokenKey"];
+        let tokenKey = (config.routes[key]&&config.routes[key]["tokenKey"])||config.routes["qbii"]["tokenKey"];
         return tokenKey;
     }
     getToken(ctx){
@@ -87,7 +89,16 @@ class VerifyUser {
         }
         return this.getTokenKey(ctx)+":"+token;
     }
-    verify(ctx,next){
+    async verifyToken(ctx){
+        let token  = this.getToken(ctx);
+        let info = await this._verifyToken(token);
+        if(info){
+           return true;
+        }else{
+           return false; 
+        } 
+    }
+    async verify(ctx,next){
         //查看url是否在 过滤名单里面  .split(",")[1]
         //let token = ctx.cookies.get("token");
         let token  = this.getToken(ctx);
@@ -98,15 +109,15 @@ class VerifyUser {
         }
         
         if(token){
-            return this.verifyToken(token).then((info:any)=>{
-                ctx.state.userInfo = info
-                //  ctx.state.config = 
+            let info = await this._verifyToken(token);
+            if(info){
+                ctx.state.userInfo = info;
                 return next();
-            }).catch(()=>{
+            }else{
                 result.error(200,"登录过期");
-                ctx.body = result.getValue();
-                return; 
-            })
+                    ctx.body = result.getValue();
+                    return; 
+            }
         }else{
             result.error(200,"未登陆");
             ctx.body = result.getValue();

@@ -225,7 +225,7 @@
     },
     "cookie": {
         "signed": true,
-        "maxAge": 2592000, 
+        "maxAge": 25920000000, 
         "secure": false, 
         "httpOnly": true
     },

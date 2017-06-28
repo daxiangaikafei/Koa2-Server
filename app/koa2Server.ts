@@ -14,15 +14,18 @@ import auxiliary from "./auxiliary";
 
 
 import GateWay from "./gateway";
+const config : Sysconfig = require("./../config/index");
+    const routers : Router[] = require("./routes/index");
+    const convert = require('koa-convert')
+const env = process.env.NODE_ENV || 'development';
+    
+
 //aa;
 //import * as onError    from 'koa-onerror'npm
 // console.log(RequestLogger)
 
 let koa2Server = ()=>{
-    const env = process.env.NODE_ENV || 'development';
-    const config : Sysconfig = require("./../config/index");
-    const routers : Router[] = require("./routes/index");
-    const convert = require('koa-convert')
+    
 
     let result : Result = new Result();
     let verifyUser : VerifyUser = new VerifyUser();

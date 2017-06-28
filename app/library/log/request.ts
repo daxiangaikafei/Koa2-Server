@@ -9,7 +9,7 @@ var log = new(winston.Logger)({
   transports: [//   new (winston.transports.Console)(),
 
     // new winston.transports.DailyRotateFile({filename: 'request', datePattern: '_yyyy-MM-ddTHH.log'})
-    new(winston.transports.File)({filename: './log/request.log'})
+    new(winston.transports.File)({filename: 'request.log'})
     // new winston.transports.DailyRotateFile({
     //   filename: './log/request',
     //   datePattern: '_yyyy-MM-ddTHH.log',

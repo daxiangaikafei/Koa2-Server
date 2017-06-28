@@ -20,10 +20,21 @@ let weixin = new Weixin("item");
  * @param ctx 
  * @param next 
  */
+export const logind = async function (ctx, next) {
+    verifyUser.setCookie(ctx, "token", "xxx", "sssss");
+    ctx.body={};
+    return;
+}
 export const login = async function (ctx, next) {
     let result: Result = new Result();
     let { code } = ctx.query;
     // console.info()
+    let isLogin = await verifyUser.verifyToken(ctx);
+    if(isLogin){
+        ctx.body = result.success({});
+        return;
+    }
+
     let re: any = await weixin.userTokenGet(code);
     // ctx.body = re;
     if (re && re.errcode == undefined) {
@@ -39,9 +50,6 @@ export const login = async function (ctx, next) {
             ctx.body = result.success({});
             return;
         }
-
-
-
         let guanzhuUserInfo: any = await weixin.userInfoGetByGuanZhu(resultRefresh.openid);
         let shouquanUserInfo: any = await weixin.userInfoGet(resultRefresh.openid, resultRefresh.access_token);
         userInfo = guanzhuUserInfo;
