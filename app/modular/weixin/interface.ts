@@ -25,6 +25,10 @@ class Weixin {
         })
         return Object.assign({},result,others);
     }
+    async infoGet (){
+        let {key} = this;
+        return await configHelp.getWeiXinInfo(key);
+    }
     async userTokenGet(code:string){
          return  all("/api/weixin/user/token",await this.getParams(["appid","secret"],{code,grant_type:"authorization_code"}));
     }

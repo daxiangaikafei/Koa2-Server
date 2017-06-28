@@ -19,5 +19,6 @@ for(var key in routes){
 }
 
 router.get("/user/login",User.login);
-router.get("/user/info",User.getUserInfo);
+router.get("/weixin/info",User.getWXInfo)
+// router.get("/user/info",User.getUserInfo);
 module.exports = router;

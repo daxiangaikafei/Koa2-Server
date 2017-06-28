@@ -19,6 +19,7 @@ class Config{
     cookie:any;
     SSO:boolean;
     weixins:any;
+    gateway:any;
     
     private fs = require('fs');
     private env = process.env.NODE_ENV || 'development';
@@ -27,7 +28,7 @@ class Config{
 
     public init = async () =>{
         let data:LocalConfig = await this.getRedisData()
-        if(!data){
+       if(!data){
             data = JSON.parse(this.fs.readFileSync(path.resolve(__dirname,'./localConfig.'+this.env+'.json')).toString())
             redis.set(this.configName, JSON.stringify(data))
         }

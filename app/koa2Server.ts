@@ -12,15 +12,20 @@ import logger from "./library/log/logger"
 //import aa from "./library/help/mysql";
 import auxiliary from "./auxiliary";
 
+
+import GateWay from "./gateway";
+const config : Sysconfig = require("./../config/index");
+    const routers : Router[] = require("./routes/index");
+    const convert = require('koa-convert')
+const env = process.env.NODE_ENV || 'development';
+    
+
 //aa;
 //import * as onError    from 'koa-onerror'npm
 // console.log(RequestLogger)
 
 let koa2Server = ()=>{
-    const env = process.env.NODE_ENV || 'development';
-    const config : Sysconfig = require("./../config/index");
-    const routers : Router[] = require("./routes/index");
-    const convert = require('koa-convert')
+    
 
     let result : Result = new Result();
     let verifyUser : VerifyUser = new VerifyUser();
@@ -28,7 +33,8 @@ let koa2Server = ()=>{
 
     app.keys = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
 
-    app.use(RequestLogger())
+    app.use(RequestLogger()) //日志
+    app.use(GateWay());//api网管拦截
 
     app.use(convert(body({
         onerror: function (err, ctx) {
