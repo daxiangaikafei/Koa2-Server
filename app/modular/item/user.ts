@@ -20,8 +20,8 @@ let weixin = new Weixin("item");
  * @param ctx 
  * @param next 
  */
-export const logind = async function (ctx, next) {
-    verifyUser.setCookie(ctx, "token", "xxx", "sssss");
+export const loginx = async function (ctx, next) {
+    ctx.cookies.set('name', 'tobi', { signed: true });
     ctx.body={};
     return;
 }

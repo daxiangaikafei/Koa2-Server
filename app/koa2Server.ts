@@ -12,29 +12,26 @@ import logger from "./library/log/logger"
 //import aa from "./library/help/mysql";
 import auxiliary from "./auxiliary";
 
-
 import GateWay from "./gateway";
 const config : Sysconfig = require("./../config/index");
-    const routers : Router[] = require("./routes/index");
-    const convert = require('koa-convert')
+const routers : Router[] = require("./routes/index");
+const convert = require('koa-convert')
 const env = process.env.NODE_ENV || 'development';
-    
 
-//aa;
-//import * as onError    from 'koa-onerror'npm
-// console.log(RequestLogger)
+// import * as KeyGrip from "keygrip";
+//aa; import * as onError    from 'koa-onerror'npm console.log(RequestLogger)
 
-let koa2Server = ()=>{
-    
+let koa2Server = () => {
 
     let result : Result = new Result();
     let verifyUser : VerifyUser = new VerifyUser();
     let app : koa = new koa();
-
+    // app.keys = ['im a newer secret', 'i like turtle'];
     app.keys = ['im a newer secret', '你说是啥 就是啥，呵呵哒'];
-
+    // app.keys = new KeyGrip(['im a newer secret', 'i like turtle'], 'sha256');
+    
     app.use(RequestLogger()) //日志
-    app.use(GateWay());//api网管拦截
+    app.use(GateWay()); //api网管拦截
 
     app.use(convert(body({
         onerror: function (err, ctx) {
@@ -49,7 +46,9 @@ let koa2Server = ()=>{
             return;
         }
         result.error(500, "");
-        this.res.end(JSON.stringify(result.getValue()));
+        this
+            .res
+            .end(JSON.stringify(result.getValue()));
     }
 
     /*处理  404   500  页面 */
