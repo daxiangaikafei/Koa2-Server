@@ -1,4 +1,5 @@
 import * as winston from "winston";
+import * as path from "path";
 require('winston-daily-rotate-file')
 
 // winston.configure({     transports: [
@@ -11,8 +12,9 @@ var log = new(winston.Logger)({
     // new winston.transports.DailyRotateFile({filename: 'request', datePattern: '_yyyy-MM-ddTHH.log'})
     // new(winston.transports.File)({filename: 'request.log'})
     new winston.transports.DailyRotateFile({
-      filename: 'log/request',
-      datePattern: '_yyyy-MM-ddTHH.log',
+
+      filename: path.resolve(__dirname,'../../log/request'),
+      datePattern: '_yyyy-MM-ddTHH.log'
     })
     ]
 });

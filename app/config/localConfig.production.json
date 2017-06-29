@@ -1,6 +1,8 @@
 {
     "error": {
         "200": "未登录",
+        "201":"微信未关注，需要授权",
+        "101":"接口已关闭",
         "404": "未发现",
         "500": "内部错误",
         "1000": "超时",
@@ -137,9 +139,11 @@
             ]
         },
         "item": {
-            "domain": "http://10.172.20.49:8080",
+            "domain": "http://nodewyhw.banyan-data.com",
             "prefix": "/api/item",
             "timeout": 5000,
+            "SSO":true,
+            "tokenKey":"n_t_item",
             "routes": {
                 "/goodsCoupon/couponList": {
                     "url": "/goodsCoupon/${userId}/couponList",
@@ -185,9 +189,9 @@
         "/api/qbii/news/getNewsDetail":true,
         "/api/qbii/v1/user/getUserLevel":true,
         "/api/item/user/login":true,
-        "/api/weixin/setinfo/item":true,
-        "/api/weixin/js/info/item":true
-        
+        "/api/weixin/info/item":true,
+        "/api/weixin/js/info/item":true,
+        "/api/item/weixin/info":true
     },
     "redis": {
         "tokenKey": "nodeServer-token",
@@ -207,7 +211,7 @@
     },
     "cookie": {
         "signed": true,
-        "maxAge": 2592000, 
+        "maxAge": 25920000000, 
         "secure": false, 
         "httpOnly": true
     },

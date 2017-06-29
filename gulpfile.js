@@ -66,11 +66,25 @@ gulp.task("mv", function () {
 
 gulp.task("build", function () {
     env = "production";
-    runSequence("webpack", "config", "mv")
+    runSequence("webpack", "config", "mv");
+    mv();
 })
 
 gulp.task("dev-build", function () {
     env = "production";
     runSequence("webpack", "dev-config", "mv");
+    mv();
 
 })
+
+var mv = function(){
+    setTimeout(function(){
+        runSequence("mv");
+        clearInterval(timer)
+    },10000)
+    var time =6;
+    let timer = setInterval(function(){
+        console.log("倒计时"+time);
+        --time;
+    },1000)
+}
