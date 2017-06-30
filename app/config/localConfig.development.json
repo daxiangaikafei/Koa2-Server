@@ -190,10 +190,8 @@
     "gateway":{
         "routes":{
             "/api/user/login":{
-                "isUse":false,
                 "isLogin":false,
-                "version":1,
-                "product":"qbii"
+                "version":"1"
             }
         }
     },

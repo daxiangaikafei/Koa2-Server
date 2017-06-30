@@ -64,7 +64,7 @@ gulp.task("mv", function () {
         .pipe(gulp.dest("./../release/KoaServer/"));
 })
 
-gulp.task("build", function () {
+gulp.task("production-build", function () {
     env = "production";
     runSequence("webpack", "config", "mv");
     mv();
@@ -75,6 +75,12 @@ gulp.task("dev-build", function () {
     runSequence("webpack", "dev-config", "mv");
     mv();
 
+})
+
+gulp.task("release-build", function () {
+    env = "release";
+    runSequence("webpack", "config", "mv");
+    mv();
 })
 
 var mv = function(){

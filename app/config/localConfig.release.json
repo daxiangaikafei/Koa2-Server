@@ -1,6 +1,8 @@
 {
     "error": {
         "200": "未登录",
+        "201":"微信未关注，需要授权",
+        "101":"接口已关闭",
         "404": "未发现",
         "500": "内部错误",
         "1000": "超时",
@@ -11,6 +13,9 @@
             "domain": "http://nodeqbii.qbao.com",
             "prefix": "/api/qbii",
             "timeout": 5000,
+            "tokenKey": "nodeServer-token",
+            "expiration": 2592000,
+            "SSO": false,  
             "routes": {
                 "/user/userId": {
                     "url": "/api/user/${userId}/userId",
@@ -67,30 +72,81 @@
         "good": {
             "domain": "http://192.168.7.104",
             "prefix": "/api/good",
-            "timeout": 5000
+            "timeout": 5000,
+            "tokenKey": "nodeServer-token",
+            "expiration": 2592000,
+            "SSO": false
         },
         "sys": {
-            "domain": "http://192.168.131.145:10550", 
+            "domain": "http://nodeqbii.qbao.com", 
             "prefix": "/api",
-            "timeout": 5000
+            "timeout": 5000,
+            "tokenKey": "nodeServer-token",
+            "expiration": 2592000,
+            "SSO": false 
+        },
+        "weixin": {
+            "domain": " https://api.weixin.qq.com",
+            "prefix": "/api/weixin",
+            "timeout": 5000, 
+            "routes": {
+                "/user/token": {
+                    "url": "/sns/oauth2/access_token",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                 "/user/tokenRefresh": {
+                    "url": "/sns/oauth2/refresh_token",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/info": {
+                    "url": "/sns/userinfo",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/info/guanzhu": {
+                    "url": "/cgi-bin/user/info",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                 "/config/token": {
+                    "url": "/cgi-bin/token",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/config/jsTicket":{
+                    "url":"/cgi-bin/ticket/getticket",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/menu/get":{
+                    "url":"/cgi-bin/get_current_selfmenu_info",
+                    "method":"GET",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                }
+            },
+            "ips":[
+                "172.0.0.1",
+                "192.168.1.1"
+            ]
         },
         "item": {
-            "domain": "http://192.168.132.44:8081/goods",
+            "domain": "http://nodewyhw.banyan-data.com",
             "prefix": "/api/item",
             "timeout": 5000,
+            "SSO":true,
+            "tokenKey":"n_t_item",
             "routes": {
-                "/config/wqTokenConfig": {
-                    "url": "/config/wqTokenConfig",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
                 "/goodsCoupon/couponList": {
                     "url": "/goodsCoupon/${userId}/couponList",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goodsCoupon/couponDetail/:goodsId": {
-                    "url": "/goodsCoupon/${userId}/${goodsId}/couponDetail",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
@@ -99,18 +155,28 @@
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
-                "/user/getUserPoints": {
-                    "url": "/user/getUserPoints/${userId}",
+                "/goodsCoupon/couponDetail/:goodsId": {
+                    "url": "/goodsCoupon/${userId}/${goodsId}/couponDetail",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
-                "/user/order/list": {
-                    "url": "/user/order/list/${userId}",
+                "/user/getUserPoints": {
+                    "url": "/user/userPoints/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/order/myorder": {
+                    "url": "/user/order/myorder/${userId}",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/order/submitOrderNo": {
-                    "url": "/user/order/submitOrderNo/${userId}",
+                    "url": "/user/order/${userId}/submitOrderNo",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/getUserInfo": {
+                    "url": "/user/userinfo/${userId}",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 }
@@ -122,16 +188,30 @@
         "/api/qbii/news/getNewsList":true,
         "/api/qbii/news/getNewsDetail":true,
         "/api/qbii/v1/user/getUserLevel":true,
-
-        "/api/item/config/wqTokenConfig": true
+        "/api/item/user/login":true,
+        "/api/weixin/info/item":true,
+        "/api/weixin/js/info/item":true,
+        "/api/item/weixin/info":true
     },
     "redis": {
         "tokenKey": "nodeServer-token",
         "expiration": 2592000 
     },
+    "auxiliary":{
+        "timing":{
+            "weixin":{
+                "getToken":{
+                    "time":"*/5 * * * * *"
+                },
+                "tickerJsGet":{
+                    "time":"*/5 * * * * *"
+                }
+            }
+        }
+    },
     "cookie": {
         "signed": true,
-        "maxAge": 2592000, 
+        "maxAge": 25920000000, 
         "secure": false, 
         "httpOnly": true
     },

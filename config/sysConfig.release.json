@@ -9,17 +9,21 @@
         "redis": {
             "sentinels":[
                 {
-                    "port": 6379,
-                    "host": "10.2.32.156",
+                    "port": 26379,
+                    "host": "10.2.31.138",
                     "family": 4
                 },
                 {
-                    "port": 6379,
-                    "host": "10.2.32.157",
+                    "port": 26379,
+                    "host": "10.2.31.139",
+                    "family": 4
+                },
+                {
+                    "port": 26379,
+                    "host": "10.2.31.140",
                     "family": 4
                 }
-            ],
-            "name":"qbiinode"
+            ]
         },
         "qiniu": {
             "ACCESS_KEY": "",
