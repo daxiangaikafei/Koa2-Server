@@ -5,6 +5,7 @@ import VerifyUser from "./../../library/verifyUser";
 import Token from "./../../library/help/token";
 import ConfigHelp from "./../../library/help/config";
 import localConfig from "./../../config";
+import logger from "./../../library/log/logger";
 
 const config = localConfig.routes.item;
 
@@ -50,19 +51,20 @@ export const login = async function (ctx, next) {
             ctx.body = result.success({});
             return;
         }
-        let guanzhuUserInfo: any = await weixin.userInfoGetByGuanZhu(resultRefresh.openid);
+        // let guanzhuUserInfo: any = await weixin.userInfoGetByGuanZhu(resultRefresh.openid);
         let shouquanUserInfo: any = await weixin.userInfoGet(resultRefresh.openid, resultRefresh.access_token);
-        userInfo = guanzhuUserInfo;
-        if(guanzhuUserInfo.errcode==undefined&&guanzhuUserInfo.subscribe===0){
-            //没有关注
-            userInfo = shouquanUserInfo;
-            if(shouquanUserInfo.errcode&&shouquanUserInfo.errcode===48001){
-                //没有授权
-                ctx.body = result.error(201,"此用户未关注,也没有授权，需要跳转到授权界面");
-                return;
-            }
+        // userInfo = guanzhuUserInfo;
+        // if(guanzhuUserInfo.errcode==undefined&&guanzhuUserInfo.subscribe===0){
+        //     //没有关注
+        //     userInfo = shouquanUserInfo;
+        //     if(shouquanUserInfo.errcode&&shouquanUserInfo.errcode===48001){
+        //         //没有授权
+        //         ctx.body = result.error(201,"此用户未关注,也没有授权，需要跳转到授权界面");
+        //         return;
+        //     }
             
-        };
+        // };
+        userInfo = shouquanUserInfo;
         let jgUserInfo = await sendUserInfo(resultRefresh.openid, resultRefresh.access_token,userInfo);
         // console.log(jgUserInfo, "\n",guanzhuUserInfo);userInfo.openid
         // let jgUserInfo ="xxxxxxxxx";
@@ -76,13 +78,18 @@ export const login = async function (ctx, next) {
             verifyUser.setCookie(ctx, "token", token, userId);
             ctx.body = result.success({});
         } else {
+            logger.error("用户登录失败","",{
+                resultRefresh:resultRefresh,
+                userInfo:jgUserInfo
+            })
             result.success(userInfo);
             ctx.body = result.error(1, "获取用户信息失败");
 
         }
+        
 
-        console.log("resultRefresh", resultRefresh)
-        console.log("userInfo", userInfo)
+        // console.log("resultRefresh", resultRefresh)
+        // console.log("userInfo", userInfo)
     } else {
         ctx.body = result.error(1, "获取用户信息失败");
     }

@@ -5,7 +5,7 @@
     "instances" : 6,
     "exec_mode" : "cluster",
     "watch"       : true,
-    "ignore_watch":"*.log",
+    "ignore_watch":["*.log","node_modules","log"],
     "err_file"    : "node-server.log",
     "out_file"    : "node-server.log",
     "env": {

@@ -18,7 +18,8 @@ export const all  = function(ctx,next){
 	let result:Result = new Result();
 	let {method,header} =  ctx.request;
 	let url = ctx._matchedRoute;
-	let {userId} = ctx;
+	// let {userId} = ctx;
+	let {userId} = ctx.state.userInfo||{userId:""};
     let param= (method==="GET"?(ctx.request.query):(ctx.request.body || ctx.request.fields))||{};
 	let params = ctx.params||{};
     url = url.replace(config.prefix,"");

@@ -3,6 +3,7 @@ import {size} from "lodash";
 import "isomorphic-fetch";
 
 var FormData = require('isomorphic-form-data');
+import logger from "./../log/logger" 
 
 class Fetch {
     constructor(domain : string, timeout : number = 5000) {
@@ -40,8 +41,11 @@ class Fetch {
             url += "?" + toExcString(param)
         }
         headers = getHeadersByRepType(repType, Object.assign({},this.headers,headers));
-       // console.log(headers);
+       // console.log(headers); Content-Type application/x-www-form-urlencoded
         let body = getDataByRepType(repType, param);
+        // headers = Object.assign({},{
+        //     "Content-Type":"application/x-www-form-urlencoded"
+        // })
         return timeoutPromise(timeout || this.timeout, fetch(this.domain + url, {
             method: type,
             headers: headers,
@@ -53,7 +57,15 @@ class Fetch {
             console.log("fetxhUrl:"+url)
             return res.json()
         }).catch((e) => {
-            console.log(e);
+            logger.error("fetch",JSON.stringify({
+                url:this.domain + url,
+                method:type,
+                 headers: headers,
+                  body: (type === "GET"
+                ? undefined
+                : body)
+            }),e)
+            // console.log(e);
         }));
     }
 }

@@ -50,18 +50,23 @@ gulp.task("config", function () {
 
 gulp.task("dev-config", function () {
     return replaceName([
-        "./app/config/localConfig.development.json", "./config/sysConfig.development.json", "./process.json"
-    ], "development", env)
+        "./app/config/localConfig."+env+".json", "./config/sysConfig."+env+".json", "./process.json"
+    ], env,"production")
 })
+
+
 
 gulp.task("mv", function () {
     gulp
         .src("./dist/*")
-        .pipe(gulp.dest("./../release/KoaServer/"));
+        .pipe(gulp.dest("./../release/server/"));
 
     gulp
         .src("./package.json")
-        .pipe(gulp.dest("./../release/KoaServer/"));
+        .pipe(gulp.dest("./../release/server/"));
+    //  gulp
+    //     .src("./package-lock.json")
+    //     .pipe(gulp.dest("./../release/KoaServer/"));
 })
 
 gulp.task("production-build", function () {
@@ -79,7 +84,7 @@ gulp.task("dev-build", function () {
 
 gulp.task("release-build", function () {
     env = "release";
-    runSequence("webpack", "config", "mv");
+    runSequence("webpack", "dev-config", "mv");
     mv();
 })
 

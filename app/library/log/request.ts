@@ -59,8 +59,8 @@ const logger = function () {
           "originalUrl": request.originalUrl,
           "method":request.method
         },
-        time: Date.now() - _startTime + "ms"
-        // "res":{...ctx.res},
+        time: Date.now() - _startTime + "ms",
+        "res":ctx.res,
 
       });
     }

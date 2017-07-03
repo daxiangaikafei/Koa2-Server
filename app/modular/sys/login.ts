@@ -21,21 +21,31 @@ fetch.setTimeout(config.timeout);
 
 
 
-export const login = function(ctx,next){
+export const login = async function(ctx,next){
 	let result:Result = new Result();
-	let token = verifyUser.getToken(ctx);
-	return verifyUser.verifyToken(token).then((info)=>{
-		if(SSO===true){
-			ctx.body={
-				"responseCode": 1000
-			}
-		}else{
-			return smallLogin(ctx,next);
+	// let token = verifyUser.getToken(ctx);
+	
+	let isLogin = await verifyUser.verifyToken(ctx);
+    if(isLogin){
+       ctx.body={
+			"responseCode": 1000
 		}
+        return;
+    }
+	return smallLogin(ctx,next);
+
+	// return verifyUser.verifyToken(token).then((info)=>{
+	// 	if(SSO===true){
+	// 		ctx.body={
+	// 			"responseCode": 1000
+	// 		}
+	// 	}else{
+	// 		return smallLogin(ctx,next);
+	// 	}
 		
-	}).catch(()=>{
-		return smallLogin(ctx,next);
-	})
+	// }).catch(()=>{
+	// 	return smallLogin(ctx,next);
+	// })
 
 
 	
@@ -48,12 +58,6 @@ const smallLogin = function(ctx,next){
 	 if(!searchParam.st){
 		 result.error(404);
 		 ctx.body=result.getValue();
-		 /**
-		  *   "data": null,
-  "errorCode": 0,
-  "errorMsg": "网络错误",
-  "responseCode": 1005
-		  */
 		 return;
 	 }
 	 

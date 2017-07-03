@@ -23,7 +23,8 @@
                     "host": "10.2.31.140",
                     "family": 4
                 }
-            ]
+            ],
+            "name":"wyhw"
         },
         "qiniu": {
             "ACCESS_KEY": "",

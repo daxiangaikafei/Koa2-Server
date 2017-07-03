@@ -2,7 +2,10 @@ import * as Router from "koa-router";
 import Fetch from "./../../library/help/fetch";
 import localConfig from "./../../config"
 
+
+
 const config = localConfig.routes.qbii;
+console.log(config)
 const router:Router = new Router();
 router.prefix(config.prefix);
 
