@@ -91,6 +91,7 @@ export const login = async function (ctx, next) {
         // console.log("resultRefresh", resultRefresh)
         // console.log("userInfo", userInfo)
     } else {
+        logger.error("根据code获取微信用户token失败","",{re});
         ctx.body = result.error(1, "获取用户信息失败");
     }
 };
