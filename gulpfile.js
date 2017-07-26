@@ -59,11 +59,11 @@ gulp.task("dev-config", function () {
 gulp.task("mv", function () {
     gulp
         .src("./dist/*")
-        .pipe(gulp.dest("./../release/server/"));
+        .pipe(gulp.dest("./../release/KoaServer/"));
 
     gulp
         .src("./package.json")
-        .pipe(gulp.dest("./../release/server/"));
+        .pipe(gulp.dest("./../release/KoaServer/"));
     //  gulp
     //     .src("./package-lock.json")
     //     .pipe(gulp.dest("./../release/KoaServer/"));
@@ -76,7 +76,7 @@ gulp.task("production-build", function () {
 })
 
 gulp.task("dev-build", function () {
-    env = "production";
+    env = "development";
     runSequence("webpack", "dev-config", "mv");
     mv();
 

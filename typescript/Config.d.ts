@@ -19,6 +19,7 @@ declare interface LocalConfig  {
     cookie:any;
     SSO:boolean;
     weixins:any;
+    gateway:any;
 }
 
 interface RouterConfig {

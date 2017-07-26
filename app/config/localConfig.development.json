@@ -3,6 +3,7 @@
         "200": "未登录",
         "201":"微信未关注，需要授权",
         "101":"接口已关闭",
+        "202":"token失效",
         "404": "未发现",
         "500": "内部错误",
         "1000": "超时",
@@ -10,7 +11,7 @@
     },
     "routes": {
         "qbii": {
-            "domain": "http://appqbii.qbao.com",
+            "domain": "http://nodeqbii.qbao.com",
             "prefix": "/api/qbii",
             "timeout": 5000,
             "tokenKey": "nodeServer-token",
@@ -82,7 +83,7 @@
             "SSO": false
         },
         "sys": {
-            "domain": "http://appqbii.qbao.com", 
+            "domain": "http://nodeqbii.qbao.com", 
             "prefix": "/api",
             "timeout": 5000,
             "tokenKey": "nodeServer-token",

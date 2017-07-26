@@ -12,7 +12,7 @@ var log = new (winston.Logger)({
     transports: [
       new (winston.transports.Console)(),
       new winston.transports.DailyRotateFile({
-          filename: path.resolve(process.cwd(),'./log/request'),
+          filename: path.resolve(process.cwd(),'./log/normal'),
           datePattern: '_yyyy-MM-ddTHH.log'})
     ]
   });

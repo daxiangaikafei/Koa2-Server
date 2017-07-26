@@ -35,7 +35,7 @@ class Config{
 
         this.initConfig(data)
         console.log("config 数据初始化成功",data);
-        this.IntervalUpdate(1000*60)
+        this.IntervalUpdate(1000*10)
     }
 
     private initConfig = (redisConfig:LocalConfig)=>{
@@ -47,6 +47,7 @@ class Config{
         this.cookie = redisConfig.cookie;
         this.SSO = redisConfig.SSO;
         this.weixins = redisConfig.weixins;
+        this.gateway = redisConfig.gateway;
     }
 
     getRedisData = async ()=>{

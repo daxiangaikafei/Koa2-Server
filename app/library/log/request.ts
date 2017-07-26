@@ -60,7 +60,9 @@ const logger = function () {
           "method":request.method
         },
         time: Date.now() - _startTime + "ms",
-        "res":ctx.res,
+        "res":{
+          "body": ctx.response.body
+        }
 
       });
     }

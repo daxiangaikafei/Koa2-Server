@@ -2,7 +2,8 @@ import redis from "./help/redis";
 import Token from "./help/token";
 import Result from "./help/result"; 
 import * as moment from "moment";
-import localConfig from './../config'
+import localConfig from './../config';
+import logger from "./log/logger";
 
 const result:Result = new Result();
 const config:LocalConfig = localConfig
@@ -23,7 +24,7 @@ class VerifyUser {
         this.SSO = sso;
     }
     private SSO;
-    setCookie(ctx,key,token,dataKey){
+    async setCookie(ctx,key,token,dataKey){
         ctx.cookies.set(key,(this.SSO===true?(dataKey):token),config.cookie)//LocalConfig.cookie  {"signed":true}  config.cookie
     }
     //存入 redis token userId now
@@ -47,6 +48,9 @@ class VerifyUser {
         // console.log("保存token",JSON.stringify(data));
         let key = tokenKey+":"+(this.SSO===true?dataKey:token);
         redis.set(key,JSON.stringify(data));
+        // .exex(function(err){
+        //     logger.error("登录信息保存到redis,","",JSON.stringify(err))
+        // });
         redis.expire(key,config.redis.expiration);
     }
     //从redis获取数据
@@ -103,7 +107,12 @@ class VerifyUser {
         //let token = ctx.cookies.get("token");
         let token  = this.getToken(ctx);
         let {url} = ctx;
-        url = url.split("?")[0]
+        url = url.split("?")[0];
+        // let urlInfo = config.gateway.routes[url] || undefined;
+
+        // if(urlInfo&&urlInfo.isLogin===false){
+        //     return next();
+        // }
         if(IgnoreUrls[url]){
             return next();
         }
@@ -116,10 +125,16 @@ class VerifyUser {
             }else{
                 result.error(200,"登录过期");
                     ctx.body = result.getValue();
+                    logger.error("匹配失败","",{
+                        cookie:ctx.cookies.get("token")
+                    })
                     return; 
             }
         }else{
             result.error(200,"未登陆");
+            logger.error("未登录信息","",{
+                cookie:ctx.cookies.get("token")
+            })
             ctx.body = result.getValue();
             return;
         }

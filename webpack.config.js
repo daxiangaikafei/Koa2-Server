@@ -40,7 +40,7 @@ module.exports = {
         Buffer: false,
         setImmediate: false
     },
-    //devtool: "source-map", 
+    // devtool: "source-map", 
     output: {
         path: __dirname + "/dist",
         filename: "app.js",

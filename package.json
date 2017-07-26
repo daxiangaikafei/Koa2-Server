@@ -52,8 +52,7 @@
     "typescript": "^2.3.4",
     "uglify-es": "^3.0.18",
     "uglify-es-webpack-plugin": "0.0.2",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
-    "webpack": "^3.0.0"
+    "webpack": "^3.0.0",
+    "winston-daily-rotate-file": "^1.4.6"
   }
 }

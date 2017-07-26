@@ -75,7 +75,7 @@ export const login = async function (ctx, next) {
             let token = tokenHelp.build(userId);
             // verifyUser.saveData(token,userId);
             verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx), token, Object.assign({ openid: resultRefresh.openid, access_token: resultRefresh.access_token }, { userId }), resultRefresh.openid)
-            verifyUser.setCookie(ctx, "token", token, userId);
+            await verifyUser.setCookie(ctx, "token", token, resultRefresh.openid);
             ctx.body = result.success({});
         } else {
             logger.error("用户登录失败","",{
