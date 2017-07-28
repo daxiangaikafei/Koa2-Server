@@ -102,10 +102,29 @@ class VerifyUser {
            return false; 
         } 
     }
+
+    checkIgnoreUrl(url){
+        let result = false;
+        for(let key in IgnoreUrls){
+            let index = key.indexOf("/:")
+            if(index >= 0){
+                if(key.substring(0, index) === url.substring(0, index)){
+                    result = IgnoreUrls[key];
+                    break
+                }
+            }else{
+                if(key === url){
+                    result = IgnoreUrls[key];
+                    break
+                }
+            }
+        }
+        return result
+    }
+
     async verify(ctx,next){
         //查看url是否在 过滤名单里面  .split(",")[1]
         //let token = ctx.cookies.get("token");
-        let token  = this.getToken(ctx);
         let {url} = ctx;
         url = url.split("?")[0];
         // let urlInfo = config.gateway.routes[url] || undefined;
@@ -113,10 +132,12 @@ class VerifyUser {
         // if(urlInfo&&urlInfo.isLogin===false){
         //     return next();
         // }
-        if(IgnoreUrls[url]){
+        // if(IgnoreUrls[url]){
+        if(this.checkIgnoreUrl(url)){
             return next();
         }
-        
+
+        let token  = this.getToken(ctx);
         if(token){
             let info = await this._verifyToken(token);
             if(info){
