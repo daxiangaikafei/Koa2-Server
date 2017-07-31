@@ -144,7 +144,7 @@
             ]
         },
         "item": {
-            "domain": "",
+            "domain": "http://nodewyhw.banyan-data.com/",
             "prefix": "/api/item",
             "timeout": 5000,
             "tokenKey":"n_t_item",

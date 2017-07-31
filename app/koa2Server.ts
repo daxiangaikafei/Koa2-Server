@@ -74,7 +74,9 @@ let koa2Server = () => {
     app.use(verifyUser.verify);
 
     each(routers, function (router, index) {
-        app.use(router.routes())
+       
+        app.use(router.routes());
+        
         app.use(router.allowedMethods());
     })
 
