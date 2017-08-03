@@ -8,7 +8,6 @@ import logger from "./log/logger";
 const result:Result = new Result();
 const config:LocalConfig = localConfig
 
-const IgnoreUrls = config.ignoreUrls;
 const format = "YYYY-MM-DD hh:mm:ss:SSS";
 const tokenHelp:Token = new Token();
 
@@ -105,6 +104,7 @@ class VerifyUser {
 
     checkIgnoreUrl(url){
         let result = false;
+        let IgnoreUrls = config.ignoreUrls
         for(let key in IgnoreUrls){
             let index = key.indexOf("/:")
             if(index >= 0){
