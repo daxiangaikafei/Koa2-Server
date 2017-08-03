@@ -169,6 +169,11 @@
                     "url": "/goodsCoupon/activeGoods",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
+                },
+                "/goodsCoupon/activeGoodsDetail/:goodsId": {
+                    "url": "/goodsCoupon/${goodsId}/activeGoodsDetail",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
                 }
             }
         },
@@ -242,7 +247,8 @@
         "/api/item/goodsCoupon/catogry/all": true,
         "/api/item/goodsCoupon/couponList": true,
         "/api/item/goods/goodsCoupon/activeGoods": true,
-        "/api/item/goodsCoupon/couponDetail/:goodsId": true
+        "/api/item/goodsCoupon/couponDetail/:goodsId": true,
+        "/api/item/goodsCoupon/activeGoodsDetail/:goodsId": true
     },
     "redis": {
         "tokenKey": "nodeServer-token",
