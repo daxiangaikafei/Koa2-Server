@@ -144,69 +144,79 @@
             ]
         },
         "item": {
-            "domain": "http://nodewyhw.banyan-data.com/",
+            "domain": "http://nodewyhw.banyan-data.com",
             "prefix": "/api/item",
             "timeout": 5000,
             "tokenKey":"n_t_item",
             "SSO":true,
             "routes": {
                 "/goodsCoupon/couponList": {
-                    "url": "http://nodewyhw.banyan-data.com/goodsCoupon/couponList",
+                    "url": "/goodsCoupon/couponList",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": ["v1", "v2", "v3"],
+                    "isLogin":true
                 },
                 "/goodsCoupon/catogry/all": {
-                    "url": "http://nodewyhw.banyan-data.com/goodsCoupon/catogry/all",
+                    "url": "/goodsCoupon/catogry/all",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/goodsCoupon/couponDetail/:goodsId": {
-                    "url": "http://nodewyhw.banyan-data.com/goodsCoupon/${goodsId}/couponDetail",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/user/getUserPoints": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/user/userPoints/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/user/order/myorder": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/user/order/myorder/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/user/order/submitOrderNo": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/user/order/${userId}/submitOrderNo",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/user/getUserInfo": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/user/userinfo/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/pointList": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/uc/point/detail/list/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/exchangeList": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/uc/point/exchange/list/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/exchangeSubmit": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/uc/point/exchange/submit/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/setAlipay": {
-                    "url": "http://wyhw-uc-api.banyan-data.com/user/${userId}/setAlipay",
+                    "url": "/goodsCoupon/${goodsId}/couponDetail",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/goods/goodsCoupon/activeGoods": {
-                    "url": "http://nodewyhw.banyan-data.com/goodsCoupon/activeGoods",
+                    "url": "/goodsCoupon/activeGoods",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                }
+            }
+        },
+        "itemUC": {
+            "domain": "http://wyhw-uc-api.banyan-data.com",
+            "prefix": "/api/item",
+            "timeout": 5000,
+            "tokenKey":"n_t_item",
+            "SSO":true,
+            "routes": {
+                "/user/getUserPoints": {
+                    "url": "/user/userPoints/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/order/myorder": {
+                    "url": "/user/order/myorder/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/order/submitOrderNo": {
+                    "url": "/user/order/${userId}/submitOrderNo",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/user/getUserInfo": {
+                    "url": "/user/userinfo/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/pointList": {
+                    "url": "/uc/point/detail/list/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/exchangeList": {
+                    "url": "/uc/point/exchange/list/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/exchangeSubmit": {
+                    "url": "/uc/point/exchange/submit/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/setAlipay": {
+                    "url": "/user/${userId}/setAlipay",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 }

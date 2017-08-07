@@ -142,13 +142,14 @@
             "domain": "http://nodewyhw.banyan-data.com",
             "prefix": "/api/item",
             "timeout": 5000,
-            "SSO":true,
             "tokenKey":"n_t_item",
+            "SSO":true,
             "routes": {
                 "/goodsCoupon/couponList": {
-                    "url": "/goodsCoupon/${userId}/couponList",
+                    "url": "/goodsCoupon/couponList",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": ["v1", "v2", "v3"],
+                    "isLogin":true
                 },
                 "/goodsCoupon/catogry/all": {
                     "url": "/goodsCoupon/catogry/all",
@@ -156,10 +157,24 @@
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/goodsCoupon/couponDetail/:goodsId": {
-                    "url": "/goodsCoupon/${userId}/${goodsId}/couponDetail",
+                    "url": "/goodsCoupon/${goodsId}/couponDetail",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 },
+                "/goods/goodsCoupon/activeGoods": {
+                    "url": "/goodsCoupon/activeGoods",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                }
+            }
+        },
+        "itemUC": {
+            "domain": "http://wyhw-uc-api.banyan-data.com",
+            "prefix": "/api/item",
+            "timeout": 5000,
+            "tokenKey":"n_t_item",
+            "SSO":true,
+            "routes": {
                 "/user/getUserPoints": {
                     "url": "/user/userPoints/${userId}",
                     "version": "v1",
@@ -179,6 +194,26 @@
                     "url": "/user/userinfo/${userId}",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/pointList": {
+                    "url": "/uc/point/detail/list/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/exchangeList": {
+                    "url": "/uc/point/exchange/list/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/exchangeSubmit": {
+                    "url": "/uc/point/exchange/submit/${userId}",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/goods/setAlipay": {
+                    "url": "/user/${userId}/setAlipay",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
                 }
             }
         }
@@ -191,7 +226,11 @@
         "/api/item/user/login":true,
         "/api/weixin/info/item":true,
         "/api/weixin/js/info/item":true,
-        "/api/item/weixin/info":true
+        "/api/item/weixin/info":true,
+        "/api/item/goodsCoupon/catogry/all": true,
+        "/api/item/goodsCoupon/couponList": true,
+        "/api/item/goods/goodsCoupon/activeGoods": true,
+        "/api/item/goodsCoupon/couponDetail/:goodsId": true
     },
     "redis": {
         "tokenKey": "nodeServer-token",
