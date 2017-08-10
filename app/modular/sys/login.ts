@@ -65,7 +65,7 @@ const smallLogin = function(ctx,next){
 	return fetch.getData("/api/account4Client/login",searchParam,"POST",{},"form-data").then((data:any)=>{
 
 		if(data.responseCode===1000){
-			let userId = data.data.userId;
+			let {userId} = data.data;
 			let token = tokenHelp.build(data.data.userId);
 			// verifyUser.saveData(token,userId);
 			verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx),token,{userId},userId)
