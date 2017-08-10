@@ -4,18 +4,20 @@ const gulp = require('gulp'),
     runSequence = require('run-sequence').use(gulp),
     rename = require("gulp-rename");
 
+
+
 var replaceName = function (names, hasContent, replaceContent) {
 
    return names
         .map(function (value, index) {
             gulp
                 .src(value)
-                .pipe(rename(function (path) {
-                    path.basename = path
-                        .basename
-                        .replace(hasContent, replaceContent)
-                    // path.dirname += "/ciao"; path.basename += "-goodbye"; path.extname = ".md";
-                }))
+                // .pipe(rename(function (path) {
+                //     path.basename = path
+                //         .basename
+                //         .replace(hasContent, replaceContent)
+                //     // path.dirname += "/ciao"; path.basename += "-goodbye"; path.extname = ".md";
+                // }))
                 .pipe(gulp.dest("./dist"));
         })
 }
@@ -23,8 +25,8 @@ var replaceName = function (names, hasContent, replaceContent) {
 gulp.task("webpack", function (callback) {
 
     var webpackConfig = require("./webpack.config.js");
-
-    // modify some webpack config options
+    webpackConfig.upEnv(env);
+    delete webpackConfig.upEnv;
     webpack(Object.create(webpackConfig), function (err, stats) {
         if (err) 
             throw new gutil.PluginError("webpack", err);
@@ -42,8 +44,8 @@ gulp.task("config", function () {
     gulp
         .src([
         "./app/config/localConfig." + env + ".json",
-        "./config/sysConfig." + env + ".json",
-        "./process.json"
+        "./config/sysConfig." + env + ".json"
+        // "./process.json"
     ])
         .pipe(gulp.dest("./dist"));
 })

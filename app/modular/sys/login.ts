@@ -70,6 +70,7 @@ const smallLogin = function(ctx,next){
 			// verifyUser.saveData(token,userId);
 			verifyUser.saveTokenInfo(verifyUser.getTokenKey(ctx),token,{userId},userId)
 			verifyUser.setCookie(ctx,"token",token,userId);
+			data.data.userId=123321;
 			ctx.body=data;
 		}else{
 			ctx.body=data

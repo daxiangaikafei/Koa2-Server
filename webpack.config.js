@@ -25,6 +25,9 @@ function _externals() {
 
 let externals = _externals();
 
+
+let env = "development";
+
 //console.log(externals);
 module.exports = {
     entry: {
@@ -71,7 +74,7 @@ module.exports = {
             .LimitChunkCountPlugin({maxChunks: 50, entryChunkMultiplicator: 2}),
         new webpack.DefinePlugin({
             "process.env": {
-                NODE_ENV: JSON.stringify("production")
+                NODE_ENV: JSON.stringify(env)
             }
         }),
         new UglifyEsPlugin()
@@ -83,6 +86,11 @@ module.exports = {
         //             warnings: false
         //         }
         //     })
-    ]
+    ],
+     upEnv:function(e){
+         console.log("修改webpack的全局环境变量"+e)
+        env =  e;
+    }
 
 };
+

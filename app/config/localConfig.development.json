@@ -71,6 +71,21 @@
                     "url": "/api/news/${userId}/isFinishNews.html",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
+                },
+                "/specialUser/sendSmsCode":{
+                    "url":"/api/specialUser/${userId}/sendSmsCode",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/specialUser/changeQbii":{
+                    "url":"/api/specialUser/${userId}/changeQbii",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/specialUser/qbiiUsableBalance":{
+                    "url":"/api/specialUser/${userId}/qbiiUsableBalance",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
                 }
             }
         },
