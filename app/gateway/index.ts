@@ -17,21 +17,21 @@ const getToken = function (ctx) {
 const GateWay = async function (ctx, next) {
 
     // tianxia  diyi;
-    let {url} = ctx;
-    url = url.split("?")[0];
-    console.error("-----------",config.gateway.routes)
-    let info = config.gateway.routes[url] || undefined;
-    //强制拦截  禁止接口
-    if (info && info.isGreatWall === true) {
-        ctx.body = result.error(101);
-        return
+    // let {url} = ctx;
+    // url = url.split("?")[0];
+    // console.error("-----------",config.gateway.routes)
+    // let info = config.gateway.routes[url] || undefined;
+    // //强制拦截  禁止接口
+    // if (info && info.isGreatWall === true) {
+    //     ctx.body = result.error(101);
+    //     return
 
-    }
-    //强制拦截 no token链接
-    if ((info === undefined || info.isLogin !== false) && getToken(ctx) == undefined) {
-        ctx.body = result.error(200);
-        return
-    }
+    // }
+    // //强制拦截 no token链接
+    // if ((info === undefined || info.isLogin !== false) && getToken(ctx) == undefined) {
+    //     ctx.body = result.error(200);
+    //     return
+    // }
     await next();
 
 }
