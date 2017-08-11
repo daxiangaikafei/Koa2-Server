@@ -4,6 +4,8 @@ import Result from "./../library/help/result";
 
 import config from "./../config";
 
+// console.error("config",config)
+
 let result : Result = new Result();
 
 const getToken = function (ctx) {
@@ -17,7 +19,7 @@ const GateWay = async function (ctx, next) {
     // tianxia  diyi;
     let {url} = ctx;
     url = url.split("?")[0];
-
+    console.error("-----------",config.gateway.routes)
     let info = config.gateway.routes[url] || undefined;
     //强制拦截  禁止接口
     if (info && info.isGreatWall === true) {

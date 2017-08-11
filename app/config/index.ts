@@ -29,10 +29,10 @@ class Config{
 
     public init = async () =>{
         let data:LocalConfig = await this.getRedisData()
-        if(!data){
+        // if(!data){
             data = JSON.parse(this.fs.readFileSync(path.resolve(__dirname,'./localConfig.'+this.env+'.json')).toString())
             redis.set(this.configName, JSON.stringify(data))
-        }
+        // }
         this.initConfig(data)
         console.log("config 数据初始化成功",data);
         this.IntervalUpdate(1000*10)
