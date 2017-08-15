@@ -1,9 +1,9 @@
 {
     "error": {
         "200": "未登录",
-        "201":"微信未关注，需要授权",
-        "101":"接口已关闭",
-        "202":"token失效",
+        "201": "微信未关注，需要授权",
+        "101": "接口已关闭",
+        "202": "token失效",
         "404": "未发现",
         "500": "内部错误",
         "1000": "超时",
@@ -16,76 +16,128 @@
             "timeout": 5000,
             "tokenKey": "nodeServer-token",
             "expiration": 2592000,
-            "SSO": false,  
+            "SSO": false,
             "routes": {
                 "/user/userId": {
                     "url": "/api/user/${userId}/userId",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                "/user/level": { 
+                "/user/level": {
                     "url": "/api/user/${userId}/level",
                     "version": "v1",
-                     "isUse":false,
-                    "versions": ["v1", "v2", "v3"]
+                    "isUse": false,
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/user/userInfo": {
                     "url": "/api/user/${userId}/userInfo",
                     "version": "v1",
-                     "isUse":false,
-                    "versions": ["v1", "v2", "v3"]
+                    "isUse": false,
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/news/getNewsList": {
                     "url": "/api/news/getNewsList.html",
                     "version": "v1",
-                     "isUse":false,
-                    "versions": ["v1", "v2", "v3"]
+                    "isUse": false,
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/news/getNewsDetail/": {
                     "url": "/api/news/getNewsDetail",
                     "version": "v1",
-                     "isUse":false,
-                    "versions": ["v1", "v2", "v3"]
+                    "isUse": false,
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/user/userOrderList": {
                     "url": "/api/user/${userId}/userOrderList.html",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/user/userProfitList": {
                     "url": "/api/user/${userId}/userProfitList.html",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/project/list": {
                     "url": "/api/project/${userId}/list",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/page/:projectId": {
                     "url": "/api/page/${userId}/${projectId}",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/news/isFinishNews.html": {
                     "url": "/api/news/${userId}/isFinishNews.html",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                "/specialUser/sendSmsCode":{
-                    "url":"/api/specialUser/${userId}/sendSmsCode",
+                "/specialUser/sendSmsCode": {
+                    "url": "/api/specialUser/${userId}/sendSmsCode",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                "/specialUser/changeQbii":{
-                    "url":"/api/specialUser/${userId}/changeQbii",
+                "/specialUser/changeQbii": {
+                    "url": "/api/specialUser/${userId}/changeQbii",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                "/specialUser/qbiiUsableBalance":{
-                    "url":"/api/specialUser/${userId}/qbiiUsableBalance",
+                "/specialUser/qbiiUsableBalance": {
+                    "url": "/api/specialUser/${userId}/qbiiUsableBalance",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 }
             }
         },
@@ -98,168 +150,278 @@
             "SSO": false
         },
         "sys": {
-            "domain": "http://nodeqbii.qbao.com", 
+            "domain": "http://nodeqbii.qbao.com",
             "prefix": "/api",
             "timeout": 5000,
             "tokenKey": "nodeServer-token",
             "expiration": 2592000,
-            "SSO": false 
+            "SSO": false
         },
         "weixin": {
             "domain": " https://api.weixin.qq.com",
             "prefix": "/api/weixin",
-            "timeout": 5000, 
+            "timeout": 5000,
             "routes": {
                 "/user/token": {
                     "url": "/sns/oauth2/access_token",
-                    "method":"GET",
+                    "method": "GET",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                 "/user/tokenRefresh": {
+                "/user/tokenRefresh": {
                     "url": "/sns/oauth2/refresh_token",
-                    "method":"GET",
+                    "method": "GET",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/user/info": {
                     "url": "/sns/userinfo",
-                    "method":"GET",
+                    "method": "GET",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
                 "/user/info/guanzhu": {
                     "url": "/cgi-bin/user/info",
-                    "method":"GET",
+                    "method": "GET",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                 "/config/token": {
+                "/config/token": {
                     "url": "/cgi-bin/token",
-                    "method":"GET",
+                    "method": "GET",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                "/config/jsTicket":{
-                    "url":"/cgi-bin/ticket/getticket",
-                    "method":"GET",
+                "/config/jsTicket": {
+                    "url": "/cgi-bin/ticket/getticket",
+                    "method": "GET",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 },
-                "/menu/get":{
-                    "url":"/cgi-bin/get_current_selfmenu_info",
-                    "method":"GET",
+                "/menu/get": {
+                    "url": "/cgi-bin/get_current_selfmenu_info",
+                    "method": "GET",
                     "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                    "versions": [
+                        "v1",
+                        "v2",
+                        "v3"
+                    ]
                 }
             },
-            "ips":[
+            "ips": [
                 "172.0.0.1",
                 "192.168.1.1"
             ]
         },
         "item": {
+            "prefix": "/api/item",
+            "timeout": 5000,
+            "tokenKey": "n_t_item",
             "domain": "http://nodewyhw.banyan-data.com",
-            "prefix": "/api/item",
-            "timeout": 5000,
-            "tokenKey":"n_t_item",
-            "SSO":true,
-            "routes": {
-                "/goodsCoupon/couponList": {
-                    "url": "/goodsCoupon/couponList",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"],
-                    "isLogin":true
+            "SSO": true,
+            "rightTemplate":{
+                "code": {
+                    "key":"responseCode",
+                    "value":1000
                 },
-                "/goodsCoupon/catogry/all": {
-                    "url": "/goodsCoupon/catogry/all",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                "result": {
+                    "key":"data"
                 },
-                "/goodsCoupon/couponDetail/:goodsId": {
-                    "url": "/goodsCoupon/${goodsId}/couponDetail",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/goodsCoupon/activeGoods": {
-                    "url": "/goodsCoupon/activeGoods",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goodsCoupon/activeGoodsDetail/:goodsId": {
-                    "url": "/goodsCoupon/${goodsId}/activeGoodsDetail",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                "message": {
+                    "key":"message"
                 }
-            }
-        },
-        "itemUC": {
-            "domain": "http://wyhw-uc-api.banyan-data.com",
-            "prefix": "/api/item",
-            "timeout": 5000,
-            "tokenKey":"n_t_item",
-            "SSO":true,
-            "routes": {
-                "/user/getUserPoints": {
-                    "url": "/user/userPoints/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+            },
+            "routes": [
+                {
+                    "domain": "http://nodewyhw.banyan-data.com",
+                    "routes": {
+                        "/goodsCoupon/couponList": {
+                            "url": "/goodsCoupon/couponList",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ],
+                            "isLogin": true,
+                            "method":"POST"
+                        },
+                        "/goodsCoupon/catogry/all": {
+                            "url": "/goodsCoupon/catogry/all",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/goodsCoupon/couponDetail/:goodsId": {
+                            "url": "/goodsCoupon/${goodsId}/couponDetail",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/goods/goodsCoupon/activeGoods": {
+                            "url": "/goodsCoupon/activeGoods",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/goodsCoupon/activeGoodsDetail/:goodsId": {
+                            "url": "/goodsCoupon/${goodsId}/activeGoodsDetail",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        }
+                    }
                 },
-                "/user/order/myorder": {
-                    "url": "/user/order/myorder/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                {
+                    "domain": "http://wyhw-uc-api.banyan-data.com",
+                    "prefix": "/api/item",
+                    "routes": {
+                        "/user/getUserPoints": {
+                            "url": "/user/userPoints/${userId}",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/user/order/myorder": {
+                            "url": "/user/order/myorder/${userId}",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/user/order/submitOrderNo": {
+                            "url": "/user/order/${userId}/submitOrderNo",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/user/getUserInfo": {
+                            "url": "/user/userinfo/${userId}",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/goods/pointList": {
+                            "url": "/uc/point/detail/list/${userId}",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/goods/exchangeList": {
+                            "url": "/uc/point/exchange/list/${userId}",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/goods/exchangeSubmit": {
+                            "url": "/uc/point/exchange/submit/${userId}",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        },
+                        "/goods/setAlipay": {
+                            "url": "/user/${userId}/setAlipay",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        }
+                    }
                 },
-                "/user/order/submitOrderNo": {
-                    "url": "/user/order/${userId}/submitOrderNo",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/user/getUserInfo": {
-                    "url": "/user/userinfo/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/pointList": {
-                    "url": "/uc/point/detail/list/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/exchangeList": {
-                    "url": "/uc/point/exchange/list/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/exchangeSubmit": {
-                    "url": "/uc/point/exchange/submit/${userId}",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
-                },
-                "/goods/setAlipay": {
-                    "url": "/user/${userId}/setAlipay",
-                    "version": "v1",
-                    "versions": ["v1", "v2", "v3"]
+                {
+                    "domain": "http://wyhw.banyan-data.com",
+                    "timeout": 5000,
+                    "routes": {
+                        "/wx/qiniu/idimage": {
+                            "url": "/wx/qiniu/idimage",
+                            "version": "v1",
+                            "versions": [
+                                "v1",
+                                "v2",
+                                "v3"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
         }
     },
-    "gateway":{
-        "routes":{
-            "/api/user/login":{
-                "isLogin":false,
-                "version":"1"
+    "gateway": {
+        "routes": {
+            "/api/user/login": {
+                "isLogin": false,
+                "version": "1"
             }
         }
     },
     "ignoreUrls": {
         "/api/account4Client/login": true,
-        "/api/qbii/news/getNewsList":true,
-        "/api/qbii/news/getNewsDetail":true,
-        "/api/qbii/v1/user/getUserLevel":true,
-        "/api/item/user/login":true,
-        "/api/weixin/info/item":true,
-        "/api/weixin/js/info/item":true,
-        "/api/item/weixin/info":true,
+        "/api/qbii/news/getNewsList": true,
+        "/api/qbii/news/getNewsDetail": true,
+        "/api/qbii/v1/user/getUserLevel": true,
+        "/api/item/user/login": true,
+        "/api/weixin/info/item": true,
+        "/api/weixin/js/info/item": true,
+        "/api/item/weixin/info": true,
         "/api/item/goodsCoupon/catogry/all": true,
         "/api/item/goodsCoupon/couponList": true,
         "/api/item/goods/goodsCoupon/activeGoods": true,
@@ -268,25 +430,25 @@
     },
     "redis": {
         "tokenKey": "nodeServer-token",
-        "expiration": 2592000 
+        "expiration": 2592000
     },
-    "auxiliary":{
-        "timing":{
-            "weixin":{
-                "getToken":{
-                    "time":"*/5 * * * * *"
+    "auxiliary": {
+        "timing": {
+            "weixin": {
+                "getToken": {
+                    "time": "*/5 * * * * *"
                 },
-                "tickerJsGet":{
-                    "time":"*/5 * * * * *"
+                "tickerJsGet": {
+                    "time": "*/5 * * * * *"
                 }
             }
         }
     },
     "cookie": {
         "signed": true,
-        "maxAge": 25920000000, 
-        "secure": false, 
+        "maxAge": 25920000000,
+        "secure": false,
         "httpOnly": true
     },
-    "SSO": false 
+    "SSO": false
 }

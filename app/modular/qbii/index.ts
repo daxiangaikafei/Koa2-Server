@@ -5,24 +5,22 @@ import localConfig from "./../../config"
 
 
 const config = localConfig.routes.qbii;
-console.log(config)
 const router:Router = new Router();
 router.prefix(config.prefix);
 
 import {login,isFinishNews} from "./user";
-import {all} from "./all";
-
-//router.get("/user/userId",login);
 router.post("/news/isFinishNews",isFinishNews);
 
 
+
+// import {all} from "./all";
+//router.get("/user/userId",login);
 // console.log("xxxx",getUserLevel);
 // router.post("/v1/user/getUserLevel",getUserLevel);
-
-const routes = config.routes;
-for(var key in routes){
-    router.all(key,all);
-}
-
+// const routes = config.routes;
+// for(var key in routes){
+//     router.all(key,all);
+// }
 //router.all(new RegExp('^'+config.prefix.replace(/\//g,"\\/")+'(?:\/|$)'),all); 
+
 module.exports = router;

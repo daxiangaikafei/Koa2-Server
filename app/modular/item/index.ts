@@ -16,14 +16,14 @@ const router:Router = new Router();
 router.prefix(config.prefix);
 
 import * as User from "./user";
-import {all} from "./all";
+// import {all} from "./all";
 
 router.get("/user/checkLogin", User.checkLogin);
 
-const routes = config.routes;
-for(var key in routes){
-    router.all(key, all);
-}
+// const routes = config.routes;
+// for(var key in routes){
+//     router.all(key, all);
+// }
 
 router.get("/user/login",User.login);
 router.get("/weixin/info",User.getWXInfo)

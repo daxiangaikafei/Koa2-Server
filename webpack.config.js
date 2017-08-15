@@ -26,10 +26,16 @@ function _externals() {
 let externals = _externals();
 
 
-let env = "development";
+// let env = "development";
+// upEnv:function(e){
+//         console.log("修改webpack的全局环境变量"+e)
+//         env =  e;
+//     }
 
 //console.log(externals);
-module.exports = {
+module.exports = function(env){
+    console.log("Env"+env)
+    return {
     entry: {
         app: "./app/app.ts"
     },
@@ -86,11 +92,8 @@ module.exports = {
         //             warnings: false
         //         }
         //     })
-    ],
-     upEnv:function(e){
-         console.log("修改webpack的全局环境变量"+e)
-        env =  e;
-    }
-
+    ]   
 };
 
+
+}

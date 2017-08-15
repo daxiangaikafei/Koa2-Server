@@ -25,21 +25,25 @@
                 "/user/level": { 
                     "url": "/api/user/${userId}/level",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/userInfo": {
                     "url": "/api/user/${userId}/userInfo",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/news/getNewsList": {
                     "url": "/api/news/getNewsList.html",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/news/getNewsDetail/": {
                     "url": "/api/news/getNewsDetail",
                     "version": "v1",
+                     "isUse":false,
                     "versions": ["v1", "v2", "v3"]
                 },
                 "/user/userOrderList": {
@@ -64,6 +68,21 @@
                 },
                 "/news/isFinishNews.html": {
                     "url": "/api/news/${userId}/isFinishNews.html",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/specialUser/sendSmsCode":{
+                    "url":"/api/specialUser/${userId}/sendSmsCode",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/specialUser/changeQbii":{
+                    "url":"/api/specialUser/${userId}/changeQbii",
+                    "version": "v1",
+                    "versions": ["v1", "v2", "v3"]
+                },
+                "/specialUser/qbiiUsableBalance":{
+                    "url":"/api/specialUser/${userId}/qbiiUsableBalance",
                     "version": "v1",
                     "versions": ["v1", "v2", "v3"]
                 }

@@ -15,12 +15,14 @@ const configRoutes = localConfig.routes;
 const creatRoutersByConfig = (baseConfig)=>{
     let router:Router = new Router(),
         {routes,prefix,domain,timeout,rightTemplate} = baseConfig;
-     
+        router.prefix(prefix);
     for(var key in routes){
         let {method} = routes[key];
+        console.log(".......",domain+key);
         method = method||"all";
-        let all = getTodoMethod.createFetch(prefix,domain,timeout,rightTemplate)
-        router[method](key,all);
+        let all = getTodoMethod.createFetch(prefix,domain,timeout,routes,rightTemplate);
+
+        router[method.toLocaleLowerCase()](key,all);
     }
     return router
 }
@@ -28,7 +30,7 @@ const creatRoutersByConfig = (baseConfig)=>{
 const TodoMethod = () => {
     let methods = {};
     return {
-        createFetch: (prefix, domain, timeout, rightTemplate = {
+        createFetch: (prefix, domain, timeout,routes, rightTemplate = {
             "code": {
                 "key":"responseCode",
                 "value":1000
@@ -43,12 +45,13 @@ const TodoMethod = () => {
             if (methods[domain]) {
                 return methods[domain];
             } else {
-                let all = new All(prefix, domain, timeout);
+                let all = new All(prefix, domain, timeout,routes);
                 let {code,result,message} = rightTemplate;
                 methods[domain] = function(ctx,next){
                     let backResult = new Result;
-                    return all.normal().then((data)=>{
-                        if(data[code["key"]]===data[code["value"]]){
+
+                    return all.normal(ctx,next).then((data)=>{
+                        if(data&&data[code["key"]]&&data[code["key"]]===code["value"]){
                             ctx.body = backResult.success(data[result['key']])
                         }else{
                             ctx.body = backResult.error(data[code['key']],data[message['key']])
@@ -65,19 +68,20 @@ const TodoMethod = () => {
 }
 const getTodoMethod = TodoMethod();
 
-
-
-export default function(){
+let init = function(){
     let allRoutes = [];
     for(var key in configRoutes){
         let {routes} = configRoutes[key];
         if(isArray(routes)){
             routes.forEach((config)=>{
-                routes.push(creatRoutersByConfig(Object.assign({},configRoutes[key],config)))
+                allRoutes.push(creatRoutersByConfig(Object.assign({},configRoutes[key],config)))
             })
         }else{
-            routes.push(creatRoutersByConfig(configRoutes[key]))
+            allRoutes.push(creatRoutersByConfig(configRoutes[key]))
         }
     }
     return allRoutes;
 }
+
+
+export default init()

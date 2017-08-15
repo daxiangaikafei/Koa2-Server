@@ -1,10 +1,12 @@
 
-// import LocalConfig from './../../config'
-// const config:LocalConfig = require("./../../config/index");
 
-import localConfig from './../../config'
 
-const Error = localConfig.error;
+
+// const config :any= require("./../../config/index");
+import localConfig from "./../../config";
+const Errors = localConfig.error;
+
+// console.error("errors",Errors)
 class Result {
     constructor() {
         this.resultCode = 0;
@@ -15,24 +17,27 @@ class Result {
     private resultCode : number;
     private resultMessage : string;
     private result : any;
-    success(result ?: any) {
+    success(result ?: any,message="success") {
         this.resultCode = 0;
-        this.resultMessage = "success";
+        this.resultMessage = message;
         this.result = result;
         return this.getValue();
     }
-    error(code : number, errorMsg ?: string) {
+    error(code : number=1, errorMsg ?: string) {
         this.resultCode = code;
-        this.resultMessage = Error[code]||errorMsg;
+        this.resultMessage = Errors[code]||errorMsg;
         return this.getValue();
-        //this.result = {};
-        //console.log(code,'ddddd');
+    }
+    setError(error){
+        this.resultCode = error.code;
+        this.resultMessage = error.message;
+         this.result = undefined;
+        return this.getValue();
     }
     getValue() {
         let resultCode = this.resultCode;
         let resultMessage = this.resultMessage;
         let result = this.result;
-        //console.log( resultCode, resultMessage, result)
         return {code:resultCode, message:resultMessage, result}
     }
 }

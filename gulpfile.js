@@ -24,8 +24,8 @@ var replaceName = function (names, hasContent, replaceContent) {
 
 gulp.task("webpack", function (callback) {
 
-    var webpackConfig = require("./webpack.config.js");
-    webpackConfig.upEnv(env);
+    var webpackConfig = require("./webpack.config.js")(env);
+    // webpackConfig.upEnv(env);
     delete webpackConfig.upEnv;
     webpack(Object.create(webpackConfig), function (err, stats) {
         if (err) 
