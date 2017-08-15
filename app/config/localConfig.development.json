@@ -141,14 +141,6 @@
                 }
             }
         },
-        "good": {
-            "domain": "http://192.168.7.104",
-            "prefix": "/api/good",
-            "timeout": 5000,
-            "tokenKey": "nodeServer-token",
-            "expiration": 2592000,
-            "SSO": false
-        },
         "sys": {
             "domain": "http://nodeqbii.qbao.com",
             "prefix": "/api",
@@ -384,6 +376,31 @@
                                 "v2",
                                 "v3"
                             ]
+                        },
+                        "/goods/partner": {
+                            "url": "/uc/partner/home/${userId}",
+                            "version": "v1",
+                            "versions": ["v1", "v2", "v3"]
+                        },
+                        "/user/partner": {
+                            "url": "/uc/partner/userinfo/${userId}",
+                            "version": "v1",
+                            "versions": ["v1", "v2", "v3"]
+                        },
+                        "/user/partner/userinfo/submit": {
+                            "url": "/uc/partner/userinfo/submit",
+                            "version": "v1",
+                            "versions": ["v1", "v2", "v3"]
+                        },
+                        "/point/drawing/list": {
+                            "url": "/uc/point/drawing/list/${userId}",
+                            "version": "v1",
+                            "versions": ["v1", "v2", "v3"]
+                        },
+                        "/point/drawing/submit": {
+                            "url": "/uc/point/drawing/submit/${userId}",
+                            "version": "v1",
+                            "versions": ["v1", "v2", "v3"]
                         }
                     }
                 },
@@ -391,15 +408,6 @@
                     "domain": "http://wyhw.banyan-data.com",
                     "timeout": 5000,
                     "routes": {
-                        "/wx/qiniu/idimage": {
-                            "url": "/wx/qiniu/idimage",
-                            "version": "v1",
-                            "versions": [
-                                "v1",
-                                "v2",
-                                "v3"
-                            ]
-                        }
                     }
                 }
             ]
